@@ -73,8 +73,3 @@ body {
   flex-direction: column;
 }
 
-.taskbar {
-  background-color: #c0c0c0;
-  height: 40px;
-  border-top: 2px solid #ffffff;
-}

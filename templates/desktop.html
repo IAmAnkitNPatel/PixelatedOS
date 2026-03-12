@@ -3,6 +3,7 @@
   <head>
     <title>Desktop</title>
     <link rel="stylesheet" href="/static/styles/desktop.css">
+    <link rel="stylesheet" href="/static/styles/taskbar.css">
     <link rel="stylesheet" href="/static/styles/home.css">
   </head>
   <body>
@@ -12,12 +13,16 @@
           <div class="icon-image">🏠</div>
           <div class="icon-name">Home</div>
         </div>
-
-        
       </div>
-      <div class="taskbar"></div>
+      
+      <div class="taskbar">
+        <span class="taskbar-left-section"></span>
+        <span class="taskbar-middle-section"></span>
+        <span class="taskbar-right-section"></span>
+      </div>
+      
     </div>
 
-    <script src="/static/scripts/desktop.js"></script>
+    <script type="module" src="/static/scripts/desktop.js"></script>
   </body>
 </html>

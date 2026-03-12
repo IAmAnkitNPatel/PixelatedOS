@@ -14,3 +14,15 @@
   border: solid;
   border-color: rgb(159, 159, 159);
 }
+
+.maximize {
+  height: 100vh !important;
+  width: 100vw !important;
+  top: 0 !important;
+  left: 0 !important;
+  position: fixed;
+}
+
+.minimize {
+  display: none;
+}
