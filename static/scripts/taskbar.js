@@ -15,8 +15,19 @@ export function addAppToTaskbar (event, homeContainer) {
 
   taskbarMiddleSection.append(taskbarAppSpan);
 
-  // taskbarAppHover(homeContainer, taskbarAppSpan)
+  taskbarAppSpan.addEventListener('mouseenter', ()=>{
+    taskbarAppHover(homeContainer, taskbarAppSpan)
+  });
   return taskbarAppSpan;
+}
+
+function taskbarAppHover (homeContainer, taskbarAppSpan) {
+  const homeContainerCopy  = homeContainer.cloneNode(true);
+  homeContainerCopy.classList.remove('home-container');
+  homeContainerCopy.classList.add('taskbar-app-hover');
+  taskbarAppSpan.append(homeContainerCopy)
+  console.log(homeContainerCopy)
+
 }
 
 // function taskbarAppHover (homeContainer, taskbarAppSpan) {
