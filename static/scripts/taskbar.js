@@ -1,3 +1,5 @@
+let hoverTimeout;
+
 export function addAppToTaskbar (event, homeContainer) { 
   const taskbarAppSpan = document.createElement('span');
   taskbarAppSpan.classList.add('taskbar-app');
@@ -16,33 +18,24 @@ export function addAppToTaskbar (event, homeContainer) {
   taskbarMiddleSection.append(taskbarAppSpan);
 
   taskbarAppSpan.addEventListener('mouseenter', ()=>{
-    taskbarAppHover(homeContainer, taskbarAppSpan)
+    clearTimeout(hoverTimeout);
+    taskbarAppHoverAdd(homeContainer, taskbarAppSpan)
+  });
+  taskbarAppSpan.addEventListener('mouseleave', ()=>{
+    hoverTimeout - setTimeout(()=>{
+      taskbarAppHoverRemove(taskbarAppSpan);
+    }, 100);
   });
   return taskbarAppSpan;
 }
 
-function taskbarAppHover (homeContainer, taskbarAppSpan) {
+function taskbarAppHoverAdd (homeContainer, taskbarAppSpan) {
   const homeContainerCopy  = homeContainer.cloneNode(true);
-  homeContainerCopy.classList.remove('home-container');
   homeContainerCopy.classList.add('taskbar-app-hover');
-  taskbarAppSpan.append(homeContainerCopy)
-  console.log(homeContainerCopy)
-
+  taskbarAppSpan.append(homeContainerCopy);
 }
 
-// function taskbarAppHover (homeContainer, taskbarAppSpan) {
-//   const homeContainerCopy = homeContainer.cloneNode(true);
-//   homeContainerCopy.classList.remove('home-container')
-//   const taskbarHomeContainerDiv = document.createElement('div');
-//   taskbarHomeContainerDiv.append(homeContainerCopy);
-//   taskbarHomeContainerDiv.classList.add('taskbar-home-container');
-
-//   taskbarAppSpan.append(taskbarHomeContainerDiv);
-  
-
-// }
-
-// function syncTaskbarIcon (homeIcon) {
-//   const iconTitle =  homeIcon.querySelector('.icon-name');
-//   const taskbar = document.query
-// }
+function taskbarAppHoverRemove (taskbarAppSpan) {
+  const appHover = taskbarAppSpan.querySelector('.taskbar-app-hover');
+  appHover.remove();
+}
