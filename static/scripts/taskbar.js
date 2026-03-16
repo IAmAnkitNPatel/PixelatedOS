@@ -22,7 +22,7 @@ export function addAppToTaskbar (event, homeContainer) {
     taskbarAppHoverAdd(homeContainer, taskbarAppSpan)
   });
   taskbarAppSpan.addEventListener('mouseleave', ()=>{
-    hoverTimeout - setTimeout(()=>{
+    hoverTimeout = setTimeout(()=>{
       taskbarAppHoverRemove(taskbarAppSpan);
     }, 100);
   });
@@ -30,6 +30,7 @@ export function addAppToTaskbar (event, homeContainer) {
 }
 
 function taskbarAppHoverAdd (homeContainer, taskbarAppSpan) {
+  if (taskbarAppSpan.querySelector('.taskbar-app-hover')) return;
   const homeContainerCopy  = homeContainer.cloneNode(true);
   homeContainerCopy.classList.add('taskbar-app-hover');
   taskbarAppSpan.append(homeContainerCopy);

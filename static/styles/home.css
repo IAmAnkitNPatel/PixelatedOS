@@ -5,14 +5,18 @@
   width: 400px;
   height: 300px;
   background-color: rgb(192, 192, 192);
-  border: 2px ;
+  border: solid ;
+  border-color: rgb(159, 159, 159);
+  display: flex;
+  flex-direction: column;
 }
 
 .home-header {
   display: flex;
   justify-content: space-between;
-  border: solid;
+  border-bottom: solid;
   border-color: rgb(159, 159, 159);
+  flex: 0;
 }
 
 .maximize {
@@ -26,3 +30,33 @@
 .minimize {
   display: none;
 }
+
+
+/* Home Explorer Body */
+.home-body-div {
+  border: solid;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.quick-access-div {
+  border: solid;
+  border-color: red;
+  flex: 1;
+}
+
+.quick-access-label-div {
+  border: solid;
+  border-color: red;
+  margin-bottom: 7px;
+}
+
+.the-foyer-span {
+  border: solid;
+  padding-left: 10px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+}
+
+
