@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.main {
+  height: 100vh;
+  width: 100vw;
+}
+
+.home-explorer {
+  height: 100%;
+  width: 100%;
+  border: solid;
+  border-color: rgb(73, 73, 73);
+  border-width: 7px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-explorer-header {
+  border: solid;
+  border-color: red;
+  flex: 0.1;
+}
+
+.home-explorer-body {
+  border: solid;
+  border-color: blue;
+  flex: 1;
+  display: flex;
+}
+
+.home-explorer-sidebar {
+  border: solid;
+  color: red;
+  flex: 0.3;
+}
+
+.home-explorer-workspace {
+  border: solid;
+  color: red;
+  flex: 1;
+}

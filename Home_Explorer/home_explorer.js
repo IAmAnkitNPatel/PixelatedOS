@@ -16,5 +16,15 @@ homeExplorerBody.classList.add('home-explorer-body');
 const homeExplorerSidebar = document.createElement('div');
 homeExplorerSidebar.classList.add('home-explorer-sidebar');
 
-// adding Head, Body and Sidebar in Home Explorer Div
-homeExplorer.append(homeExplorerHeader)
+// creating Home Explorer Workspace Div
+const homeExplorerWorkspace = document.createElement('div');
+homeExplorerWorkspace.classList.add('home-explorer-workspace');
+
+// adding Sidebar and Workspace in Body Div
+homeExplorerBody.append(homeExplorerSidebar, homeExplorerWorkspace);
+
+// adding Header and Body in Home Explorer Div
+homeExplorer.append(homeExplorerHeader, homeExplorerBody);
+
+//adding Home Explorer in Main Div
+main.append(homeExplorer);
