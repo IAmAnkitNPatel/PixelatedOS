@@ -1,3 +1,5 @@
+import { homeExplorerData } from "./home_explorer_data.js";
+
 const main = document.querySelector('.main');
 
 // creating Home Explorer Div
@@ -28,3 +30,39 @@ homeExplorer.append(homeExplorerHeader, homeExplorerBody);
 
 //adding Home Explorer in Main Div
 main.append(homeExplorer);
+
+
+// adding homeExplorerData on to the page
+
+function renderExplorer(currentFolder) {
+  const workspace = document.querySelector('.home-explorer-workspace');
+  
+  workspace.innerHTML = "";
+
+  if (currentFolder.children.length > 0) {
+      currentFolder.children.forEach(child => {
+      // creating div and adding data as item
+      let item = document.createElement('div');
+      item.classList.add('home-explorer-item', child.type);
+      
+      const itemName = document.createElement('div');
+      itemName.classList.add('home-explorer-item-name');
+      itemName.append(child.name);
+
+      item.append(itemName);
+
+      // adding double click event listner to the item Div
+      item.addEventListener('dblclick', ()=>{
+        renderExplorer(child)
+      });
+    
+      //adding everything on workspace
+      workspace.append(item);
+    });
+  } else {
+    workspace.textContent = "Empty";
+  }
+}
+
+let currentFolder = homeExplorerData;
+renderExplorer(currentFolder);
