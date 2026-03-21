@@ -9,6 +9,20 @@ homeExplorer.classList.add('home-explorer')
 // creating Home Explorer Header Div
 const homeExplorerHeader = document.createElement('div');
 homeExplorerHeader.classList.add('home-explorer-header');
+// creating Action Control Div
+const actionControl = document.createElement('div');
+actionControl.classList.add('action-control');
+// creating New Folder Button
+const newFolder = document.createElement('button');
+newFolder.innerText = "New Folder";
+newFolder.classList.add('new-folder');
+newFolder.addEventListener('click', ()=>{
+  createNewFolder();
+});
+// adding New Folder Button in Action Control Div
+actionControl.append(newFolder);
+// adding Action Control Div in Home Explorer Header Div
+homeExplorerHeader.append(actionControl);
 
 // creating Home Explorer Body Div
 const homeExplorerBody = document.createElement('div');
@@ -34,7 +48,7 @@ main.append(homeExplorer);
 
 // adding homeExplorerData on to the page
 
-function renderExplorer(currentFolder) {
+function renderExplorer() {
   const workspace = document.querySelector('.home-explorer-workspace');
   
   workspace.innerHTML = "";
@@ -53,7 +67,8 @@ function renderExplorer(currentFolder) {
 
       // adding double click event listner to the item Div
       item.addEventListener('dblclick', ()=>{
-        renderExplorer(child)
+        currentFolder = child;
+        renderExplorer();
       });
     
       //adding everything on workspace
@@ -65,4 +80,46 @@ function renderExplorer(currentFolder) {
 }
 
 let currentFolder = homeExplorerData;
-renderExplorer(currentFolder);
+renderExplorer();
+
+// Function to Create a New Folder
+function createNewFolder() {
+  // Condition if in Home Explore Drive we cannot create a new folder
+  if (currentFolder === homeExplorerData) {
+    alert("You cannot create a folder in the Root directory!");
+    return;
+  }
+
+  // create a new folder
+  //counting existing "New Folder"
+  let newFolderCount = 0;
+
+  currentFolder.children.forEach(child => {
+    if (child.name.startsWith("New Folder")) {
+      newFolderCount++;
+    }
+  });
+
+  // creating a variable for new folder name with number
+  let newFolderName = "New Folder";
+  if (newFolderCount >= 1) {
+    newFolderName = `New Folder ${newFolderCount + 1}`;
+  }
+  
+  const newId = crypto.randomUUID();
+
+  const newFolderData = {
+      id: newId,
+      type: "folder",
+      name: newFolderName,
+      children: []
+    };
+  // add newFolderData to current Folder children array
+  currentFolder.children.push(newFolderData);
+
+  //calling renderExplore again to update the page
+  renderExplorer();
+
+  //
+  console.log(currentFolder);
+}
