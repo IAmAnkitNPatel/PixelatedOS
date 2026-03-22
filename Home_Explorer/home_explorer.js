@@ -12,15 +12,15 @@ homeExplorerHeader.classList.add('home-explorer-header');
 // creating Action Control Div
 const actionControl = document.createElement('div');
 actionControl.classList.add('action-control');
-// creating New Folder Button
-const newFolder = document.createElement('button');
-newFolder.innerText = "New Folder";
-newFolder.classList.add('new-folder');
-newFolder.addEventListener('click', ()=>{
-  createNewFolder();
+// creating New Room Button
+const newRoom = document.createElement('button');
+newRoom.innerText = "New Room";
+newRoom.classList.add('new-room');
+newRoom.addEventListener('click', ()=>{
+  createNewRoom();
 });
-// adding New Folder Button in Action Control Div
-actionControl.append(newFolder);
+// adding New Room Button in Action Control Div
+actionControl.append(newRoom);
 // adding Action Control Div in Home Explorer Header Div
 homeExplorerHeader.append(actionControl);
 
@@ -53,8 +53,8 @@ function renderExplorer() {
   
   workspace.innerHTML = "";
 
-  if (currentFolder.children.length > 0) {
-      currentFolder.children.forEach(child => {
+  if (currentRoom.children.length > 0) {
+      currentRoom.children.forEach(child => {
       // creating div and adding data as item
       let item = document.createElement('div');
       item.classList.add('home-explorer-item', child.type);
@@ -67,7 +67,7 @@ function renderExplorer() {
 
       // adding double click event listner to the item Div
       item.addEventListener('dblclick', ()=>{
-        currentFolder = child;
+        currentRoom = child;
         renderExplorer();
       });
     
@@ -79,47 +79,47 @@ function renderExplorer() {
   }
 }
 
-let currentFolder = homeExplorerData;
+let currentRoom = homeExplorerData;
 renderExplorer();
 
-// Function to Create a New Folder
-function createNewFolder() {
-  // Condition if in Home Explore Drive we cannot create a new folder
-  if (currentFolder === homeExplorerData) {
-    alert("You cannot create a folder in the Root directory!");
+// Function to Create a New Room
+function createNewRoom() {
+  // Condition if in Home Explore Drive we cannot create a new room
+  if (currentRoom === homeExplorerData) {
+    alert("You cannot create a room in the Root directory!");
     return;
   }
 
-  // create a new folder
-  //counting existing "New Folder"
-  let newFolderCount = 0;
+  // create a new room
+  //counting existing "New Room"
+  let newRoomCount = 0;
 
-  currentFolder.children.forEach(child => {
-    if (child.name.startsWith("New Folder")) {
-      newFolderCount++;
+  currentRoom.children.forEach(child => {
+    if (child.name.startsWith("New Room")) {
+      newRoomCount++;
     }
   });
 
-  // creating a variable for new folder name with number
-  let newFolderName = "New Folder";
-  if (newFolderCount >= 1) {
-    newFolderName = `New Folder ${newFolderCount + 1}`;
+  // creating a variable for new room name with number
+  let newRoomName = "New Room";
+  if (newRoomCount >= 1) {
+    newRoomName = `New Room ${newRoomCount + 1}`;
   }
   
   const newId = crypto.randomUUID();
 
-  const newFolderData = {
+  const newRoomData = {
       id: newId,
-      type: "folder",
-      name: newFolderName,
+      type: "room",
+      name: newRoomName,
       children: []
     };
-  // add newFolderData to current Folder children array
-  currentFolder.children.push(newFolderData);
+  // add newRoomData to current Room children array
+  currentRoom.children.push(newRoomData);
 
   //calling renderExplore again to update the page
   renderExplorer();
 
   //
-  console.log(currentFolder);
+  console.log(currentRoom);
 }
