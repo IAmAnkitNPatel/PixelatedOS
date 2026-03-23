@@ -91,20 +91,29 @@ function createNewRoom() {
   }
 
   // create a new room
-  //counting existing "New Room"
-  let newRoomCount = 0;
 
-  currentRoom.children.forEach(child => {
-    if (child.name.startsWith("New Room")) {
-      newRoomCount++;
+  // Ask for new room Name
+  let newRoomName = prompt("Enter the Room Name: ");
+
+  // if not Entered room name or pressed esc
+  if (!newRoomName) {
+    //counting existing "New Room"
+    let newRoomCount = 0;
+
+    currentRoom.children.forEach(child => {
+      if (child.name.startsWith("New Room")) {
+        newRoomCount++;
+      }
+    });
+
+    // creating a variable for new room name with number
+    newRoomName = "New Room";
+    if (newRoomCount >= 1) {
+      newRoomName = `New Room ${newRoomCount + 1}`;
     }
-  });
-
-  // creating a variable for new room name with number
-  let newRoomName = "New Room";
-  if (newRoomCount >= 1) {
-    newRoomName = `New Room ${newRoomCount + 1}`;
   }
+
+  
   
   const newId = crypto.randomUUID();
 
