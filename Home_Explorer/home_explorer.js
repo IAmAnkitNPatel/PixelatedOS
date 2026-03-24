@@ -132,3 +132,10 @@ function createNewRoom() {
   //
   console.log(currentRoom);
 }
+
+//Navigation History
+let navigationHistory = [];
+
+function addNavigationHistory() {
+
+}
