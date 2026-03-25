@@ -69,6 +69,7 @@ function renderExplorer() {
       item.addEventListener('dblclick', ()=>{
         currentRoom = child;
         renderExplorer();
+        addNavigationHistory(); //NavigationHistory will update every time we doublecilck on a folder to open it //childern array will not get updated after creating a new child/ new room
       });
     
       //adding everything on workspace
@@ -78,9 +79,6 @@ function renderExplorer() {
     workspace.textContent = "Empty";
   }
 }
-
-let currentRoom = homeExplorerData;
-renderExplorer();
 
 // Function to Create a New Room
 function createNewRoom() {
@@ -130,12 +128,35 @@ function createNewRoom() {
   renderExplorer();
 
   //
-  console.log(currentRoom);
+  // console.log(currentRoom);
 }
 
-//Navigation History
+// Navigation History
 let navigationHistory = [];
 
 function addNavigationHistory() {
-
+  navigationHistory.push(currentRoom);
+  console.log(navigationHistory);
 }
+
+// Back Button(Left Arrow) and Forward Button(Right Arrow)
+function navigationButton(direction) {
+  let currentRoomIndex = navigationHistory.indexOf(currentRoom);
+  if (direction === 'backward') {
+    if (currentRoomIndex-1 >= 0){
+      let backwardElement = navigationHistory[currentRoomIndex-1];
+    }
+    return
+
+  } else if(direction === 'forward') {
+    if (currentRoomIndex < currentRoom.length-1) {
+      let forwardElement = navigationHistory[currentRoom+1];
+    }
+    return
+  }
+}
+
+//main function calling starts from here
+let currentRoom = homeExplorerData;
+renderExplorer();
+addNavigationHistory();
