@@ -145,12 +145,16 @@ function navigationButton(direction) {
   if (direction === 'backward') {
     if (currentRoomIndex-1 >= 0){
       let backwardElement = navigationHistory[currentRoomIndex-1];
+      currentRoom = backwardElement;
+      renderExplorer();
     }
     return
 
   } else if(direction === 'forward') {
-    if (currentRoomIndex < currentRoom.length-1) {
-      let forwardElement = navigationHistory[currentRoom+1];
+    if (currentRoomIndex < navigationHistory.length-1) {
+      let forwardElement = navigationHistory[currentRoomIndex+1];
+      currentRoom = forwardElement;
+      renderExplorer();
     }
     return
   }
