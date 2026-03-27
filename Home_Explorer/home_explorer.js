@@ -160,6 +160,7 @@ function navigationButton(direction) {
   }
 }
 
+
 //main function calling starts from here
 let currentRoom = homeExplorerData;
 renderExplorer();
