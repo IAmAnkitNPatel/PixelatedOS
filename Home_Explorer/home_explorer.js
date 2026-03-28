@@ -9,20 +9,41 @@ homeExplorer.classList.add('home-explorer')
 // creating Home Explorer Header Div
 const homeExplorerHeader = document.createElement('div');
 homeExplorerHeader.classList.add('home-explorer-header');
+
+// creating Navigation Control Div
+const navigationControl = document.createElement('div');
+navigationControl.classList.add('navigation-control');
+// creating Back Arrow Button
+const backArrow = document.createElement('button');
+backArrow.textContent = "←";
+backArrow.classList.add('back-arrow');
+backArrow.addEventListener('click', ()=>{
+  navigationButton('back')
+});
+// creating Forward Arrow Button
+const forwardArrow = document.createElement('button');
+forwardArrow.textContent = "→";
+forwardArrow.classList.add('forward-arrow');
+forwardArrow.addEventListener('click', ()=>{
+  navigationButton('forward')
+});
+// adding backArrow Button and forwardArrow Buttton in Navigation Control Div
+navigationControl.append(backArrow, forwardArrow);
+
 // creating Action Control Div
 const actionControl = document.createElement('div');
 actionControl.classList.add('action-control');
 // creating New Room Button
 const newRoom = document.createElement('button');
-newRoom.innerText = "New Room";
+newRoom.textContent = "New Room";
 newRoom.classList.add('new-room');
 newRoom.addEventListener('click', ()=>{
   createNewRoom();
 });
 // adding New Room Button in Action Control Div
 actionControl.append(newRoom);
-// adding Action Control Div in Home Explorer Header Div
-homeExplorerHeader.append(actionControl);
+// adding Navigation Control Div and  Action Control Div in Home Explorer Header Div
+homeExplorerHeader.append(navigationControl, actionControl);
 
 // creating Home Explorer Body Div
 const homeExplorerBody = document.createElement('div');
@@ -47,8 +68,7 @@ main.append(homeExplorer);
 
 
 // adding homeExplorerData on to the page
-
-function renderExplorer() {
+function renderExplorer(fromNavigationButton=false) {
   const workspace = document.querySelector('.home-explorer-workspace');
   
   workspace.innerHTML = "";
@@ -68,8 +88,14 @@ function renderExplorer() {
       // adding double click event listner to the item Div
       item.addEventListener('dblclick', ()=>{
         currentRoom = child;
+
+        // if we didnt come from Navigation Button i.e. if we came form double clicking
+        if (!fromNavigationButton){
+          addNavigationHistory(); //NavigationHistory will update every time we doublecilck on a folder to open it //childern array will not get updated after creating a new child/ new room
+        }
+
         renderExplorer();
-        addNavigationHistory(); //NavigationHistory will update every time we doublecilck on a folder to open it //childern array will not get updated after creating a new child/ new room
+        
       });
     
       //adding everything on workspace
@@ -135,18 +161,25 @@ function createNewRoom() {
 let navigationHistory = [];
 
 function addNavigationHistory() {
-  navigationHistory.push(currentRoom);
-  console.log(navigationHistory);
+  let currentRoomIndex = navigationHistory.indexOf(currentRoom);;
+  if (currentRoomIndex === -1){
+    navigationHistory.push(currentRoom);
+  }
+  
+  currentRoomIndex = navigationHistory.indexOf(currentRoom);
+  navigationHistory.splice(currentRoomIndex+1);
+  // console.log(navigationHistory);
+  console.log(navigationHistory.map(room => room.name));
 }
 
 // Back Button(Left Arrow) and Forward Button(Right Arrow)
 function navigationButton(direction) {
   let currentRoomIndex = navigationHistory.indexOf(currentRoom);
-  if (direction === 'backward') {
+  if (direction === 'back') {
     if (currentRoomIndex-1 >= 0){
       let backwardElement = navigationHistory[currentRoomIndex-1];
       currentRoom = backwardElement;
-      renderExplorer();
+      renderExplorer(true);
     }
     return
 
@@ -154,7 +187,7 @@ function navigationButton(direction) {
     if (currentRoomIndex < navigationHistory.length-1) {
       let forwardElement = navigationHistory[currentRoomIndex+1];
       currentRoom = forwardElement;
-      renderExplorer();
+      renderExplorer(true);
     }
     return
   }
