@@ -87,6 +87,7 @@ function renderExplorer(fromNavigationButton=false) {
 
       // adding double click event listner to the item Div
       item.addEventListener('dblclick', ()=>{
+        previousRoom = currentRoom;
         currentRoom = child;
 
         // if we didnt come from Navigation Button i.e. if we came form double clicking
@@ -161,14 +162,20 @@ function createNewRoom() {
 let navigationHistory = [];
 
 function addNavigationHistory() {
-  let currentRoomIndex = navigationHistory.indexOf(currentRoom);;
-  if (currentRoomIndex === -1){
-    navigationHistory.push(currentRoom);
-  }
+  // let currentRoomIndex = navigationHistory.indexOf(currentRoom);
+  // if (currentRoomIndex === -1){
+  //   navigationHistory.push(currentRoom);
+  // }
   
-  currentRoomIndex = navigationHistory.indexOf(currentRoom);
-  navigationHistory.splice(currentRoomIndex+1);
-  // console.log(navigationHistory);
+  // currentRoomIndex = navigationHistory.indexOf(currentRoom);
+  // navigationHistory.splice(currentRoomIndex+1);
+  // // console.log(navigationHistory);
+
+  let previousRoomIndex = navigationHistory.indexOf(previousRoom);
+  
+  navigationHistory.splice(previousRoomIndex+1);
+  navigationHistory.push(currentRoom);
+
   console.log(navigationHistory.map(room => room.name));
 }
 
@@ -196,5 +203,6 @@ function navigationButton(direction) {
 
 //main function calling starts from here
 let currentRoom = homeExplorerData;
+let previousRoom;
 renderExplorer();
 addNavigationHistory();
