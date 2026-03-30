@@ -89,11 +89,7 @@ function renderExplorer(fromNavigationButton=false) {
       item.addEventListener('dblclick', ()=>{
         previousRoom = currentRoom;
         currentRoom = child;
-
-        // if we didnt come from Navigation Button i.e. if we came form double clicking
-        if (!fromNavigationButton){
-          addNavigationHistory(); //NavigationHistory will update every time we doublecilck on a folder to open it //childern array will not get updated after creating a new child/ new room
-        }
+        addNavigationHistory(); //NavigationHistory will update every time we doublecilck on a folder to open it 
 
         renderExplorer();
         
@@ -153,26 +149,14 @@ function createNewRoom() {
 
   //calling renderExplore again to update the page
   renderExplorer();
-
-  //
-  // console.log(currentRoom);
 }
 
 // Navigation History
 let navigationHistory = [];
-
+// Every time we Double Click to Enter a folder, everything after the Previous folder will get deleted and the current Folder we entered will get Added
 function addNavigationHistory() {
-  // let currentRoomIndex = navigationHistory.indexOf(currentRoom);
-  // if (currentRoomIndex === -1){
-  //   navigationHistory.push(currentRoom);
-  // }
-  
-  // currentRoomIndex = navigationHistory.indexOf(currentRoom);
-  // navigationHistory.splice(currentRoomIndex+1);
-  // // console.log(navigationHistory);
 
   let previousRoomIndex = navigationHistory.indexOf(previousRoom);
-  
   navigationHistory.splice(previousRoomIndex+1);
   navigationHistory.push(currentRoom);
 
@@ -206,3 +190,6 @@ let currentRoom = homeExplorerData;
 let previousRoom;
 renderExplorer();
 addNavigationHistory();
+
+
+
