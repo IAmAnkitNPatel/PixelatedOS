@@ -184,6 +184,9 @@ function navigationButton(direction) {
   }
 }
 
+function selectRoom() {
+  
+}
 
 //main function calling starts from here
 let currentRoom = homeExplorerData;
