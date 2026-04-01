@@ -75,29 +75,33 @@ function renderExplorer(fromNavigationButton=false) {
 
   if (currentRoom.children.length > 0) {
       currentRoom.children.forEach(child => {
-      // creating div and adding data as item
-      let item = document.createElement('div');
-      item.classList.add('home-explorer-item', child.type);
-      
-      const itemName = document.createElement('div');
-      itemName.classList.add('home-explorer-item-name');
-      itemName.append(child.name);
-
-      item.append(itemName);
-
-      // adding double click event listner to the item Div
-      item.addEventListener('dblclick', ()=>{
-        previousRoom = currentRoom;
-        currentRoom = child;
-        addNavigationHistory(); //NavigationHistory will update every time we doublecilck on a folder to open it 
-
-        renderExplorer();
+        // creating div and adding data as item
+        let item = document.createElement('div');
+        item.classList.add('home-explorer-item', child.type);
         
+        const itemName = document.createElement('div');
+        itemName.classList.add('home-explorer-item-name');
+        itemName.append(child.name);
+
+        item.append(itemName);
+
+        // adding double click event listner to the item Div for Entering the Room/item
+        item.addEventListener('dblclick', ()=>{
+          previousRoom = currentRoom;
+          currentRoom = child;
+          addNavigationHistory(); //NavigationHistory will update every time we doublecilck on a folder to open it 
+
+          renderExplorer();
+        });
+        
+        // adding single click event listner to item div for selecting the Room/item
+        item.addEventListener('click', ()=>{
+          selectedRoom = child;
+          selectRoom();
+        });
+        //adding everything on workspace
+        workspace.append(item);
       });
-    
-      //adding everything on workspace
-      workspace.append(item);
-    });
   } else {
     workspace.textContent = "Empty";
   }
@@ -184,8 +188,9 @@ function navigationButton(direction) {
   }
 }
 
+let selectedRoom;
 function selectRoom() {
-  
+  console.log(`Selected Room : ${selectedRoom.name}`);
 }
 
 //main function calling starts from here
