@@ -68,7 +68,7 @@ main.append(homeExplorer);
 
 
 // adding homeExplorerData on to the page
-function renderExplorer(fromNavigationButton=false) {
+function renderExplorer() {
   const workspace = document.querySelector('.home-explorer-workspace');
   
   workspace.innerHTML = "";
@@ -96,8 +96,8 @@ function renderExplorer(fromNavigationButton=false) {
         
         // adding single click event listner to item div for selecting the Room/item
         item.addEventListener('click', ()=>{
-          selectedRoom = child;
-          selectRoom();
+          // selectedObject = child;
+          selectObject(child);
         });
         //adding everything on workspace
         workspace.append(item);
@@ -174,7 +174,7 @@ function navigationButton(direction) {
     if (currentRoomIndex-1 >= 0){
       let backwardElement = navigationHistory[currentRoomIndex-1];
       currentRoom = backwardElement;
-      renderExplorer(true);
+      renderExplorer();
     }
     return
 
@@ -182,16 +182,45 @@ function navigationButton(direction) {
     if (currentRoomIndex < navigationHistory.length-1) {
       let forwardElement = navigationHistory[currentRoomIndex+1];
       currentRoom = forwardElement;
-      renderExplorer(true);
+      renderExplorer();
     }
     return
   }
 }
 
-let selectedRoom;
-function selectRoom() {
-  console.log(`Selected Room : ${selectedRoom.name}`);
+// creating "selectedObject" variable
+let selectedObject;
+// creating "selectObject" Function
+function selectObject(object) {
+  selectedObject = object;
+  console.log(`Selected Object : ${selectedObject.name}`);
 }
+
+// creating "deleteObject" funciton
+function deleteObject() {
+  
+}
+
+// creating "copyObjectValue" variable
+let copyObjectValue;
+// creating "copyObject" function
+function copyObject() {
+  copyObjectValue = selectedObject;
+}
+
+// creating "cutObjectValue" variable
+let cutObjectValue;
+// creating "cutObject" function
+function cutObject() {
+  cutObjectValue = selectedObject;
+}
+
+// creating "pasteObject" function
+function pasteObject() {
+
+}
+
+
 
 //main function calling starts from here
 let currentRoom = homeExplorerData;
