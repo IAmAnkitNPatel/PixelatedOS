@@ -194,10 +194,16 @@ let selectedObject;
 function selectObject(object) {
   selectedObject = object;
   console.log(`Selected Object : ${selectedObject.name}`);
+  //add selectedObject = ""; if double click
+  // also need to add deselect
 }
 
 // creating "deleteObject" funciton
 function deleteObject() {
+  if (!selectedObject) {
+    alert("No Object Selected");
+  }
+
   
 }
 
