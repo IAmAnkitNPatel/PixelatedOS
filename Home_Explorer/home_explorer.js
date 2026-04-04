@@ -203,7 +203,6 @@ function deleteObject() {
   if (!selectedObject) {
     alert("No Object Selected");
   }
-
   
 }
 
