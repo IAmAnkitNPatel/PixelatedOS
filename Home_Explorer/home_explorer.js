@@ -33,15 +33,49 @@ navigationControl.append(backArrow, forwardArrow);
 // creating Action Control Div
 const actionControl = document.createElement('div');
 actionControl.classList.add('action-control');
+
 // creating New Room Button
 const newRoom = document.createElement('button');
 newRoom.textContent = "New Room";
-newRoom.classList.add('new-room');
+newRoom.classList.add('new-room-button');
 newRoom.addEventListener('click', ()=>{
   createNewRoom();
 });
-// adding New Room Button in Action Control Div
-actionControl.append(newRoom);
+
+// creating Delete Object Button
+const deleteObject = document.createElement('button');
+deleteObject.textContent = "Delete";
+deleteObject.classList.add('delete-object-button');
+deleteObject.addEventListener('click', ()=>{
+  deleteSelectedObject();
+});
+
+// creating Copy Object Button
+const copy = document.createElement('button');
+copy.textContent = "Copy";
+copy.classList.add('copy-button');
+copy.addEventListener('click', ()=>{
+  copySelectedObject();
+});
+
+// creating Cut Object Button
+const cut = document.createElement('button');
+cut.textContent = 'Cut';
+cut.classList.add('cut-button');
+cut.addEventListener('click', ()=>{
+  cutSelectedObject();
+});
+
+// creating Paste Button
+const paste = document.createElement('button');
+paste.textContent = 'Paste';
+paste.classList.add('paste-button');
+paste.addEventListener('click', ()=>{
+  pasteObject();
+});
+
+// adding "New Room Button", "Delete Object Button", "Copy Object Button", "Cut Object Button", "Paste Object Button" in Action Control Div
+actionControl.append(newRoom, deleteObject, copy, cut, paste);
 // adding Navigation Control Div and  Action Control Div in Home Explorer Header Div
 homeExplorerHeader.append(navigationControl, actionControl);
 
@@ -199,24 +233,34 @@ function selectObject(object) {
 }
 
 // creating "deleteObject" funciton
-function deleteObject() {
+function deleteSelectedObject() {
   if (!selectedObject) {
     alert("No Object Selected");
+    return;
   }
   
+  let selectedObjectIndex = currentRoom.children.indexOf(selectedObject);
+  currentRoom.children.splice(selectedObjectIndex, 1);
+  // console.log(selectedObjectIndex);
+
+  // removing Selected Object
+  selectedObject = "";
+  // calling Render Explorer function
+  renderExplorer();
+
 }
 
 // creating "copyObjectValue" variable
 let copyObjectValue;
 // creating "copyObject" function
-function copyObject() {
+function copySelectedObject() {
   copyObjectValue = selectedObject;
 }
 
 // creating "cutObjectValue" variable
 let cutObjectValue;
 // creating "cutObject" function
-function cutObject() {
+function cutSelectedObject() {
   cutObjectValue = selectedObject;
 }
 
