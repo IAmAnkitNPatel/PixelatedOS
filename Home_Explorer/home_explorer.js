@@ -234,6 +234,7 @@ function selectObject(object) {
 
 // creating "deleteObject" funciton
 function deleteSelectedObject() {
+  // if object not Selected condition
   if (!selectedObject) {
     alert("No Object Selected");
     return;
@@ -254,18 +255,51 @@ function deleteSelectedObject() {
 let copyObjectValue;
 // creating "copyObject" function
 function copySelectedObject() {
+  // if object not Selected condition
+  if (!selectedObject) {
+    alert("No Object Selected");
+    return;
+  }
+
+  // putting selectedObject value in copyObjectValue
   copyObjectValue = selectedObject;
+  console.log(`Copy Object: ${JSON.stringify(copyObjectValue)}`)
 }
 
 // creating "cutObjectValue" variable
 let cutObjectValue;
 // creating "cutObject" function
 function cutSelectedObject() {
+  // if object not Selected condition
+  if (!selectedObject) {
+    alert("No Object Selected");
+    return;
+  }
+
+  // putting selectedObject value in cutObjectValue
   cutObjectValue = selectedObject;
+  // finding index of cutObjectValue in currentRoom Children Array
+  let cutObjectIndex = currentRoom.children.indexOf(cutObjectValue);
+  // deleting the cutObject from currentRoom Children
+  currentRoom.children.splice(cutObjectIndex, 1);
+
+  console.log(`Cut Object: ${JSON.stringify(cutObjectValue)}`);
 }
 
 // creating "pasteObject" function
 function pasteObject() {
+  // if not Cut or Copy the Object Condition
+  if (!cutObjectValue && !copyObjectValue) {
+    alert("Nothing to Paste");
+    return;
+  }
+  // pasting the copyObjectValue or cutObjectValue
+  let pasteInput = (copyObjectValue || cutObjectValue);
+  currentRoom.children.append(pasteInput);
+
+  // removing copyObjectValue and cutObject Value;
+  copyObjectValue = '';
+  cutObjectValue = '';
 
 }
 
