@@ -60,7 +60,7 @@ copy.addEventListener('click', ()=>{
 
 // creating Cut Object Button
 const cut = document.createElement('button');
-cut.textContent = 'Cut';
+cut.textContent = "Cut";
 cut.classList.add('cut-button');
 cut.addEventListener('click', ()=>{
   cutSelectedObject();
@@ -68,14 +68,22 @@ cut.addEventListener('click', ()=>{
 
 // creating Paste Button
 const paste = document.createElement('button');
-paste.textContent = 'Paste';
+paste.textContent = "Paste";
 paste.classList.add('paste-button');
 paste.addEventListener('click', ()=>{
   pasteObject();
 });
 
-// adding "New Room Button", "Delete Object Button", "Copy Object Button", "Cut Object Button", "Paste Object Button" in Action Control Div
-actionControl.append(newRoom, deleteObject, copy, cut, paste);
+// creating Rename Button
+const rename = document.createElement('button');
+rename.textContent = "Rename";
+rename.classList.add('rename-button');
+rename.addEventListener('click', ()=>{
+  renameObject();
+});
+
+// adding "New Room Button", "Delete Object Button", "Copy Object Button", "Cut Object Button", "Paste Object Button", "Rename Button" in Action Control Div
+actionControl.append(newRoom, deleteObject, copy, cut, paste, rename);
 // adding Navigation Control Div and  Action Control Div in Home Explorer Header Div
 homeExplorerHeader.append(navigationControl, actionControl);
 
@@ -283,7 +291,11 @@ function cutSelectedObject() {
   // deleting the cutObject from currentRoom Children
   currentRoom.children.splice(cutObjectIndex, 1);
 
+
   console.log(`Cut Object: ${JSON.stringify(cutObjectValue)}`);
+
+  // calling renderExplorer to refresh the page
+  renderExplorer();
 }
 
 // creating "pasteObject" function
@@ -295,15 +307,45 @@ function pasteObject() {
   }
   // pasting the copyObjectValue or cutObjectValue
   let pasteInput = (copyObjectValue || cutObjectValue);
-  currentRoom.children.append(pasteInput);
+  currentRoom.children.push(pasteInput);
+  console.log(pasteInput);
+
+// if we paste from copy we will need to change the id 
+// while pasting we will need to look at "Names"
+
 
   // removing copyObjectValue and cutObject Value;
   copyObjectValue = '';
   cutObjectValue = '';
 
+  // calling renderExplorer to refresh the page
+  renderExplorer();
+
 }
 
+// creating "renameObject" Function
+function renameObject() {
+  // if object not Selected Condition
+  if(!selectedObject){
+    alert("No Object Selected");
+    return;
+  }
 
+  // asking for the new name
+  let renameInput = prompt("Enter new Name: ");
+  
+  // if not Entered a new name or pressed Esc condition
+  if(!renameInput) {
+    alert("Enter a Name");
+    return;
+  }
+
+  // putting new name in old variable
+  selectedObject.name = renameInput;
+
+  // calling renderExplorer to refresh the page
+  renderExplorer();
+}
 
 //main function calling starts from here
 let currentRoom = homeExplorerData;
