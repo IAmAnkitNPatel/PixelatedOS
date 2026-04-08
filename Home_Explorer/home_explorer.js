@@ -248,6 +248,12 @@ function deleteSelectedObject() {
     return;
   }
   
+  // Condition if in Home Explore Drive we cannot Delete the Root Directory
+  if (currentRoom === homeExplorerData) {
+    alert("You cannot delete the Root directory!");
+    return;
+  }
+
   let selectedObjectIndex = currentRoom.children.indexOf(selectedObject);
   currentRoom.children.splice(selectedObjectIndex, 1);
   // console.log(selectedObjectIndex);
@@ -269,6 +275,12 @@ function copySelectedObject() {
     return;
   }
 
+  // Condition if in Home Explore Drive we cannot Copy the Root Directory
+  if (currentRoom === homeExplorerData) {
+    alert("You cannot copy the Root directory!");
+    return;
+  }
+
   // putting selectedObject value in copyObjectValue
   copyObjectValue = selectedObject;
   console.log(`Copy Object: ${JSON.stringify(copyObjectValue)}`)
@@ -281,6 +293,12 @@ function cutSelectedObject() {
   // if object not Selected condition
   if (!selectedObject) {
     alert("No Object Selected");
+    return;
+  }
+
+  // Condition if in Home Explore Drive we cannot Cut the Root Directory
+  if (currentRoom === homeExplorerData) {
+    alert("You cannot cut the Root directory!");
     return;
   }
 
@@ -305,6 +323,13 @@ function pasteObject() {
     alert("Nothing to Paste");
     return;
   }
+
+  // Condition if in Home Explore Drive we cannot Paste in the Root Directory
+  if (currentRoom === homeExplorerData) {
+    alert("You cannot Paste in the Root directory!");
+    return;
+  }
+
   // pasting the copyObjectValue or cutObjectValue
   let pasteInput = (copyObjectValue || cutObjectValue);
   currentRoom.children.push(pasteInput);
@@ -328,6 +353,12 @@ function renameObject() {
   // if object not Selected Condition
   if(!selectedObject){
     alert("No Object Selected");
+    return;
+  }
+
+  // Condition if in Home Explore Drive we cannot Rename the Root Directory
+  if (currentRoom === homeExplorerData) {
+    alert("You cannot Rename the Root directory!");
     return;
   }
 
