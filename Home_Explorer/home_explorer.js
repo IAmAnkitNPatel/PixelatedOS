@@ -4,7 +4,11 @@ const main = document.querySelector('.main');
 
 // creating Home Explorer Div
 const homeExplorer = document.createElement('div');
-homeExplorer.classList.add('home-explorer')
+homeExplorer.classList.add('home-explorer');
+// adding 'click' eventListner for "deselectObject" to "homeExplorer"
+homeExplorer.addEventListener('click', ()=>{
+  deselectObejct();
+});
 
 // creating Home Explorer Header Div
 const homeExplorerHeader = document.createElement('div');
@@ -270,6 +274,7 @@ let copyObjectValue;
 // creating "copyObject" function
 function copySelectedObject() {
   // if object not Selected condition
+  console.log()
   if (!selectedObject) {
     alert("No Object Selected");
     return;
@@ -376,6 +381,15 @@ function renameObject() {
 
   // calling renderExplorer to refresh the page
   renderExplorer();
+}
+
+// creating "deselectObject" function
+function deselectObejct() {
+  selectedObject = "";
+  // if Condition for Object Not Selected
+  if(!selectedObject){
+    console.log("Selected Object : ");
+  }
 }
 
 //main function calling starts from here
