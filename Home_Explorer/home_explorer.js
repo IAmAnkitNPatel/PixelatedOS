@@ -22,14 +22,16 @@ const backArrow = document.createElement('button');
 backArrow.textContent = "←";
 backArrow.classList.add('back-arrow');
 backArrow.addEventListener('click', ()=>{
-  navigationButton('back')
+  // sending "event" to function for "event.stopPropagation()"
+  navigationButton('back', event)
 });
 // creating Forward Arrow Button
 const forwardArrow = document.createElement('button');
 forwardArrow.textContent = "→";
 forwardArrow.classList.add('forward-arrow');
 forwardArrow.addEventListener('click', ()=>{
-  navigationButton('forward')
+  // sending "event" to function for "event.stopPropagation()"
+  navigationButton('forward', event)
 });
 // adding backArrow Button and forwardArrow Buttton in Navigation Control Div
 navigationControl.append(backArrow, forwardArrow);
@@ -43,7 +45,7 @@ const newRoom = document.createElement('button');
 newRoom.textContent = "New Room";
 newRoom.classList.add('new-room-button');
 newRoom.addEventListener('click', ()=>{
-  createNewRoom();
+  createNewRoom(event);
 });
 
 // creating Delete Object Button
@@ -51,7 +53,7 @@ const deleteObject = document.createElement('button');
 deleteObject.textContent = "Delete";
 deleteObject.classList.add('delete-object-button');
 deleteObject.addEventListener('click', ()=>{
-  deleteSelectedObject();
+  deleteSelectedObject(event);
 });
 
 // creating Copy Object Button
@@ -59,7 +61,7 @@ const copy = document.createElement('button');
 copy.textContent = "Copy";
 copy.classList.add('copy-button');
 copy.addEventListener('click', ()=>{
-  copySelectedObject();
+  copySelectedObject(event);
 });
 
 // creating Cut Object Button
@@ -67,7 +69,7 @@ const cut = document.createElement('button');
 cut.textContent = "Cut";
 cut.classList.add('cut-button');
 cut.addEventListener('click', ()=>{
-  cutSelectedObject();
+  cutSelectedObject(event);
 });
 
 // creating Paste Button
@@ -75,7 +77,7 @@ const paste = document.createElement('button');
 paste.textContent = "Paste";
 paste.classList.add('paste-button');
 paste.addEventListener('click', ()=>{
-  pasteObject();
+  pasteObject(event);
 });
 
 // creating Rename Button
@@ -83,7 +85,7 @@ const rename = document.createElement('button');
 rename.textContent = "Rename";
 rename.classList.add('rename-button');
 rename.addEventListener('click', ()=>{
-  renameObject();
+  renameObject(event);
 });
 
 // adding "New Room Button", "Delete Object Button", "Copy Object Button", "Cut Object Button", "Paste Object Button", "Rename Button" in Action Control Div
@@ -154,7 +156,11 @@ function renderExplorer() {
 }
 
 // Function to Create a New Room
-function createNewRoom() {
+function createNewRoom(event) {
+  // calling event.stopPropagation() to keep click to the buttton and not pass it up to the Parent
+  // Prevent the click event from bubbling up to the parent container
+  event.stopPropagation();
+
   // Condition if in Home Explore Drive we cannot create a new room
   if (currentRoom === homeExplorerData) {
     alert("You cannot create a room in the Root directory!");
@@ -214,7 +220,13 @@ function addNavigationHistory() {
 }
 
 // Back Button(Left Arrow) and Forward Button(Right Arrow)
-function navigationButton(direction) {
+function navigationButton(direction, event) {
+
+  // calling event.stopPropagation() to keep click to the buttton and not pass it up to the Parent
+  // Prevent the click event from bubbling up to the parent container
+  event.stopPropagation();
+
+  // console.log(event);
   let currentRoomIndex = navigationHistory.indexOf(currentRoom);
   if (direction === 'back') {
     if (currentRoomIndex-1 >= 0){
@@ -245,7 +257,12 @@ function selectObject(object) {
 }
 
 // creating "deleteObject" funciton
-function deleteSelectedObject() {
+function deleteSelectedObject(event) {
+
+  // calling event.stopPropagation() to keep click to the buttton and not pass it up to the Parent
+  // Prevent the click event from bubbling up to the parent container
+  event.stopPropagation();
+
   // if object not Selected condition
   if (!selectedObject) {
     alert("No Object Selected");
@@ -272,7 +289,12 @@ function deleteSelectedObject() {
 // creating "copyObjectValue" variable
 let copyObjectValue;
 // creating "copyObject" function
-function copySelectedObject() {
+function copySelectedObject(event) {
+
+  // calling event.stopPropagation() to keep click to the buttton and not pass it up to the Parent
+  // Prevent the click event from bubbling up to the parent container
+  event.stopPropagation();
+
   // if object not Selected condition
   console.log()
   if (!selectedObject) {
@@ -294,7 +316,12 @@ function copySelectedObject() {
 // creating "cutObjectValue" variable
 let cutObjectValue;
 // creating "cutObject" function
-function cutSelectedObject() {
+function cutSelectedObject(event) {
+
+  // calling event.stopPropagation() to keep click to the buttton and not pass it up to the Parent
+  // Prevent the click event from bubbling up to the parent container
+  event.stopPropagation();
+
   // if object not Selected condition
   if (!selectedObject) {
     alert("No Object Selected");
@@ -322,7 +349,12 @@ function cutSelectedObject() {
 }
 
 // creating "pasteObject" function
-function pasteObject() {
+function pasteObject(event) {
+
+  // calling event.stopPropagation() to keep click to the buttton and not pass it up to the Parent
+  // Prevent the click event from bubbling up to the parent container
+  event.stopPropagation();
+
   // if not Cut or Copy the Object Condition
   if (!cutObjectValue && !copyObjectValue) {
     alert("Nothing to Paste");
@@ -354,7 +386,12 @@ function pasteObject() {
 }
 
 // creating "renameObject" Function
-function renameObject() {
+function renameObject(event) {
+
+  // calling event.stopPropagation() to keep click to the buttton and not pass it up to the Parent
+  // Prevent the click event from bubbling up to the parent container
+  event.stopPropagation();
+
   // if object not Selected Condition
   if(!selectedObject){
     alert("No Object Selected");
