@@ -134,7 +134,11 @@ function renderExplorer() {
         item.append(itemName);
 
         // adding double click event listner to the item Div for Entering the Room/item
-        item.addEventListener('dblclick', ()=>{
+        item.addEventListener('dblclick', (event)=>{
+          // calling event.stopPropagation() to keep click to the buttton and not pass it up to the Parent
+          // Prevent the click event from bubbling up to the parent container
+          // Put event.stopPropagation(); in single click and commented out the event.stopPropagation(); in double click because we want to stop single click of deselect function
+          // event.stopPropagation();
           previousRoom = currentRoom;
           currentRoom = child;
           addNavigationHistory(); //NavigationHistory will update every time we doublecilck on a folder to open it 
@@ -143,7 +147,12 @@ function renderExplorer() {
         });
         
         // adding single click event listner to item div for selecting the Room/item
-        item.addEventListener('click', ()=>{
+        item.addEventListener('click', (event)=>{
+          // calling event.stopPropagation() to keep click to the buttton and not pass it up to the Parent
+          // Prevent the click event from bubbling up to the parent container
+          // Put event.stopPropagation(); in single click and commented out the event.stopPropagation(); in double click because we want to stop single click of deselect function
+          event.stopPropagation();
+
           // selectedObject = child;
           selectObject(child);
         });
