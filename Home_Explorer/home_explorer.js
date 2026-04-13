@@ -36,6 +36,10 @@ forwardArrow.addEventListener('click', ()=>{
 // adding backArrow Button and forwardArrow Buttton in Navigation Control Div
 navigationControl.append(backArrow, forwardArrow);
 
+// creating Show Navigation History Div
+const showNavigationHistory = document.createElement('div');
+showNavigationHistory.classList.add('show-navigation-history');
+
 // creating Action Control Div
 const actionControl = document.createElement('div');
 actionControl.classList.add('action-control');
@@ -91,7 +95,7 @@ rename.addEventListener('click', ()=>{
 // adding "New Room Button", "Delete Object Button", "Copy Object Button", "Cut Object Button", "Paste Object Button", "Rename Button" in Action Control Div
 actionControl.append(newRoom, deleteObject, copy, cut, paste, rename);
 // adding Navigation Control Div and  Action Control Div in Home Explorer Header Div
-homeExplorerHeader.append(navigationControl, actionControl);
+homeExplorerHeader.append(navigationControl, showNavigationHistory, actionControl);
 
 // creating Home Explorer Body Div
 const homeExplorerBody = document.createElement('div');
@@ -162,6 +166,9 @@ function renderExplorer() {
   } else {
     workspace.textContent = "Empty";
   }
+
+  // calling createShowNavigationHistory
+  createShowNavigationHistory();
 }
 
 // Function to Create a New Room
@@ -438,11 +445,25 @@ function deselectObejct() {
   }
 }
 
+// creating createShowNavigationHistory() function for showing History on Home Explorer
+function createShowNavigationHistory() {
+  // getting showNavigationHistory Div from Home Explorer
+  const showNavigaitonHistory = document.querySelector('.show-navigation-history');
+  // clearing old History
+  showNavigaitonHistory.textContent = 'Navigation History: ';
+
+  // adding navigationHistory to showNavigationHistory
+  navigationHistory.forEach((room)=>{
+    showNavigaitonHistory.append(`${room.name} => `);
+  });
+}
+
 //main function calling starts from here
 let currentRoom = homeExplorerData;
 let previousRoom;
-renderExplorer();
 addNavigationHistory();
+renderExplorer();
+
 
 
 
