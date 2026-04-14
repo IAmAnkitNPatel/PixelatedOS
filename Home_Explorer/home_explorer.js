@@ -14,6 +14,10 @@ homeExplorer.addEventListener('click', ()=>{
 const homeExplorerHeader = document.createElement('div');
 homeExplorerHeader.classList.add('home-explorer-header');
 
+// creating Navigation Div for "navigationControl" and "showNavigationHistory"
+const navigation = document.createElement("div");
+navigation.classList.add('navigation');
+
 // creating Navigation Control Div
 const navigationControl = document.createElement('div');
 navigationControl.classList.add('navigation-control');
@@ -39,6 +43,9 @@ navigationControl.append(backArrow, forwardArrow);
 // creating Show Navigation History Div
 const showNavigationHistory = document.createElement('div');
 showNavigationHistory.classList.add('show-navigation-history');
+
+// adding "Navigation Control Div" and "Show Navigaiton History Div" in "Navigaiton Div"
+navigation.append(navigationControl, showNavigationHistory);
 
 // creating Action Control Div
 const actionControl = document.createElement('div');
@@ -95,7 +102,7 @@ rename.addEventListener('click', ()=>{
 // adding "New Room Button", "Delete Object Button", "Copy Object Button", "Cut Object Button", "Paste Object Button", "Rename Button" in Action Control Div
 actionControl.append(newRoom, deleteObject, copy, cut, paste, rename);
 // adding Navigation Control Div and  Action Control Div in Home Explorer Header Div
-homeExplorerHeader.append(navigationControl, showNavigationHistory, actionControl);
+homeExplorerHeader.append(navigation, actionControl);
 
 // creating Home Explorer Body Div
 const homeExplorerBody = document.createElement('div');

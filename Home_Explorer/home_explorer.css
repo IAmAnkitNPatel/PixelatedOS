@@ -44,3 +44,15 @@ body {
   color: red;
   flex: 1;
 }
+
+.navigation {
+  display: flex;
+}
+
+.navigation-control{
+  flex: 0.05;
+}
+
+.show-navigation-history{
+  flex: 1;
+}
