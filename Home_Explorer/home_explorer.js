@@ -470,7 +470,3 @@ let currentRoom = homeExplorerData;
 let previousRoom;
 addNavigationHistory();
 renderExplorer();
-
-
-
-
