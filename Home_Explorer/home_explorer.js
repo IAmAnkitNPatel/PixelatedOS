@@ -128,6 +128,10 @@ main.append(homeExplorer);
 
 // adding homeExplorerData on to the page
 function renderExplorer() {
+
+  // calling "renderSidebar" at the top so that it shows first on the page
+  renderSidebar();
+
   const workspace = document.querySelector('.home-explorer-workspace');
   
   workspace.innerHTML = "";
@@ -462,6 +466,21 @@ function createShowNavigationHistory() {
   // adding navigationHistory to showNavigationHistory
   navigationHistory.forEach((room)=>{
     showNavigaitonHistory.append(`${room.name} => `);
+  });
+}
+
+// creating "renderSidebar" function
+function renderSidebar() {
+  // getting homeExplorerSidebar Div from Home Explorer
+  const sidebar = document.querySelector('.home-explorer-sidebar');
+
+  // creating homeExplorer.forEach to get /?/??
+  [homeExplorerData].forEach(object => {
+    const div = document.createElement('div');
+    div.classList.add('sidebar-objects');
+    div.textContent = object.name;
+
+    sidebar.append(div);
   });
 }
 
