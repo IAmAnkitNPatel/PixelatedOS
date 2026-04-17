@@ -470,18 +470,47 @@ function createShowNavigationHistory() {
 }
 
 // creating "renderSidebar" function
-function renderSidebar() {
+function renderSidebar(sidebarCurrentRoom = [homeExplorerData]) {
   // getting homeExplorerSidebar Div from Home Explorer
   const sidebar = document.querySelector('.home-explorer-sidebar');
 
-  // creating homeExplorer.forEach to get /?/??
-  [homeExplorerData].forEach(object => {
-    const div = document.createElement('div');
-    div.classList.add('sidebar-objects');
-    div.textContent = object.name;
+  // creating a sidebarCurrentRoom
+  // let sidebarCurrentRoom
 
-    sidebar.append(div);
-  });
+  // creating homeExplorer.forEach to get /?/??
+  if (sidebarCurrentRoom.length > 0){
+    
+    sidebarCurrentRoom.forEach(object => {
+      // creating sidebar 'objectContainer' Div to store expand children arrow and object name
+      const objectContainer = document.createElement('div');
+      objectContainer.classList.add('sidebar-object-container');
+
+      // creating a span for expand children arrow
+      const expandChildrenArrow = document.createElement('span');
+      expandChildrenArrow.classList.add('sidebar-expand-Children-Arrow');
+      expandChildrenArrow.textContent = '⌄'
+      expandChildrenArrow.addEventListener('click', ()=>{
+        expandChildrenArrowfunction(event, object);
+      });
+
+      // creating a span for object name
+      const objectName = document.createElement('span');
+      objectName.classList.add('sidebar-object-name');
+      objectName.textContent = object.name;
+
+      // adding expandChildrenArrow span and objectName span in objectContainer Div
+      objectContainer.append(expandChildrenArrow, objectName);
+
+      // adding objectContainer Div in sidebar;
+      sidebar.append(objectContainer);
+    });
+  }
+}
+
+// creating a expandChildrenArrowfunction
+function expandChildrenArrowfunction(event, object) {
+  console.log(object);
+  renderSidebar(object.children);
 }
 
 //main function calling starts from here
@@ -489,3 +518,5 @@ let currentRoom = homeExplorerData;
 let previousRoom;
 addNavigationHistory();
 renderExplorer();
+
+// create a seperate funciton named renderWorkspace for rendering workspace
