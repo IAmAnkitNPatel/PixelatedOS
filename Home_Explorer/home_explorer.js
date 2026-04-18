@@ -130,7 +130,7 @@ main.append(homeExplorer);
 function renderExplorer() {
 
   // calling "renderSidebar" at the top so that it shows first on the page
-  renderSidebar();
+  // renderSidebar();
 
   const workspace = document.querySelector('.home-explorer-workspace');
   
@@ -156,6 +156,7 @@ function renderExplorer() {
           // event.stopPropagation();
           previousRoom = currentRoom;
           currentRoom = child;
+          console.log(`currentRoom ${JSON.stringify(currentRoom)}`);
           addNavigationHistory(); //NavigationHistory will update every time we doublecilck on a folder to open it 
 
           renderExplorer();
@@ -469,8 +470,11 @@ function createShowNavigationHistory() {
   });
 }
 
+// creating sidebarCurrentRoom Variable
+let sidebarCurrentRoom = homeExplorerData;
+
 // creating "renderSidebar" function
-function renderSidebar(sidebarCurrentRoom = [homeExplorerData]) {
+function renderSidebar() {
   // getting homeExplorerSidebar Div from Home Explorer
   const sidebar = document.querySelector('.home-explorer-sidebar');
 
@@ -478,10 +482,16 @@ function renderSidebar(sidebarCurrentRoom = [homeExplorerData]) {
   // let sidebarCurrentRoom
 
   // creating homeExplorer.forEach to get /?/??
-  if (sidebarCurrentRoom.length > 0){
+  console.log(homeExplorerData);
+  console.log(homeExplorerData.children);
+  console.log([homeExplorerData]);
+  console.log([homeExplorerData].length);
+  if (sidebarCurrentRoom.children.length > 0){
     
-    sidebarCurrentRoom.forEach(object => {
+    sidebarCurrentRoom.children.forEach(child => {
       // creating sidebar 'objectContainer' Div to store expand children arrow and object name
+      // console.log("herer object:");
+      // console.log(object);
       const objectContainer = document.createElement('div');
       objectContainer.classList.add('sidebar-object-container');
 
@@ -490,13 +500,14 @@ function renderSidebar(sidebarCurrentRoom = [homeExplorerData]) {
       expandChildrenArrow.classList.add('sidebar-expand-Children-Arrow');
       expandChildrenArrow.textContent = '⌄'
       expandChildrenArrow.addEventListener('click', ()=>{
-        expandChildrenArrowfunction(event, object);
+        sidebarCurrentRoom = child;
+        expandChildrenArrowfunction(event);
       });
 
       // creating a span for object name
       const objectName = document.createElement('span');
       objectName.classList.add('sidebar-object-name');
-      objectName.textContent = object.name;
+      objectName.textContent = child.name;
 
       // adding expandChildrenArrow span and objectName span in objectContainer Div
       objectContainer.append(expandChildrenArrow, objectName);
@@ -508,9 +519,11 @@ function renderSidebar(sidebarCurrentRoom = [homeExplorerData]) {
 }
 
 // creating a expandChildrenArrowfunction
-function expandChildrenArrowfunction(event, object) {
-  console.log(object);
-  renderSidebar(object.children);
+function expandChildrenArrowfunction(event) {
+  console.log('expand')
+  // console.log(object);
+  // console.log(object.children);
+  renderSidebar();
 }
 
 //main function calling starts from here
