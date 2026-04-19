@@ -126,11 +126,19 @@ homeExplorer.append(homeExplorerHeader, homeExplorerBody);
 main.append(homeExplorer);
 
 
+// creating renderExplorer() function
 // adding homeExplorerData on to the page
 function renderExplorer() {
 
   // calling "renderSidebar" at the top so that it shows first on the page
-  // renderSidebar();
+  renderSidebar();
+
+  // calling "renderWorkspace" to display workspace
+  renderWorkspace();
+}
+
+// creating renderWorkspace() function
+function renderWorkspace() {
 
   const workspace = document.querySelector('.home-explorer-workspace');
   
@@ -159,7 +167,7 @@ function renderExplorer() {
           console.log(`currentRoom ${JSON.stringify(currentRoom)}`);
           addNavigationHistory(); //NavigationHistory will update every time we doublecilck on a folder to open it 
 
-          renderExplorer();
+          renderWorkspace();
         });
         
         // adding single click event listner to item div for selecting the Room/item
@@ -231,8 +239,8 @@ function createNewRoom(event) {
   // add newRoomData to current Room children array
   currentRoom.children.push(newRoomData);
 
-  //calling renderExplore again to update the page
-  renderExplorer();
+  //calling renderWorkspace again to update the page
+  renderWorkspace();
 }
 
 // Navigation History
@@ -260,7 +268,7 @@ function navigationButton(direction, event) {
     if (currentRoomIndex-1 >= 0){
       let backwardElement = navigationHistory[currentRoomIndex-1];
       currentRoom = backwardElement;
-      renderExplorer();
+      renderWorkspace();
     }
     return
 
@@ -268,7 +276,7 @@ function navigationButton(direction, event) {
     if (currentRoomIndex < navigationHistory.length-1) {
       let forwardElement = navigationHistory[currentRoomIndex+1];
       currentRoom = forwardElement;
-      renderExplorer();
+      renderWorkspace();
     }
     return
   }
@@ -309,8 +317,8 @@ function deleteSelectedObject(event) {
 
   // removing Selected Object
   selectedObject = "";
-  // calling Render Explorer function
-  renderExplorer();
+  // calling Render Workspace function
+  renderWorkspace();
 
 }
 
@@ -372,8 +380,8 @@ function cutSelectedObject(event) {
 
   console.log(`Cut Object: ${JSON.stringify(cutObjectValue)}`);
 
-  // calling renderExplorer to refresh the page
-  renderExplorer();
+  // calling renderWorkspace to refresh the page
+  renderWorkspace();
 }
 
 // creating "pasteObject" function
@@ -408,8 +416,8 @@ function pasteObject(event) {
   copyObjectValue = '';
   cutObjectValue = '';
 
-  // calling renderExplorer to refresh the page
-  renderExplorer();
+  // calling renderWorkspace to refresh the page
+  renderWorkspace();
 
 }
 
@@ -444,8 +452,8 @@ function renameObject(event) {
   // putting new name in old variable
   selectedObject.name = renameInput;
 
-  // calling renderExplorer to refresh the page
-  renderExplorer();
+  // calling renderWorkspace to refresh the page
+  renderWorkspace();
 }
 
 // creating "deselectObject" function
@@ -470,10 +478,12 @@ function createShowNavigationHistory() {
   });
 }
 
-// creating sidebarCurrentRoom Variable
-let sidebarCurrentRoom = homeExplorerData;
-
-// creating "renderSidebar" function
+// creating sidebarCurrentRoom Variable object
+// making the homeExploreData into an array of the key 'children' in the sidebar object
+let sidebarCurrentRoom = {
+  children: [homeExplorerData]
+};
+// creating renderSidebar() function
 function renderSidebar() {
   // getting homeExplorerSidebar Div from Home Explorer
   const sidebar = document.querySelector('.home-explorer-sidebar');
@@ -482,10 +492,6 @@ function renderSidebar() {
   // let sidebarCurrentRoom
 
   // creating homeExplorer.forEach to get /?/??
-  console.log(homeExplorerData);
-  console.log(homeExplorerData.children);
-  console.log([homeExplorerData]);
-  console.log([homeExplorerData].length);
   if (sidebarCurrentRoom.children.length > 0){
     
     sidebarCurrentRoom.children.forEach(child => {
@@ -495,13 +501,17 @@ function renderSidebar() {
       const objectContainer = document.createElement('div');
       objectContainer.classList.add('sidebar-object-container');
 
+      //
+      let parent = sidebar;
       // creating a span for expand children arrow
       const expandChildrenArrow = document.createElement('span');
       expandChildrenArrow.classList.add('sidebar-expand-Children-Arrow');
       expandChildrenArrow.textContent = '⌄'
-      expandChildrenArrow.addEventListener('click', ()=>{
+      expandChildrenArrow.addEventListener('click', (event)=>{
         sidebarCurrentRoom = child;
         expandChildrenArrowfunction(event);
+        parent = event.target.parentElement;
+        console.log(parent);
       });
 
       // creating a span for object name
@@ -513,16 +523,14 @@ function renderSidebar() {
       objectContainer.append(expandChildrenArrow, objectName);
 
       // adding objectContainer Div in sidebar;
-      sidebar.append(objectContainer);
+      parent.append(objectContainer);
     });
   }
 }
 
 // creating a expandChildrenArrowfunction
 function expandChildrenArrowfunction(event) {
-  console.log('expand')
-  // console.log(object);
-  // console.log(object.children);
+
   renderSidebar();
 }
 
