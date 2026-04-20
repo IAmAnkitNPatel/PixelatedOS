@@ -493,12 +493,12 @@ function renderSidebar() {
 
   // creating homeExplorer.forEach to get /?/??
   if (sidebarCurrentRoom.children.length > 0){
-    
+    let objectContainer;
     sidebarCurrentRoom.children.forEach(child => {
       // creating sidebar 'objectContainer' Div to store expand children arrow and object name
       // console.log("herer object:");
       // console.log(object);
-      const objectContainer = document.createElement('div');
+      objectContainer = document.createElement('div');
       objectContainer.classList.add('sidebar-object-container');
 
       //
