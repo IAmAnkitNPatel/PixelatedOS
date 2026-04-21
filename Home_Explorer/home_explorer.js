@@ -512,6 +512,7 @@ function renderSidebar() {
         expandChildrenArrowfunction(event);
         parent = event.target.parentElement;
         console.log(parent);
+        
       });
 
       // creating a span for object name
