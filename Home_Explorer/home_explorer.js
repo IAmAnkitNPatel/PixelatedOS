@@ -483,55 +483,93 @@ function createShowNavigationHistory() {
 let sidebarCurrentRoom = {
   children: [homeExplorerData]
 };
+//change the name
+let sidebarParentForChild = document.querySelector('.home-explorer-sidebar');
 // creating renderSidebar() function
 function renderSidebar() {
-  // getting homeExplorerSidebar Div from Home Explorer
-  const sidebar = document.querySelector('.home-explorer-sidebar');
+  {
+    // // getting homeExplorerSidebar Div from Home Explorer
+    // const sidebar = document.querySelector('.home-explorer-sidebar');
 
-  // creating a sidebarCurrentRoom
-  // let sidebarCurrentRoom
+    // // creating a sidebarCurrentRoom
+    // // let sidebarCurrentRoom
 
-  // creating homeExplorer.forEach to get /?/??
-  if (sidebarCurrentRoom.children.length > 0){
-    let objectContainer;
-    sidebarCurrentRoom.children.forEach(child => {
-      // creating sidebar 'objectContainer' Div to store expand children arrow and object name
-      // console.log("herer object:");
-      // console.log(object);
-      objectContainer = document.createElement('div');
-      objectContainer.classList.add('sidebar-object-container');
+    // // creating homeExplorer.forEach to get /?/??
+    // if (sidebarCurrentRoom.children.length > 0){
+    //   let objectContainer;
+    //   sidebarCurrentRoom.children.forEach(child => {
+    //     // creating sidebar 'objectContainer' Div to store expand children arrow and object name
+    //     // console.log("herer object:");
+    //     // console.log(object);
+    //     objectContainer = document.createElement('div');
+    //     objectContainer.classList.add('sidebar-object-container');
 
-      //
-      let parent = sidebar;
-      // creating a span for expand children arrow
-      const expandChildrenArrow = document.createElement('span');
-      expandChildrenArrow.classList.add('sidebar-expand-Children-Arrow');
-      expandChildrenArrow.textContent = '⌄'
-      expandChildrenArrow.addEventListener('click', (event)=>{
-        sidebarCurrentRoom = child;
-        expandChildrenArrowfunction(event);
-        parent = event.target.parentElement;
-        console.log(parent);
-        
+    //     //
+    //     let parent = sidebar;
+    //     // creating a span for expand children arrow
+    //     const expandChildrenArrow = document.createElement('span');
+    //     expandChildrenArrow.classList.add('sidebar-expand-Children-Arrow');
+    //     expandChildrenArrow.textContent = '⌄'
+    //     expandChildrenArrow.addEventListener('click', (event)=>{
+    //       sidebarCurrentRoom = child;
+    //       expandChildrenArrowfunction(event);
+    //       parent = event.target.parentElement;
+    //       console.log(parent);
+
+    //     });
+
+    //     // creating a span for object name
+    //     const objectName = document.createElement('span');
+    //     objectName.classList.add('sidebar-object-name');
+    //     objectName.textContent = child.name;
+
+    //     // adding expandChildrenArrow span and objectName span in objectContainer Div
+    //     objectContainer.append(expandChildrenArrow, objectName);
+
+    //     // adding objectContainer Div in sidebar;
+    //     parent.append(objectContainer);
+    //   });
+    // }
+  }
+  
+  {
+    // getting sidebar Div from the Home Explorer
+    // let sidebar = document.querySelector('.home-explorer-sidebar');
+    if(sidebarCurrentRoom.children.length > 0){
+      sidebarCurrentRoom.children.forEach(child => {
+        let sidebarParentForChildContainer = document.createElement('div');
+        sidebarParentForChildContainer.classList.add('sidebar-parent-for-child-container');
+
+        let sidebarChildContainer = document.createElement('div');
+        sidebarChildContainer.classList.add('sidebar-child-container');
+
+        let expandChildArrow = document.createElement('span');
+        expandChildArrow.textContent = '⌄';
+        expandChildArrow.classList.add('expand-child-arrow');
+
+        expandChildArrow.addEventListener('click', (event)=>{
+          sidebarParentForChild = event.target.closest('.sidebar-parent-for-child-container');
+          sidebarCurrentRoom = child;
+          expandChildrenArrowfunction(event);
+        });
+
+        let sidebarChildName = document.createElement('span');
+        sidebarChildName.textContent = child.name;
+        sidebarChildName.classList.add('sidebar-child-name');
+
+        sidebarChildContainer.append(expandChildArrow, sidebarChildName);
+        sidebarParentForChildContainer.append(sidebarChildContainer);
+        sidebarParentForChild.append(sidebarParentForChildContainer);
+        // put a condition at top if children == homeExplorerData then display first and if not then forEach will work
       });
-
-      // creating a span for object name
-      const objectName = document.createElement('span');
-      objectName.classList.add('sidebar-object-name');
-      objectName.textContent = child.name;
-
-      // adding expandChildrenArrow span and objectName span in objectContainer Div
-      objectContainer.append(expandChildrenArrow, objectName);
-
-      // adding objectContainer Div in sidebar;
-      parent.append(objectContainer);
-    });
+    }
+    
   }
 }
 
 // creating a expandChildrenArrowfunction
 function expandChildrenArrowfunction(event) {
-
+  console.log("HIIIIIIIIIIIIIIII")
   renderSidebar();
 }
 
