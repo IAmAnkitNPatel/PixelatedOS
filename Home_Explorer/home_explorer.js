@@ -533,34 +533,43 @@ function renderSidebar() {
   }
   
   {
-    // getting sidebar Div from the Home Explorer
-    // let sidebar = document.querySelector('.home-explorer-sidebar');
+    // putting if condition to check if the room has children
     if(sidebarCurrentRoom.children.length > 0){
+      // putting forEach condition on each child
       sidebarCurrentRoom.children.forEach(child => {
+        // creating a sidebarParentForChildContainer Div
         let sidebarParentForChildContainer = document.createElement('div');
         sidebarParentForChildContainer.classList.add('sidebar-parent-for-child-container');
 
+        // creating a sidebarChildContainer Div
         let sidebarChildContainer = document.createElement('div');
         sidebarChildContainer.classList.add('sidebar-child-container');
 
+        // creating expandChildArrow Span
         let expandChildArrow = document.createElement('span');
-        expandChildArrow.textContent = '⌄';
+        expandChildArrow.textContent = '▶';
         expandChildArrow.classList.add('expand-child-arrow');
 
+        // putting click addEventListner on expandChildArrow
         expandChildArrow.addEventListener('click', (event)=>{
           sidebarParentForChild = event.target.closest('.sidebar-parent-for-child-container');
           sidebarCurrentRoom = child;
           expandChildrenArrowfunction(event);
         });
 
+        // creating sidebarChildName Span
         let sidebarChildName = document.createElement('span');
         sidebarChildName.textContent = child.name;
         sidebarChildName.classList.add('sidebar-child-name');
 
+        // adding expandChildArrow Span and sidebarChildName Span in sidebarChildContainer Div
         sidebarChildContainer.append(expandChildArrow, sidebarChildName);
+
+        // adding sidebarChildContainer Div in sidebarParentForChildContainer Div
         sidebarParentForChildContainer.append(sidebarChildContainer);
+
+        // adding sidebarParentForChildContainer Div in sidebarParentForChild Div
         sidebarParentForChild.append(sidebarParentForChildContainer);
-        // put a condition at top if children == homeExplorerData then display first and if not then forEach will work
       });
     }
     
@@ -569,9 +578,15 @@ function renderSidebar() {
 
 // creating a expandChildrenArrowfunction
 function expandChildrenArrowfunction(event) {
-  console.log("HIIIIIIIIIIIIIIII")
+  // calling event.stopPropagation() to keep click to the buttton and not pass it up to the Parent
+  // Prevent the click event from bubbling up to the parent container
+  event.stopPropagation();
+
+  // calling renderSidebar() again to update the page
   renderSidebar();
 }
+
+
 
 //main function calling starts from here
 let currentRoom = homeExplorerData;
