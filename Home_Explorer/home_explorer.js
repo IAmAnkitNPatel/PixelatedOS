@@ -571,8 +571,7 @@ function renderSidebar() {
         // adding sidebarParentForChildContainer Div in sidebarParentForChild Div
         sidebarParentForChild.append(sidebarParentForChildContainer);
       });
-    }
-    
+    } 
   }
 }
 
