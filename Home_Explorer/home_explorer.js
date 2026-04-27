@@ -164,7 +164,7 @@ function renderWorkspace() {
           // event.stopPropagation();
           previousRoom = currentRoom;
           currentRoom = child;
-          console.log(`currentRoom ${JSON.stringify(currentRoom)}`);
+          // console.log(`currentRoom ${JSON.stringify(currentRoom)}`);
           addNavigationHistory(); //NavigationHistory will update every time we doublecilck on a folder to open it 
 
           renderWorkspace();
@@ -252,7 +252,7 @@ function addNavigationHistory() {
   navigationHistory.splice(previousRoomIndex+1);
   navigationHistory.push(currentRoom);
 
-  console.log(navigationHistory.map(room => room.name));
+  // console.log(navigationHistory.map(room => room.name));
 }
 
 // Back Button(Left Arrow) and Forward Button(Right Arrow)
