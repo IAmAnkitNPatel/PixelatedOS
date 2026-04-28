@@ -577,6 +577,7 @@ function renderSidebar() {
 
 // creating a expandChildrenArrowfunction
 function expandChildrenArrowfunction(event) {
+  
   // calling event.stopPropagation() to keep click to the buttton and not pass it up to the Parent
   // Prevent the click event from bubbling up to the parent container
   event.stopPropagation();
