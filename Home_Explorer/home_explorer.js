@@ -586,8 +586,6 @@ function expandChildrenArrowfunction(event) {
   renderSidebar();
 }
 
-
-
 //main function calling starts from here
 let currentRoom = homeExplorerData;
 let previousRoom;
