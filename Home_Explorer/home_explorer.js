@@ -418,7 +418,6 @@ function pasteObject(event) {
 
   // calling renderWorkspace to refresh the page
   renderWorkspace();
-
 }
 
 // creating "renameObject" Function
