@@ -553,7 +553,7 @@ function renderSidebar() {
         expandChildArrow.addEventListener('click', (event)=>{
           sidebarParentForChild = event.target.closest('.sidebar-parent-for-child-container');
           sidebarCurrentRoom = child;
-          expandChildrenArrowfunction(event);
+          expandChildrenArrowFunction(event, expandChildArrow);
         });
 
         // creating sidebarChildName Span
@@ -574,15 +574,32 @@ function renderSidebar() {
   }
 }
 
-// creating a expandChildrenArrowfunction
-function expandChildrenArrowfunction(event) {
+// creating a expandChildrenArrowFunction
+function expandChildrenArrowFunction(event, shrinkChildArrow) {
   
   // calling event.stopPropagation() to keep click to the buttton and not pass it up to the Parent
   // Prevent the click event from bubbling up to the parent container
   event.stopPropagation();
 
+  
+  shrinkChildArrow.textContent = '▼';
+  shrinkChildArrow.removeEventListener('click', ()=>{
+    
+  })
+  shrinkChildArrow.addEventListener('click', ()=>{
+    shrinkChildrenArrowFunction(event);
+  });
+
+
   // calling renderSidebar() again to update the page
   renderSidebar();
+}
+
+// creating a shrinkChildrenArrowFunction
+function shrinkChildrenArrowFunction() {
+  sidebarParentForChild = event.target.closest('.sidebar-parent-for-child-container');
+  // if (sidebarParentForChild)
+  console.log(sidebarParentForChild);
 }
 
 //main function calling starts from here
