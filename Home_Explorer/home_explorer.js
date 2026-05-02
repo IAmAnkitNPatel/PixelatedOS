@@ -549,12 +549,16 @@ function renderSidebar() {
         expandChildArrow.textContent = '▶';
         expandChildArrow.classList.add('expand-child-arrow');
 
+        // const expandChildrenArrowFunctionVar = expandChildrenArrowFunction(event, expandChildArrow, child);
+        // // putting click addEventListner on expandChildArrow
+        // expandChildArrow.addEventListener('click', expandChildrenArrowFunctionVar);
+
         // putting click addEventListner on expandChildArrow
         expandChildArrow.addEventListener('click', (event)=>{
-          sidebarParentForChild = event.target.closest('.sidebar-parent-for-child-container');
-          sidebarCurrentRoom = child;
-          expandChildrenArrowFunction(event, expandChildArrow);
+          
+          expandChildrenArrowFunction(event, expandChildArrow, child);
         });
+
 
         // creating sidebarChildName Span
         let sidebarChildName = document.createElement('span');
@@ -575,17 +579,20 @@ function renderSidebar() {
 }
 
 // creating a expandChildrenArrowFunction
-function expandChildrenArrowFunction(event, shrinkChildArrow) {
+function expandChildrenArrowFunction(event, shrinkChildArrow, child) {
   
   // calling event.stopPropagation() to keep click to the buttton and not pass it up to the Parent
   // Prevent the click event from bubbling up to the parent container
   event.stopPropagation();
 
-  
+  sidebarParentForChild = event.target.closest('.sidebar-parent-for-child-container');
+  sidebarCurrentRoom = child;
   shrinkChildArrow.textContent = '▼';
-  shrinkChildArrow.removeEventListener('click', ()=>{
-    
-  })
+
+
+
+  // shrinkChildArrow.removeEventListener('click', expandChildrenArrowFunctionVar);
+
   shrinkChildArrow.addEventListener('click', ()=>{
     shrinkChildrenArrowFunction(event);
   });
