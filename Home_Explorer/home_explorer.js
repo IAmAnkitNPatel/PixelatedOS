@@ -589,8 +589,6 @@ function expandChildrenArrowFunction(event, shrinkChildArrow, child) {
   sidebarCurrentRoom = child;
   shrinkChildArrow.textContent = '▼';
 
-
-
   // shrinkChildArrow.removeEventListener('click', expandChildrenArrowFunctionVar);
 
   shrinkChildArrow.addEventListener('click', ()=>{
