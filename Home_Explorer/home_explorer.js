@@ -549,15 +549,15 @@ function renderSidebar() {
         expandChildArrow.textContent = '▶';
         expandChildArrow.classList.add('expand-child-arrow');
 
-        // const expandChildrenArrowFunctionVar = expandChildrenArrowFunction(event, expandChildArrow, child);
-        // // putting click addEventListner on expandChildArrow
-        // expandChildArrow.addEventListener('click', expandChildrenArrowFunctionVar);
-
+        const expandChildrenArrowFunctionVar = expandChildrenArrowFunction(expandChildArrow, child);
         // putting click addEventListner on expandChildArrow
-        expandChildArrow.addEventListener('click', (event)=>{
+        expandChildArrow.addEventListener('click', expandChildrenArrowFunctionVar);
+
+        // // putting click addEventListner on expandChildArrow
+        // expandChildArrow.addEventListener('click', (event)=>{
           
-          expandChildrenArrowFunction(event, expandChildArrow, child);
-        });
+        //   expandChildrenArrowFunction(event, expandChildArrow, child);
+        // });
 
 
         // creating sidebarChildName Span
@@ -579,17 +579,19 @@ function renderSidebar() {
 }
 
 // creating a expandChildrenArrowFunction
-function expandChildrenArrowFunction(event, shrinkChildArrow, child) {
-  
+function expandChildrenArrowFunction(shrinkChildArrow, child) {
+  return function(event){
   // calling event.stopPropagation() to keep click to the buttton and not pass it up to the Parent
   // Prevent the click event from bubbling up to the parent container
   event.stopPropagation();
+
+  shrinkChildArrow.removeEventListener('click', expandChildrenArrowFunctionVar);
 
   sidebarParentForChild = event.target.closest('.sidebar-parent-for-child-container');
   sidebarCurrentRoom = child;
   shrinkChildArrow.textContent = '▼';
 
-  // shrinkChildArrow.removeEventListener('click', expandChildrenArrowFunctionVar);
+  
 
   shrinkChildArrow.addEventListener('click', ()=>{
     shrinkChildrenArrowFunction(event);
@@ -598,6 +600,7 @@ function expandChildrenArrowFunction(event, shrinkChildArrow, child) {
 
   // calling renderSidebar() again to update the page
   renderSidebar();
+  }
 }
 
 // creating a shrinkChildrenArrowFunction
