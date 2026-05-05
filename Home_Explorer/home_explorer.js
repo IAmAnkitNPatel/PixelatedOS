@@ -592,7 +592,6 @@ function expandChildrenArrowFunction(shrinkChildArrow, child) {
   shrinkChildArrow.textContent = '▼';
 
   
-
   shrinkChildArrow.addEventListener('click', ()=>{
     shrinkChildrenArrowFunction(event);
   });
