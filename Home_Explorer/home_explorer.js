@@ -580,12 +580,12 @@ function renderSidebar() {
 
 // creating a expandChildrenArrowFunction
 function expandChildrenArrowFunction(shrinkChildArrow, child) {
-  return function(event){
+  return function returnExpandChildrenArrowFunction(event){
   // calling event.stopPropagation() to keep click to the buttton and not pass it up to the Parent
   // Prevent the click event from bubbling up to the parent container
   event.stopPropagation();
 
-  shrinkChildArrow.removeEventListener('click', expandChildrenArrowFunctionVar);
+  shrinkChildArrow.removeEventListener('click', returnExpandChildrenArrowFunction);
 
   sidebarParentForChild = event.target.closest('.sidebar-parent-for-child-container');
   sidebarCurrentRoom = child;
