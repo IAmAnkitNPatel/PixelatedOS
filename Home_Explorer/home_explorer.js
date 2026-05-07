@@ -593,7 +593,7 @@ function expandChildrenArrowFunction(shrinkChildArrow, child) {
 
   
   shrinkChildArrow.addEventListener('click', ()=>{
-    shrinkChildrenArrowFunction(event);
+    shrinkChildrenArrowFunction(shrinkChildArrow);
   });
 
 
@@ -603,10 +603,18 @@ function expandChildrenArrowFunction(shrinkChildArrow, child) {
 }
 
 // creating a shrinkChildrenArrowFunction
-function shrinkChildrenArrowFunction() {
-  sidebarParentForChild = event.target.closest('.sidebar-parent-for-child-container');
-  // if (sidebarParentForChild)
-  console.log(sidebarParentForChild);
+function shrinkChildrenArrowFunction(shrinkChildArrow) {
+
+  const children = (event.target.closest('.sidebar-parent-for-child-container')).querySelectorAll('.sidebar-parent-for-child-container');
+
+  children.forEach(element => {
+    element.remove();
+  })
+
+  shrinkChildArrow.textContent = '▶';
+
+  
+  
 }
 
 //main function calling starts from here
