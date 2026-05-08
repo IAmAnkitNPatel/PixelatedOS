@@ -485,6 +485,7 @@ let sidebarCurrentRoom = {
 //change the name
 let sidebarParentForChild = document.querySelector('.home-explorer-sidebar');
 // creating renderSidebar() function
+/*
 function renderSidebar() {
   {
     // // getting homeExplorerSidebar Div from Home Explorer
@@ -612,9 +613,46 @@ function shrinkChildrenArrowFunction(shrinkChildArrow) {
   })
 
   shrinkChildArrow.textContent = '▶';
+}
 
-  
-  
+*/
+
+
+function renderSidebar() {
+  expandChildrenArrowFunction();
+}
+
+function expandChildrenArrowFunction() {
+  if (sidebarCurrentRoom.children.length > 0) {
+    sidebarCurrentRoom.children.forEach(child => {
+      let objectContainer = sidebarParentForChild;
+
+      let sidebarParentForChildContainer = document.createElement('div');
+      sidebarParentForChild.classList.add('sidebar-parent-for-child-container');
+
+      let sidebarChildContainer = document.createElement('div');
+      sidebarChildContainer.classList.add('sidebar-child-container');
+
+      let expandChildArrow = document.createElement('span');
+      expandChildArrow.textContent = '▶';
+      expandChildArrow.classList.add('expand-child-arrow');
+
+      let sidebarChildName = document.createElement('span');
+      sidebarChildName.textContent = child.name;
+      sidebarChildName.classList.add('sidebar-child-name');
+
+
+      sidebarChildContainer.append(expandChildArrow, sidebarChildName);
+
+      sidebarParentForChildContainer.append(sidebarChildContainer);
+
+      sidebarParentForChild.append(sidebarParentForChildContainer);
+    });
+  }
+}
+
+function shrinkChildrenArrowFunction() {
+
 }
 
 //main function calling starts from here
