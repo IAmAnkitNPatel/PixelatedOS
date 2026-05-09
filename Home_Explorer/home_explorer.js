@@ -619,37 +619,61 @@ function shrinkChildrenArrowFunction(shrinkChildArrow) {
 
 
 function renderSidebar() {
-  expandChildrenArrowFunction();
+  // putting if condition to check if the room has children
+    if(sidebarCurrentRoom.children.length > 0){
+      // putting forEach condition on each child
+      sidebarCurrentRoom.children.forEach(child => {
+        // creating a sidebarParentForChildContainer Div
+        let sidebarParentForChildContainer = document.createElement('div');
+        sidebarParentForChildContainer.classList.add('sidebar-parent-for-child-container');
+
+        // creating a sidebarChildContainer Div
+        let sidebarChildContainer = document.createElement('div');
+        sidebarChildContainer.classList.add('sidebar-child-container');
+
+        // creating expandChildArrow Span
+        let expandChildArrow = document.createElement('span');
+        expandChildArrow.textContent = '▶';
+        expandChildArrow.classList.add('expand-child-arrow');
+
+        // const expandChildrenArrowFunctionVar = expandChildrenArrowFunction(expandChildArrow, child);
+
+        // putting click addEventListner on expandChildArrow
+        expandChildArrow.addEventListener('click', ()=>{
+          sidebarCurrentRoom = child;
+        });
+
+        // putting click addEventListner on expandChildArrow
+        expandChildArrow.addEventListener('click', expandChildrenArrowFunction);
+
+
+        // creating sidebarChildName Span
+        let sidebarChildName = document.createElement('span');
+        sidebarChildName.textContent = child.name;
+        sidebarChildName.classList.add('sidebar-child-name');
+
+        // adding expandChildArrow Span and sidebarChildName Span in sidebarChildContainer Div
+        sidebarChildContainer.append(expandChildArrow, sidebarChildName);
+
+        // adding sidebarChildContainer Div in sidebarParentForChildContainer Div
+        sidebarParentForChildContainer.append(sidebarChildContainer);
+
+        // adding sidebarParentForChildContainer Div in sidebarParentForChild Div
+        sidebarParentForChild.append(sidebarParentForChildContainer);
+      });
+}
 }
 
 function expandChildrenArrowFunction() {
-  if (sidebarCurrentRoom.children.length > 0) {
-    sidebarCurrentRoom.children.forEach(child => {
-      let objectContainer = sidebarParentForChild;
-
-      let sidebarParentForChildContainer = document.createElement('div');
-      sidebarParentForChild.classList.add('sidebar-parent-for-child-container');
-
-      let sidebarChildContainer = document.createElement('div');
-      sidebarChildContainer.classList.add('sidebar-child-container');
-
-      let expandChildArrow = document.createElement('span');
-      expandChildArrow.textContent = '▶';
-      expandChildArrow.classList.add('expand-child-arrow');
-
-      let sidebarChildName = document.createElement('span');
-      sidebarChildName.textContent = child.name;
-      sidebarChildName.classList.add('sidebar-child-name');
-
-
-      sidebarChildContainer.append(expandChildArrow, sidebarChildName);
-
-      sidebarParentForChildContainer.append(sidebarChildContainer);
-
-      sidebarParentForChild.append(sidebarParentForChildContainer);
-    });
-  }
+  sidebarParentForChild = event.target.closest('.sidebar-parent-for-child-container');
+  // sidebarCurrentRoom = (sidebarParentForChild.querySelector('.sidebar-child-container'))
+  //   .querySelector('.sidebar-child-name')
+  //   .innerText;
+  console.log(sidebarParentForChild);
+  console.log(sidebarCurrentRoom);
+  renderExplorer();
 }
+  
 
 function shrinkChildrenArrowFunction() {
 
