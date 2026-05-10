@@ -641,6 +641,7 @@ function renderSidebar() {
         // putting click addEventListner on expandChildArrow
         expandChildArrow.addEventListener('click', ()=>{
           sidebarCurrentRoom = child;
+          sidebarArrow = expandChildArrow;
         });
 
         // putting click addEventListner on expandChildArrow
@@ -664,11 +665,22 @@ function renderSidebar() {
 }
 }
 
+let sidebarArrow;
+
 function expandChildrenArrowFunction() {
   sidebarParentForChild = event.target.closest('.sidebar-parent-for-child-container');
   // sidebarCurrentRoom = (sidebarParentForChild.querySelector('.sidebar-child-container'))
   //   .querySelector('.sidebar-child-name')
   //   .innerText;
+  let shrinkChildArrow = sidebarArrow;
+  shrinkChildArrow.textContent = '▼';
+
+  console.log(shrinkChildArrow);
+
+  shrinkChildArrow.removeEventListener('click', expandChildrenArrowFunction);
+
+  shrinkChildArrow.addEventListener('click', shrinkChildrenArrowFunction);
+
   console.log(sidebarParentForChild);
   console.log(sidebarCurrentRoom);
   renderExplorer();
@@ -676,6 +688,27 @@ function expandChildrenArrowFunction() {
   
 
 function shrinkChildrenArrowFunction() {
+  console.log("hey shrink child");
+  // console.log(event);
+
+  let expandChildArrow = sidebarArrow;
+  expandChildArrow.textContent = '▶';
+
+  console.log(expandChildArrow);
+
+  expandChildArrow.removeEventListener('click', shrinkChildrenArrowFunction);
+
+  expandChildArrow.addEventListener('click', expandChildrenArrowFunction);
+
+  let parrent = event.target.closest('.sidebar-parent-for-child-container');
+  console.log(`parrent:`, parrent);
+  let children = parrent.querySelectorAll('.sidebar-parent-for-child-container');
+  console.log(`children:` , children);
+
+  children.forEach(child => {
+    child.remove();
+  });
+
 
 }
 
