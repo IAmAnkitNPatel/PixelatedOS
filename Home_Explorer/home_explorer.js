@@ -411,7 +411,6 @@ function pasteObject(event) {
 // if we paste from copy we will need to change the id 
 // while pasting we will need to look at "Names"
 
-
   // removing copyObjectValue and cutObject Value;
   copyObjectValue = '';
   cutObjectValue = '';
