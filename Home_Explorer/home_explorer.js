@@ -264,6 +264,7 @@ function navigationButton(direction, event) {
 
   // console.log(event);
   let currentRoomIndex = navigationHistory.indexOf(currentRoom);
+  
   if (direction === 'back') {
     if (currentRoomIndex-1 >= 0){
       let backwardElement = navigationHistory[currentRoomIndex-1];
@@ -319,7 +320,6 @@ function deleteSelectedObject(event) {
   selectedObject = "";
   // calling Render Workspace function
   renderWorkspace();
-
 }
 
 // creating "copyObjectValue" variable
