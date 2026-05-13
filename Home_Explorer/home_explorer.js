@@ -264,7 +264,7 @@ function navigationButton(direction, event) {
 
   // console.log(event);
   let currentRoomIndex = navigationHistory.indexOf(currentRoom);
-  
+
   if (direction === 'back') {
     if (currentRoomIndex-1 >= 0){
       let backwardElement = navigationHistory[currentRoomIndex-1];
@@ -470,10 +470,25 @@ function createShowNavigationHistory() {
   // clearing old History
   showNavigaitonHistory.textContent = 'Navigation History: ';
 
+  //
+  const currentRoomIndex = navigationHistory.indexOf(currentRoom);
+
+  //
+  const showNavigationHistoryArray = navigationHistory.slice(0, currentRoomIndex+1);
+
+
   // adding navigationHistory to showNavigationHistory
-  navigationHistory.forEach((room)=>{
+  // navigationHistory.forEach((room)=>{
+  //   showNavigaitonHistory.append(`${room.name} => `);
+  // });
+
+  showNavigationHistoryArray.forEach((room)=>{
     showNavigaitonHistory.append(`${room.name} => `);
   });
+
+  console.log(navigationHistory);
+  console.log(currentRoom);
+  console.log(showNavigationHistoryArray);
 }
 
 // creating sidebarCurrentRoom Variable object
