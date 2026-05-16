@@ -1,0 +1,22 @@
+.pixel-blue-square {
+  width: 64px;
+  height: 64px;
+  background-color: #0000ff; 
+  
+  
+  box-shadow:
+  
+    inset 4px 4px 0px 0px #8080ff,
+    
+  
+    inset -4px -4px 0px 0px #000080,
+    
+  
+    0px 4px 0px 0px #000000,
+    0px -4px 0px 0px #000000,
+    4px 0px 0px 0px #000000,
+    -4px 0px 0px 0px #000000;
+    
+  
+  margin: 20px; 
+}

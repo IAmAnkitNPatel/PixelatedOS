@@ -1,0 +1,18 @@
+.pixel-blue-square {
+  width: 64px;
+  height: 64px;
+
+  /* 1. The base blue color fill */
+  background-color: #0000ff;
+
+  /* 2. The Grid: This draws lines every 4px to create the individual pixels */
+  background-image:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.15) 1px, transparent 1px),
+    linear-gradient(rgba(0, 0, 0, 0.15) 1px, transparent 1px);
+
+  /* 3. This defines how big your internal pixels are (4px by 4px) */
+  background-size: 4px 4px;
+
+  /* 4. Chunky outer border to match */
+  border: 4px solid #000000;
+}
