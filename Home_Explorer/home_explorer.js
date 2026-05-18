@@ -722,8 +722,7 @@ function shrinkChildrenArrowFunction() {
   children.forEach(child => {
     child.remove();
   });
-
-
+  
 }
 
 //main function calling starts from here
