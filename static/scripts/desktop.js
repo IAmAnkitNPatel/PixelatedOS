@@ -1,5 +1,6 @@
 import { addAppToTaskbar } from "./taskbar.js";
 import { homeExplorerBody } from "./home.js";
+import { homeExplorer } from "../../Home_Explorer/home_explorer.js";
 
 // code for double clicking on "Home" icon to open "Home" and clicking "x" for closing "Home"
 function homeIconDoubleClick(e) {
@@ -62,7 +63,8 @@ function homeIconDoubleClick(e) {
 
   
   // homeExplorer Body Div
-  homeExplorerBody(newHomeContainerDiv);
+  // homeExplorerBody(newHomeContainerDiv);
+  homeExplorer(newHomeContainerDiv);
 }
 
 const homeIcon = document.querySelector('.home-icon')
