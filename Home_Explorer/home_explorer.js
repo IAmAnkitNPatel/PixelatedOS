@@ -499,7 +499,11 @@ export function homeExplorer(homeExplorerContainer){
     children: [homeExplorerData]
   };
   //change the name
-  let sidebarParentForChild = document.querySelector('.home-explorer-sidebar');
+  // let sidebarParentForChild = document.querySelector('.home-explorer-sidebar');
+// not assigining value to the value
+  let sidebarParentForChild;
+
+
   // creating renderSidebar() function
   /*
   function renderSidebar() {
@@ -635,6 +639,10 @@ export function homeExplorer(homeExplorerContainer){
 
 
   function renderSidebar() {
+    //
+    if(!sidebarParentForChild){
+      sidebarParentForChild = document.querySelector('.home-explorer-sidebar');
+    }
     // putting if condition to check if the room has children
       if(sidebarCurrentRoom.children.length > 0){
         // putting forEach condition on each child
@@ -731,9 +739,12 @@ export function homeExplorer(homeExplorerContainer){
   let currentRoom = homeExplorerData;
   let previousRoom;
   addNavigationHistory();
-  renderExplorer();
-
   //adding "homeExplorer" in "homeExplorerContainer"
   homeExplorerContainer.append(homeExplorer);
+  renderExplorer();
+
+  
+  //check if it will still work if go to the old ways
+  // also why is it not working stand alone
 
 }
