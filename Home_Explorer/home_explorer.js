@@ -220,7 +220,7 @@ export function homeExplorer(homeExplorerContainer){
           newRoomCount++;
         }
       });
-  
+
       // creating a variable for new room name with number
       newRoomName = "New Room";
       if (newRoomCount >= 1) {
