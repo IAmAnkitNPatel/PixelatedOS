@@ -642,6 +642,7 @@ export function homeExplorer(homeExplorerContainer){
     //
     if(!sidebarParentForChild){
       sidebarParentForChild = document.querySelector('.home-explorer-sidebar');
+      // sidebarParentForChild = homeExplorer.querySelector('.home-explorer-sidebar');
     }
     // putting if condition to check if the room has children
       if(sidebarCurrentRoom.children.length > 0){
