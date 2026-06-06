@@ -253,7 +253,7 @@ export function homeExplorer(homeExplorerContainer){
     let previousRoomIndex = navigationHistory.indexOf(previousRoom);
     navigationHistory.splice(previousRoomIndex+1);
     navigationHistory.push(currentRoom);
-
+    
     // console.log(navigationHistory.map(room => room.name));
   }
 
