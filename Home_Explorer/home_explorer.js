@@ -142,7 +142,9 @@ export function homeExplorer(homeExplorerContainer){
   // creating renderWorkspace() function
   function renderWorkspace() {
 
-    const workspace = document.querySelector('.home-explorer-workspace');
+    // changing "document.querySelector" to "homeExplorer.querySelector" to shift from Global Scope to Container Scope
+    // const workspace = document.querySelector('.home-explorer-workspace');
+    const workspace = homeExplorer.querySelector('.home-explorer-workspace');
     
     workspace.innerHTML = "";
 
@@ -253,7 +255,7 @@ export function homeExplorer(homeExplorerContainer){
     let previousRoomIndex = navigationHistory.indexOf(previousRoom);
     navigationHistory.splice(previousRoomIndex+1);
     navigationHistory.push(currentRoom);
-    
+
     // console.log(navigationHistory.map(room => room.name));
   }
 
@@ -468,7 +470,11 @@ export function homeExplorer(homeExplorerContainer){
   // creating createShowNavigationHistory() function for showing History on Home Explorer
   function createShowNavigationHistory() {
     // getting showNavigationHistory Div from Home Explorer
-    const showNavigaitonHistory = document.querySelector('.show-navigation-history');
+
+    // changing "document.querySelector" to "homeExplorer.querySelector" to shift from Global Scope to Container Scope
+    // const showNavigaitonHistory = document.querySelector('.show-navigation-history');
+    const showNavigaitonHistory = homeExplorer.querySelector('.show-navigation-history');
+
     // clearing old History
     showNavigaitonHistory.textContent = 'Navigation History: ';
 
@@ -641,8 +647,9 @@ export function homeExplorer(homeExplorerContainer){
   function renderSidebar() {
     //
     if(!sidebarParentForChild){
-      sidebarParentForChild = document.querySelector('.home-explorer-sidebar');
-      // sidebarParentForChild = homeExplorer.querySelector('.home-explorer-sidebar');
+      // changing "document.querySelector" to "homeExplorer.querySelector" to shift from Global Scope to Container Scope
+      // sidebarParentForChild = document.querySelector('.home-explorer-sidebar');
+      sidebarParentForChild = homeExplorer.querySelector('.home-explorer-sidebar');
     }
     // putting if condition to check if the room has children
       if(sidebarCurrentRoom.children.length > 0){
