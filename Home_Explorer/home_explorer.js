@@ -230,7 +230,7 @@ export function homeExplorer(homeExplorerContainer){
       }
     }
 
-    
+  
     
     const newId = crypto.randomUUID();
 
