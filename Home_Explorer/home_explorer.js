@@ -557,7 +557,7 @@ export function homeExplorer(homeExplorerContainer){
       //   });
       // }
     }
-  
+    
     {
       // putting if condition to check if the room has children
       if(sidebarCurrentRoom.children.length > 0){
