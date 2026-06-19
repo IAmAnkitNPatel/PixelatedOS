@@ -4,6 +4,8 @@ export function addAppToTaskbar (event, homeContainer) {
   const taskbarAppSpan = document.createElement('span');
   taskbarAppSpan.classList.add('taskbar-app');
 
+  // 
+
   //change this from home-icon to whatever app is clicked
   const homeIcon = event.target.closest('.home-icon')
   const iconImage = homeIcon.querySelector('.icon-image');
@@ -14,6 +16,9 @@ export function addAppToTaskbar (event, homeContainer) {
   taskbarAppSpan.append(iconImageCopy);
 
   const taskbarMiddleSection = document.querySelector('.taskbar-middle-section');
+
+  // if condition to check if homeExplorer icon Exists
+  // if(task)
 
   taskbarMiddleSection.append(taskbarAppSpan);
 

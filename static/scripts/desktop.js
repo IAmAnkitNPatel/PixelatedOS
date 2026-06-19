@@ -10,6 +10,9 @@ function homeIconDoubleClick(e) {
   const newHomeContainerDiv =  document.createElement('div');
   newHomeContainerDiv.classList.add('home-container');
   
+  // adding "name = 'home-explorer'" to HomeContainerDiv
+  newHomeContainerDiv.setAttribute('name', 'home-explorer');
+
   const homeHeaderDiv = document.createElement('div');
   homeHeaderDiv.classList.add('home-header');
 
