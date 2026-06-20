@@ -17,8 +17,10 @@ export function addAppToTaskbar (event, homeContainer) {
 
   const taskbarMiddleSection = document.querySelector('.taskbar-middle-section');
 
+  // 
+  taskbarAppSpan.setAttribute('name', 'home-explorer');
   // if condition to check if homeExplorer icon Exists
-  // if(task)
+  // if(taskbarAppSpan.)
 
   taskbarMiddleSection.append(taskbarAppSpan);
 
