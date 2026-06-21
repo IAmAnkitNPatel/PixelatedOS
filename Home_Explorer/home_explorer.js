@@ -463,7 +463,7 @@ export function homeExplorer(homeExplorerContainer){
     selectedObject = "";
     // if Condition for Object Not Selected
     if(!selectedObject){
-      console.log("Selected Object : ");
+      // console.log("Selected Object : ");
     }
   }
 
@@ -494,9 +494,9 @@ export function homeExplorer(homeExplorerContainer){
       showNavigaitonHistory.append(`${room.name} => `);
     });
 
-    console.log(navigationHistory);
-    console.log(currentRoom);
-    console.log(showNavigationHistoryArray);
+    // console.log(navigationHistory);
+    // console.log(currentRoom);
+    // console.log(showNavigationHistoryArray);
   }
 
   // creating sidebarCurrentRoom Variable object
