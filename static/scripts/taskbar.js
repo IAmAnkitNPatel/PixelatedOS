@@ -1,26 +1,12 @@
 let hoverTimeout;
 
 export function addAppToTaskbar (event, homeContainer) { 
-  const taskbarAppSpan = document.createElement('span');
-  taskbarAppSpan.classList.add('taskbar-app');
 
-  // 
-
-  //change this from home-icon to whatever app is clicked
-  const homeIcon = event.target.closest('.home-icon')
-  const iconImage = homeIcon.querySelector('.icon-image');
-
-  const iconImageCopy = iconImage.cloneNode(true);
-  iconImageCopy.classList.remove('icon-image');
-  
-  taskbarAppSpan.append(iconImageCopy);
-
+  // getting taskbar-middle-section
   const taskbarMiddleSection = document.querySelector('.taskbar-middle-section');
 
-  // giving name = 'home-explorer' attribute to the taskbarAppSpan
-  // we will need to connect it so that the name is given of a the specifice app
-  taskbarAppSpan.setAttribute('name', 'home-explorer');
-  
+  // creating "iconExists" bool variable to check if icon already exixts
+  let iconExists = false;
   // checking the taskbarMiddleSection for the homeExplorer icon
     // Array.from(taskbarMiddleSection.children).forEach(element => {
     //   // if condition to check if homeExplorer icon Exists
@@ -32,11 +18,38 @@ export function addAppToTaskbar (event, homeContainer) {
   Array.from(taskbarMiddleSection.children).find(element => {
     // if condition to check if homeExplorer icon Exists
     if (element.getAttribute('name')=== 'home-explorer'){
-      console.log("home-explorer");
+      console.log("home-explorer icon exists");
+      iconExists = true;
     }
+    
   });
 
   // console.log(taskbarMiddleSection);
+  
+  const taskbarAppSpan = document.createElement('span');
+  taskbarAppSpan.classList.add('taskbar-app');
+
+  if(iconExists === false) {
+    console.log("homeExplorer icon doesnt exists");
+  }
+  // 
+
+  //change this from home-icon to whatever app is clicked
+  const homeIcon = event.target.closest('.home-icon')
+  const iconImage = homeIcon.querySelector('.icon-image');
+
+  const iconImageCopy = iconImage.cloneNode(true);
+  iconImageCopy.classList.remove('icon-image');
+  
+  taskbarAppSpan.append(iconImageCopy);
+
+  
+
+  // giving name = 'home-explorer' attribute to the taskbarAppSpan
+  // we will need to connect it so that the name is given of a the specifice app
+  taskbarAppSpan.setAttribute('name', 'home-explorer');
+  
+  
 
   taskbarMiddleSection.append(taskbarAppSpan);
 
