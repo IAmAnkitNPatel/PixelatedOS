@@ -31,38 +31,39 @@ export function addAppToTaskbar (event, homeContainer) {
 
   if(iconExists === false) {
     console.log("homeExplorer icon doesnt exists");
+    // 
+
+    //change this from home-icon to whatever app is clicked
+    const homeIcon = event.target.closest('.home-icon')
+    const iconImage = homeIcon.querySelector('.icon-image');
+
+    const iconImageCopy = iconImage.cloneNode(true);
+    iconImageCopy.classList.remove('icon-image');
+    
+    taskbarAppSpan.append(iconImageCopy);
+
+    
+
+    // giving name = 'home-explorer' attribute to the taskbarAppSpan
+    // we will need to connect it so that the name is given of a the specifice app
+    taskbarAppSpan.setAttribute('name', 'home-explorer');
+    
+    
+
+    taskbarMiddleSection.append(taskbarAppSpan);
+
+    taskbarAppSpan.addEventListener('mouseenter', ()=>{
+      clearTimeout(hoverTimeout);
+      taskbarAppHoverAdd(homeContainer, taskbarAppSpan)
+    });
+    taskbarAppSpan.addEventListener('mouseleave', ()=>{
+      hoverTimeout = setTimeout(()=>{
+        taskbarAppHoverRemove(taskbarAppSpan);
+      }, 100);
+    });
+    return taskbarAppSpan;
   }
-  // 
-
-  //change this from home-icon to whatever app is clicked
-  const homeIcon = event.target.closest('.home-icon')
-  const iconImage = homeIcon.querySelector('.icon-image');
-
-  const iconImageCopy = iconImage.cloneNode(true);
-  iconImageCopy.classList.remove('icon-image');
   
-  taskbarAppSpan.append(iconImageCopy);
-
-  
-
-  // giving name = 'home-explorer' attribute to the taskbarAppSpan
-  // we will need to connect it so that the name is given of a the specifice app
-  taskbarAppSpan.setAttribute('name', 'home-explorer');
-  
-  
-
-  taskbarMiddleSection.append(taskbarAppSpan);
-
-  taskbarAppSpan.addEventListener('mouseenter', ()=>{
-    clearTimeout(hoverTimeout);
-    taskbarAppHoverAdd(homeContainer, taskbarAppSpan)
-  });
-  taskbarAppSpan.addEventListener('mouseleave', ()=>{
-    hoverTimeout = setTimeout(()=>{
-      taskbarAppHoverRemove(taskbarAppSpan);
-    }, 100);
-  });
-  return taskbarAppSpan;
 }
 
 function taskbarAppHoverAdd (homeContainer, taskbarAppSpan) {
