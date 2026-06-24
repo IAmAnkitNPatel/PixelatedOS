@@ -20,6 +20,12 @@ export function addAppToTaskbar (event, homeContainer) {
     if (element.getAttribute('name')=== 'home-explorer'){
       console.log("home-explorer icon exists");
       iconExists = true;
+
+      // getting the home-explorer icon from taskbar
+      const taskbarAppSpan = taskbarMiddleSection.querySelector('[name = "home-explorer"]');
+      console.log(taskbarAppSpan);
+
+      
     }
     
   });
