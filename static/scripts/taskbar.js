@@ -48,7 +48,7 @@ export function addAppToTaskbar (event, homeContainer) {
     
     taskbarAppSpan.append(iconImageCopy);
 
-  
+    
 
     // giving name = 'home-explorer' attribute to the taskbarAppSpan
     // we will need to connect it so that the name is given of a the specifice app
