@@ -2,6 +2,11 @@ let hoverTimeout;
 
 export function addAppToTaskbar (event, homeContainer) { 
 
+  // this code was for a single app instance and single icon
+  // Also was trying to add multiple app instance in this code
+  // commented this code out because things are not working
+  // below this code I am rewriting a new code for multiple app instances and single icon
+/* */
   // getting taskbar-middle-section
   const taskbarMiddleSection = document.querySelector('.taskbar-middle-section');
 
@@ -69,7 +74,30 @@ export function addAppToTaskbar (event, homeContainer) {
     });
     return taskbarAppSpan;
   }
+/**/
+
+// new code
+/*
+// getting taskbar-middle-section
+  const taskbarMiddleSection = document.querySelector('.taskbar-middle-section');
   
+  const taskbarAppSpan = document.createElement('span');
+  taskbarAppSpan.classList.add('taskbar-app');
+
+  const homeIcon = event.target.closest('.home-icon')
+  const iconImage = homeIcon.querySelector('.icon-image');
+
+  const iconImageCopy = iconImage.cloneNode(true);
+  iconImageCopy.classList.remove('icon-image');
+  
+  taskbarAppSpan.append(iconImageCopy);
+
+  // giving name = 'home-explorer' attribute to the taskbarAppSpan
+  // we will need to connect it so that the name is given of a the specifice app
+  taskbarAppSpan.setAttribute('name', 'home-explorer');
+
+  taskbarMiddleSection.append(taskbarAppSpan);
+  */
 }
 
 function taskbarAppHoverAdd (homeContainer, taskbarAppSpan) {
