@@ -89,7 +89,7 @@ export function addAppToTaskbar (event, homeContainer) {
   const taskbarMiddleSection = document.querySelector('.taskbar-middle-section');
   
   // if condition to check if this app icon exists in taskbar
-  if()
+  // if()
 
   const taskbarAppSpan = document.createElement('span');
   taskbarAppSpan.classList.add('taskbar-app');
@@ -107,7 +107,14 @@ export function addAppToTaskbar (event, homeContainer) {
   taskbarAppSpan.setAttribute('name', 'home-explorer');
 
   taskbarMiddleSection.append(taskbarAppSpan);
-  
+  // up to here it will be if block
+
+  // Below Section is about STORING hover preview of app instance
+  // creating a new span for hover app instances
+  const hoverPreviewSpan = document.createElement('span');
+  hoverPreviewSpan.classList.add('hoverPreviewSpan'); // putting this class for example
+  // for now putting hoverPreviewSpan in taskbarAppSpan
+  taskbarAppSpan.append(hoverPreviewSpan);
 }
 
 function taskbarAppHoverAdd (homeContainer, taskbarAppSpan) {
