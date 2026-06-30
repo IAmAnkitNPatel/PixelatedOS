@@ -88,6 +88,13 @@ export function addAppToTaskbar (event, homeContainer) {
 // getting taskbar-middle-section
   const taskbarMiddleSection = document.querySelector('.taskbar-middle-section');
   
+  Array.from(taskbarMiddleSection.children).find(
+    element => {
+      if(element.getAttribute('name')===appName) {
+        
+      }
+    }
+  )
   // if condition to check if this app icon exists in taskbar
   // if()
 
