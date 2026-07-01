@@ -91,7 +91,7 @@ export function addAppToTaskbar (event, homeContainer) {
   Array.from(taskbarMiddleSection.children).find(
     element => {
       if(element.getAttribute('name')===appName) {
-        
+        console.log("Home Explorer Icon Exists");
       }
     }
   )
