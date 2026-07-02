@@ -97,7 +97,7 @@ export function addAppToTaskbar (event, homeContainer) {
   )
   // if condition to check if this app icon exists in taskbar
   // if()
-
+  
   const taskbarAppSpan = document.createElement('span');
   taskbarAppSpan.classList.add('taskbar-app');
 
