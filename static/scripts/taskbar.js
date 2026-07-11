@@ -88,33 +88,42 @@ export function addAppToTaskbar (event, homeContainer) {
 // getting taskbar-middle-section
   const taskbarMiddleSection = document.querySelector('.taskbar-middle-section');
   
-  Array.from(taskbarMiddleSection.children).find(
+  // creating a new variable named "foundElement"
+  // if element is found then putting it in "foundElement" variable to use it as flag
+  const foundElement = Array.from(taskbarMiddleSection.children).find(
     element => {
       if(element.getAttribute('name')===appName) {
         console.log("Home Explorer Icon Exists");
+        return true;
       }
     }
   )
+  // console.log("hello", foundElement);
+  
   // if condition to check if this app icon exists in taskbar
   // if()
+  if(!foundElement) {
+    
+    const taskbarAppSpan = document.createElement('span');
+    taskbarAppSpan.classList.add('taskbar-app');
 
-  const taskbarAppSpan = document.createElement('span');
-  taskbarAppSpan.classList.add('taskbar-app');
+    const homeIcon = event.target.closest('.home-icon')
+    const iconImage = homeIcon.querySelector('.icon-image');
 
-  const homeIcon = event.target.closest('.home-icon')
-  const iconImage = homeIcon.querySelector('.icon-image');
+    const iconImageCopy = iconImage.cloneNode(true);
+    iconImageCopy.classList.remove('icon-image');
 
-  const iconImageCopy = iconImage.cloneNode(true);
-  iconImageCopy.classList.remove('icon-image');
+    taskbarAppSpan.append(iconImageCopy);
+    
+    // giving name = 'home-explorer' attribute to the taskbarAppSpan
+    // we will need to connect it so that the name is given of a the specifice app
+    taskbarAppSpan.setAttribute('name', 'home-explorer');
 
-  taskbarAppSpan.append(iconImageCopy);
+    taskbarMiddleSection.append(taskbarAppSpan);
+    // up to here it will be if block
+  }
   
-  // giving name = 'home-explorer' attribute to the taskbarAppSpan
-  // we will need to connect it so that the name is given of a the specifice app
-  taskbarAppSpan.setAttribute('name', 'home-explorer');
 
-  taskbarMiddleSection.append(taskbarAppSpan);
-  // up to here it will be if block
 
   // Below Section is about STORING hover preview of app instance
   // creating a new span for hover app instances
