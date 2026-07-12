@@ -58,10 +58,10 @@ function homeIconDoubleClick(e) {
     minimize(newHomeContainerDiv);
   });
 
-  
-  taskbarAppSpan.addEventListener('click', ()=>{
-    minimize(newHomeContainerDiv);
-  });
+  // commenting this part of code because i am working on the taskbar app preview for single icon and multiple instances and this line of code is giving error
+  // taskbarAppSpan.addEventListener('click', ()=>{
+  //   minimize(newHomeContainerDiv);
+  // });
 
 
   // homeExplorer Body Div

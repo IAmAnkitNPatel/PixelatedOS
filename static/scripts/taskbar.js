@@ -121,9 +121,17 @@ export function addAppToTaskbar (event, homeContainer) {
 
     taskbarMiddleSection.append(taskbarAppSpan);
     // up to here it will be if block
+
+
+    // creating a new div for all the previews
+    const appInstancesContainerDiv = document.createElement('div');
+    // console.log(taskbarAppSpan);
+    // 
   }
   
 
+  // for now commenting this below section out
+  /*
 
   // Below Section is about STORING hover preview of app instance
   // creating a new span for hover app instances
@@ -131,6 +139,7 @@ export function addAppToTaskbar (event, homeContainer) {
   hoverPreviewSpan.classList.add('hoverPreviewSpan'); // putting this class for example
   // for now putting hoverPreviewSpan in taskbarAppSpan
   taskbarAppSpan.append(hoverPreviewSpan);
+  */
 }
 
 function taskbarAppHoverAdd (homeContainer, taskbarAppSpan) {
