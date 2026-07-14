@@ -125,10 +125,16 @@ export function addAppToTaskbar (event, homeContainer) {
 
     // creating a new div for all the previews
     const appInstancesContainerDiv = document.createElement('div');
-    // console.log(taskbarAppSpan);
-    // 
+    appInstancesContainerDiv.classList.add('app-instances-container');
+    console.log("taskbarAppSpan: ", taskbarAppSpan);
+    
+    taskbarAppSpan.append(appInstancesContainerDiv);
   }
   
+  // below code is to append preview in 'appInstancesContainerDiv'
+
+  
+
 
   // for now commenting this below section out
   /*
@@ -140,9 +146,14 @@ export function addAppToTaskbar (event, homeContainer) {
   // for now putting hoverPreviewSpan in taskbarAppSpan
   taskbarAppSpan.append(hoverPreviewSpan);
   */
- 
+
 }
 
+
+
+// with below code every app instance will have their own taskbar icon
+// comment it out for now
+/*
 function taskbarAppHoverAdd (homeContainer, taskbarAppSpan) {
   if (taskbarAppSpan.querySelector('.taskbar-app-hover')) return;
   const homeContainerCopy  = homeContainer.cloneNode(true);
@@ -154,3 +165,5 @@ function taskbarAppHoverRemove (taskbarAppSpan) {
   const appHover = taskbarAppSpan.querySelector('.taskbar-app-hover');
   appHover.remove();
 }
+
+*/
