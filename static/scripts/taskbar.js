@@ -146,7 +146,6 @@ export function addAppToTaskbar (event, homeContainer) {
   // for now putting hoverPreviewSpan in taskbarAppSpan
   taskbarAppSpan.append(hoverPreviewSpan);
   */
-
 }
 
 
