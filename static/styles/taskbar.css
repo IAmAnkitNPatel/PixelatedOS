@@ -90,6 +90,18 @@
   display: none;
 }
 
-.taskbar-app:hover .app-instances-container{
+.taskbar-app:hover .app-instances-container,
+.app-instances-container:hover{
   display: flex;
+}
+
+
+.app-instances-container::after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background-color: black;
 }
