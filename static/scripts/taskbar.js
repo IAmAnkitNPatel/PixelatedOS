@@ -133,6 +133,25 @@ export function addAppToTaskbar (event, homeContainer) {
   
   // below code is to append preview in 'appInstancesContainerDiv'
 
+  const instancePreviewDiv = document.createElement('div');
+  instancePreviewDiv.classList.add('instance-preview-div');
+
+  const taskbarApp = Array.from(taskbarMiddleSection.children).find(
+    element => {
+      if(element.getAttribute('name')===appName) {
+        return true;
+      }
+    }
+  )
+
+  // console.log("!", appInstancesContainerDiv);
+
+  // getting 'appInstanceContainerDiv' from 'taskbarApp'
+  const appInstancesContainerDiv = taskbarApp.querySelector('.app-instances-container')
+  // putting 'instancePreviewDiv' in appInstancesContainerDiv
+  appInstancesContainerDiv.append(instancePreviewDiv);
+
+
   
 
 
