@@ -147,11 +147,12 @@ export function addAppToTaskbar (event, homeContainer) {
   // console.log("!", appInstancesContainerDiv);
 
   // getting 'appInstanceContainerDiv' from 'taskbarApp'
-  const appInstancesContainerDiv = taskbarApp.querySelector('.app-instances-container')
+  const appInstancesContainerDiv = taskbarApp.querySelector('.app-instances-container');
   // putting 'instancePreviewDiv' in appInstancesContainerDiv
   appInstancesContainerDiv.append(instancePreviewDiv);
 
-
+  // calling this function 
+  taskbarAppHoverAdd(homeContainer, instancePreviewDiv);
   
 
 
@@ -185,3 +186,12 @@ function taskbarAppHoverRemove (taskbarAppSpan) {
 }
 
 */
+
+function taskbarAppHoverAdd(homeContainer, instancePreviewDiv){
+  console.log("function:", homeContainer);
+
+  const homeContainerCopy  = homeContainer.cloneNode(true);
+  homeContainerCopy.classList.add('taskbar-app-hover');
+  instancePreviewDiv.append(homeContainerCopy);
+  
+}

@@ -110,9 +110,9 @@
   
   height: 50px;
   width: 50px;
-  background-color: white;
+  /* background-color: white; */
   border: solid;
   border-color: black;
-  flex-direction: column;
+  
   flex: 1;
 }
