@@ -46,9 +46,11 @@
   transform: scale(0.95);
 }
 
+/*
 .taskbar-app-hover {
   transform: scale(0.3);
   /* pointer-events: none; */
+  /*
   top: auto !important; 
   left: -185px !important;
   bottom: -50px;
@@ -57,7 +59,7 @@
   border-width: 10px !important;
   border-radius: 10px;
   display: inline-block !important;
-}
+}*/
 
 
 /* .taskbar-home-container {
@@ -115,4 +117,22 @@
   border-color: black;
   
   flex: 1;
+  flex-shrink: 0;
+
+  /* position: relative;
+  overflow: hidden; */
+  
+}
+
+.taskbar-app-hover{
+  /* position: absolute ; 
+  top: 0;
+  left: 0;
+  width: 350px;
+    height: 250px;
+  transform: scale(0.3);
+  bottom: auto;
+    pointer-events: none; */
+  display: block !important;
+    transform: scale(0.3);
 }

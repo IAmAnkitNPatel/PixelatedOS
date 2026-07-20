@@ -193,5 +193,6 @@ function taskbarAppHoverAdd(homeContainer, instancePreviewDiv){
   const homeContainerCopy  = homeContainer.cloneNode(true);
   homeContainerCopy.classList.add('taskbar-app-hover');
   instancePreviewDiv.append(homeContainerCopy);
-  
+  console.log("copyfunction:", homeContainerCopy);
+console.log("Clone HTML:", homeContainerCopy.outerHTML);
 }
