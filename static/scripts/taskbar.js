@@ -152,7 +152,16 @@ export function addAppToTaskbar (event, homeContainer) {
   appInstancesContainerDiv.append(instancePreviewDiv);
 
   // calling this function 
-  taskbarAppHoverAdd(homeContainer, instancePreviewDiv);
+  const taskbarAppSpan = taskbarApp.querySelector('.taskbar-app');
+  console.log("taskbarAPPspan",taskbarAppSpan);
+console.log(taskbarApp.outerHTML)
+  console.log(taskbarAppSpan.outerHTML)
+  
+  console.log(appInstancesContainerDiv)
+  taskbarApp.addEventListener('mouseenter', ()=>{
+    taskbarAppHoverAdd(homeContainer, instancePreviewDiv);  
+  });
+  
   
 
 
