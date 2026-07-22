@@ -77,7 +77,7 @@
 
 
 .app-instances-container {
-  height: 50px;
+  /* height: 50px; */
   /* width: 50px; */
   border:solid;
 
@@ -110,8 +110,8 @@
 
 .instance-preview-div{
   
-  height: 50px;
-  width: 50px;
+  height: 70px;
+  width: 100px;
   /* background-color: white; */
   border: solid;
   border-color: black;
@@ -121,7 +121,9 @@
 
   /* position: relative;
   overflow: hidden; */
-  
+  /* position: relative;
+  overflow: visible; */
+  /* position: relative; */
 }
 
 .taskbar-app-hover{
@@ -133,6 +135,47 @@
   transform: scale(0.3);
   bottom: auto;
     pointer-events: none; */
-  display: block !important;
+  /* display: block !important;
     transform: scale(0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 350px;
+      height: 250px; */
+      /* position: absolute; */
+
+  transform-origin: top left !important;
+  transform: scale(0.3);
+  pointer-events: none;
+  position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin: 0 !important;
+    width: 350px !important;
+      height: 250px !important;
 }
+
+/* .instance-preview-div {
+  width: 105px;
+  height: 75px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid black;
+  flex-shrink: 0;
+}
+
+.taskbar-app-hover {
+  display: block !important;
+  width: 350px !important;
+  height: 250px !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  /* 1. Scale from top-left so it doesn't float away */
+/*  transform-origin: top left;
+  transform: scale(0.3);
+
+  /* 2. Prevent clicks inside preview */
+/*  pointer-events: none;
+} */
