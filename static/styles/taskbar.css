@@ -123,7 +123,8 @@
   overflow: hidden; */
   /* position: relative;
   overflow: visible; */
-  /* position: relative; */
+  position: relative;
+  margin: 10px;
 }
 
 .taskbar-app-hover{
@@ -153,6 +154,10 @@
     margin: 0 !important;
     width: 350px !important;
       height: 250px !important;
+/*       
+  right: 0 !important;
+  bottom: 0 !important;
+  padding: 10px !important; */
 }
 
 /* .instance-preview-div {
