@@ -204,5 +204,5 @@ function taskbarAppHoverAdd(homeContainer, instancePreviewDiv){
   instancePreviewDiv.append(homeContainerCopy);
   console.log("copyfunction:", homeContainerCopy);
 // console.log("Clone HTML:", homeContainerCopy.outerHTML);
-  console.log(instancePreviewDiv)
+  console.log(instancePreviewDiv);
 }
