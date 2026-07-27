@@ -76,6 +76,7 @@ export function addAppToTaskbar (event, homeContainer) {
   }
 */
 
+
 // new code
 
 // will need to create this seperately for each individual app
