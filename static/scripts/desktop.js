@@ -1,4 +1,4 @@
-import { addAppToTaskbar } from "./taskbar.js";
+import { addAppToTaskbar, instancePreviewDivRemove } from "./taskbar.js";
 import { homeExplorerBody } from "./home.js";
 import { homeExplorer } from "../../Home_Explorer/home_explorer.js";
 
@@ -39,7 +39,8 @@ function homeIconDoubleClick(e) {
 
   closeButton.addEventListener('click', ()=>{
     newHomeContainerDiv.remove();
-    taskbarAppSpan.remove();
+    // taskbarAppSpan.remove();
+    instancePreviewDivRemove();
   });
 
   headerButtonSpan.append(minimizeButton, maximizeButton, closeButton);

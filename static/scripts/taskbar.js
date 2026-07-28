@@ -217,3 +217,7 @@ function taskbarAppHoverRemove(instancePreviewDiv){
   // check how is it working like for single directly without getting all
   .remove();
 }
+
+export function instancePreviewDivRemove(){
+  console.log("close");
+}
