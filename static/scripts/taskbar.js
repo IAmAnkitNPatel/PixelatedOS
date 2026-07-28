@@ -164,7 +164,9 @@ export function addAppToTaskbar (event, homeContainer) {
   });
   
   
-
+  taskbarApp.addEventListener('mouseleave', ()=>{
+    taskbarAppHoverRemove(instancePreviewDiv);
+  });
 
   // for now commenting this below section out
   /*
@@ -206,4 +208,12 @@ function taskbarAppHoverAdd(homeContainer, instancePreviewDiv){
   console.log("copyfunction:", homeContainerCopy);
 // console.log("Clone HTML:", homeContainerCopy.outerHTML);
   console.log(instancePreviewDiv);
+}
+
+function taskbarAppHoverRemove(instancePreviewDiv){
+  console.log("taskbarAppHoverRemove");
+  console.log(instancePreviewDiv);
+  instancePreviewDiv.querySelector('.taskbar-app-hover')
+  // check how is it working like for single directly without getting all
+  .remove();
 }
