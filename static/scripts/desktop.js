@@ -64,6 +64,7 @@ function homeIconDoubleClick(e) {
   //   minimize(newHomeContainerDiv);
   // });
 
+
   // homeExplorer Body Div
   // homeExplorerBody(newHomeContainerDiv);
   homeExplorer(newHomeContainerDiv);
