@@ -181,7 +181,6 @@ export function addAppToTaskbar (event, homeContainer) {
 }
 
 
-
 // with below code every app instance will have their own taskbar icon
 // comment it out for now
 /*
