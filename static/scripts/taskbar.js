@@ -168,6 +168,9 @@ export function addAppToTaskbar (event, homeContainer) {
     taskbarAppHoverRemove(instancePreviewDiv);
   });
 
+  // we are returning instancePreviewDiv to remove the instancePreviewDiv
+  return instancePreviewDiv;
+
   // for now commenting this below section out
   /*
 
@@ -219,4 +222,5 @@ function taskbarAppHoverRemove(instancePreviewDiv){
 
 export function instancePreviewDivRemove(){
   console.log("close");
+  
 }

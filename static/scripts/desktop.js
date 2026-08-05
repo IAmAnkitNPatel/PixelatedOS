@@ -39,7 +39,7 @@ function homeIconDoubleClick(e) {
 
   closeButton.addEventListener('click', ()=>{
     newHomeContainerDiv.remove();
-    // taskbarAppSpan.remove();
+    taskbarAppSpan.remove(); // this is removing preview because we are returning instancePreviewDiv
     instancePreviewDivRemove();
   });
 
@@ -55,6 +55,14 @@ function homeIconDoubleClick(e) {
   bringOnTop(newHomeContainerDiv);
 
   maximizeButton.addEventListener('click', maximize);
+  // calling maximize function when we click on taskbarAppSpan
+  // we will need to change the logic but till then
+  // actually minimize function is working in place maximize
+  // but we will need to fix this cause it should not minimize
+  taskbarAppSpan.addEventListener('click', ()=>{
+    minimize(newHomeContainerDiv);
+  });
+
   minimizeButton.addEventListener('click', ()=>{
     minimize(newHomeContainerDiv);
   });
