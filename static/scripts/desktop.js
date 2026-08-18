@@ -1,4 +1,4 @@
-import { addAppToTaskbar, instancePreviewDivRemove } from "./taskbar.js";
+import { addAppToTaskbar, instancePreviewDivRemove, removeTaskbarIcon } from "./taskbar.js";
 import { homeExplorerBody } from "./home.js";
 import { homeExplorer } from "../../Home_Explorer/home_explorer.js";
 
@@ -39,8 +39,13 @@ function homeIconDoubleClick(e) {
 
   closeButton.addEventListener('click', ()=>{
     newHomeContainerDiv.remove();
+
+    console.log("taskbarAppSpan", taskbarAppSpan);
+    removeTaskbarIcon(taskbarAppSpan);
+    /*
     taskbarAppSpan.remove(); // this is removing preview because we are returning instancePreviewDiv
     instancePreviewDivRemove();
+    */
   });
 
   headerButtonSpan.append(minimizeButton, maximizeButton, closeButton);
@@ -74,7 +79,7 @@ function homeIconDoubleClick(e) {
 
   
 
-  
+
   // homeExplorer Body Div
   // homeExplorerBody(newHomeContainerDiv);
   homeExplorer(newHomeContainerDiv);

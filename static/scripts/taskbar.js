@@ -224,3 +224,29 @@ export function instancePreviewDivRemove(){
   console.log("close");
   
 }
+
+export function removeTaskbarIcon(instancePreviewDiv){
+  console.log("removeTaskbarIcon");
+  console.log(instancePreviewDiv);
+  const appInstancesContainerDiv = instancePreviewDiv.closest('.app-instances-container');
+  console.log(appInstancesContainerDiv);
+
+  // removing instance preview div
+  instancePreviewDiv.remove();
+
+  if(
+      !(  Array.from(appInstancesContainerDiv.children).find(
+          element => {
+            if(element.classList.contains('instance-preview-div')){
+              return true;
+            }
+          }
+        )
+      )
+    ){
+    console.log(".empty remove icon");
+    const taskbarApp = appInstancesContainerDiv.closest('.taskbar-app');
+    console.log(taskbarApp);
+    taskbarApp.remove();
+  }
+}
