@@ -42,9 +42,9 @@
   background-color: rgb(165, 165, 165);
 }
 
-.taskbar-app:active {
+/* .taskbar-app:active {
   transform: scale(0.95);
-}
+} */
 
 /*
 .taskbar-app-hover {
@@ -105,7 +105,7 @@
   left: 0;
   width: 100%;
   height: 12px;
-  background-color: black;
+  /* background-color: black;  */
 }
 
 .instance-preview-div{
@@ -158,6 +158,10 @@
   right: 0 !important;
   bottom: 0 !important;
   padding: 10px !important; */
+
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
 }
 
 /* .instance-preview-div {
@@ -184,3 +188,32 @@
   /* 2. Prevent clicks inside preview */
 /*  pointer-events: none;
 } */
+
+.instance-preview-div {
+  width: 160px;
+  /* Set fixed preview slot size */
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Target the cloned window inside the preview */
+.instance-preview-div .taskbar-app-hover {
+  width: 800px !important;
+  /* Set original window size */
+  height: 500px !important;
+  transform: scale(0.2);
+  /* Shrink it down to fit 160x100 */
+  transform-origin: top left;
+  pointer-events: none;
+  /* Disable clicking buttons inside the preview */
+
+
+
+  /*  */
+  display: block;
+}
+
+.instance-preview-div:active{
+    transform: scale(0.95);
+}
