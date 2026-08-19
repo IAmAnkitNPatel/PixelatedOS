@@ -199,6 +199,7 @@ function taskbarAppHoverRemove (taskbarAppSpan) {
   appHover.remove();
 }
 
+
 */
 
 function taskbarAppHoverAdd(homeContainer, instancePreviewDiv){
