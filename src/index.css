@@ -72,3 +72,30 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+
+
+/* Home App Shell.jsx */
+
+.home-app-shell {
+  width: 300px;
+  height: 300px;
+  border: solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell-header {
+  /* flex: 1; */
+  display: flex;
+}
+
+.shell-header-title {
+  flex: 1;
+}
+
+.shell-header-buttons {
+  display: flex;
+  /* flex: 1; */
+}
+
