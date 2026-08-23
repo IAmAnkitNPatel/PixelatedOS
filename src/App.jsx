@@ -5,11 +5,27 @@ import { useState } from 'react';
 
 export default function App() {
 
+  
+
+  // const [isOpen, setIsOpen] = useState(false);
+
+  const [openApps, setOpenApps] = useState([]);
+
   const handleOpenHomeExplorer = () => {
-    alert("Opening Home Explorer!");
+    // alert("Opening Home Explorer!");
+
+    const newInstance = {
+      id: crypto.randomUUID(),
+      appName: 'Home Explorer'
+    };
+    setOpenApps((prev) => [...prev, newInstance]);
   };
 
-  const [isOpen, SetIsOpen] = useState(false);
+  const handleCloseHomeExplorer = (idToClose) => {
+    setOpenApps((prev) => prev.filter((app) => app.id !== idToClose));
+  };
+
+
 
 
   return (
@@ -18,16 +34,24 @@ export default function App() {
         <DesktopIcon
           name="Home Explorer"
           icon="🏠"
-          // openApp={handleOpenHomeExplorer}
-          openApp={() => SetIsOpen(true)}
+          openApp={handleOpenHomeExplorer}
+          // openApp={() => setIsOpen(true)}
         />
 
-        {isOpen && (
+        {/* {isOpen && (
           <HomeAppShell
             appName="Home Explorer"
-            closeApp={() => SetIsOpen(false)}
+            closeApp={() => setIsOpen(false)}
           />
-        )}
+        )} */}
+
+        {openApps.map((app) => (
+          <HomeAppShell
+            key={app.id}
+            appName={app.appName}
+            closeApp={() => handleCloseHomeExplorer(app.id)}
+          />
+        ))}
         
       </div>
     </div>

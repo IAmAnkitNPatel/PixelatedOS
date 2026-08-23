@@ -83,6 +83,7 @@ body {
   border: solid;
   display: flex;
   flex-direction: column;
+  /* margin-top: 100px; */
 }
 
 .shell-header {
