@@ -14,9 +14,17 @@ export default function App() {
   const handleOpenHomeExplorer = () => {
     // alert("Opening Home Explorer!");
 
+    const offset = (openApps.length % 10)*25;
+
+    
+    console.log(100 + offset)
     const newInstance = {
       id: crypto.randomUUID(),
-      appName: 'Home Explorer'
+      appName: 'Home Explorer',
+      initialPosition: {
+        x: 100 + offset, 
+        y: 100 + offset
+      }
     };
     setOpenApps((prev) => [...prev, newInstance]);
   };
@@ -50,6 +58,7 @@ export default function App() {
             key={app.id}
             appName={app.appName}
             closeApp={() => handleCloseHomeExplorer(app.id)}
+            initialPosition={app.initialPosition}
           />
         ))}
         
