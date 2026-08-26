@@ -36,27 +36,39 @@ export default function HomeAppShell (props) {
     });
   };
 
-  useEffect
+  useEffect(()=> {
+    const handleMouseMove = (e)=>{
+      if(!isDragging) return;
 
-  const handleMouseMove = (e)=>{
-    if(!setIsDragging) return;
+      setPosition({
+        x: e.clientX - dragOffset.x,
+        y: e.clientY - dragOffset.y
+      });
+    }
+    
+    const handleMouseUp = ()=>{
+      setIsDragging(false);
+    }
 
-    setPosition({
-      x: e.clientX - dragOffset.x,
-      y: e.clientY - dragOffset.y
-    });
-  }
-  
-  const handleMouseUp = ()=>{
-    setIsDragging(false);
-  }
+    if (isDragging) {
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isDragging, dragOffset]);
+
+
   return (
     <div
       className="home-app-shell"
       style={{
         position: 'absolute',
-        left: `${startX}px`,
-        top: `${startY}px`
+        left: `${position.x}px`,
+        top: `${position.y}px`
       }}
     >
       <div
@@ -69,6 +81,7 @@ export default function HomeAppShell (props) {
           <div className="shell-maximize-button">▣</div>
           <div className="shell-close-button"
             onClick={props.closeApp}
+            onMouseDown={(e)=> e.stopPropagation()}
           >✖</div>
         </div>
       </div>
