@@ -101,3 +101,34 @@ body {
   /* flex: 1; */
 }
 
+
+/* taskbar */
+
+.taskbar {
+  background-color: rgb(192, 192, 192);
+  height: 40px;
+  border-top: 2px solid #ffffff;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10000;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+}
+
+.taskbar-left-section {
+  /* border: solid; */
+  flex: 1;
+}
+
+.taskbar-middle-section {
+  /* border: solid; */
+  /* border-color: red; */
+  flex: 3;
+}
+
+.taskbar-right-section {
+  /* border: solid; */
+  flex: 1;
+}
