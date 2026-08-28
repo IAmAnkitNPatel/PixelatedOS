@@ -4,7 +4,6 @@ import HomeAppShell from './components/HomeAppShell';
 import { useState } from 'react';
 
 export default function App() {
-
   
 
   // const [isOpen, setIsOpen] = useState(false);
