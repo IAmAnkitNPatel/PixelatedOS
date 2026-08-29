@@ -2,6 +2,7 @@ import './index.css';
 import DesktopIcon from './components/DesktopIcons';
 import HomeAppShell from './components/HomeAppShell';
 import { useState } from 'react';
+import TaskbarApps from './components/TaskbarApps';
 
 export default function App() {
   
@@ -66,7 +67,14 @@ export default function App() {
       </div>
       <div className='taskbar'>
         <div className="taskbar-left-section"></div>
-        <div className="taskbar-middle-section"></div>
+        <div className="taskbar-middle-section">
+          {openApps.map((app) => (
+            <TaskbarApps
+              key={app.id}
+              app={app}
+            />
+          ))}
+        </div>
         <div className="taskbar-right-section"></div>
 
       </div>
