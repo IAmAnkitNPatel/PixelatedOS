@@ -1,8 +1,8 @@
-export default function DesktopIcon({ name, icon, openApp }) {
+export default function DesktopIcon(props) {
   return (
-    <div className="home-icon" onDoubleClick={openApp}>
-      <div className="icon-image">{icon}</div>
-      <div className="icon-name">{name}</div>
+    <div className="home-icon" onDoubleClick={props.openApp}>
+      <div className="icon-image">{props.app.icon}</div>
+      <div className="icon-name">{props.app.name}</div>
     </div>
   );
 }

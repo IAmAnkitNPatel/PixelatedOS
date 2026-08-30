@@ -3,6 +3,7 @@ import DesktopIcon from './components/DesktopIcons';
 import HomeAppShell from './components/HomeAppShell';
 import { useState } from 'react';
 import TaskbarApps from './components/TaskbarApps';
+import { Apps } from './config/apps';
 
 export default function App() {
   
@@ -41,8 +42,9 @@ export default function App() {
       <div className="desktop">
         <div className="workspace">
           <DesktopIcon
-            name="Home Explorer"
-            icon="🏠"
+            // name="Home Explorer"
+            // icon="🏠"
+            app={Apps.homeExplorer}
             openApp={handleOpenHomeExplorer}
             // openApp={() => setIsOpen(true)}
           />
