@@ -1,6 +1,6 @@
 export const Apps = {
   homeExplorer: {
-    id: "home-explorer",
+    id: "homeExplorer",
     name: "Home Explorer",
     icon: "🏠"
   }

@@ -21,7 +21,7 @@ export default function App() {
     console.log(100 + offset)
     const newInstance = {
       id: crypto.randomUUID(),
-      appName: 'Home Explorer',
+      appId: Apps.homeExplorer.id,
       initialPosition: {
         x: 100 + offset, 
         y: 100 + offset
