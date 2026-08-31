@@ -126,9 +126,25 @@ body {
   /* border: solid; */
   /* border-color: red; */
   flex: 3;
+  display: flex;
 }
 
 .taskbar-right-section {
   /* border: solid; */
   flex: 1;
+}
+
+.taskbar-app-icon {
+  font-size: 30px;
+  display: inline-block;
+
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-bottom: 3px;
+  border-radius: 7px;
+
+  cursor: default;
+  transition: background-color 0.3s, transform 0.1s;
+
+  position: relative;
 }
