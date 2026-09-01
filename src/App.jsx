@@ -34,7 +34,9 @@ export default function App() {
     setOpenApps((prev) => prev.filter((app) => app.id !== idToClose));
   };
 
-
+  const groupedApps = ()=>{
+    
+  }
 
 
   return (
