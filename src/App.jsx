@@ -34,9 +34,17 @@ export default function App() {
     setOpenApps((prev) => prev.filter((app) => app.id !== idToClose));
   };
 
-  const groupedApps = ()=>{
-    
-  }
+  const groupedApps = openApps.reduce((acc, instance)=>{
+    const { appId } = instance;
+
+    if(!acc[appId]) {
+      acc[appId] = [];
+    }
+
+    acc[appId].push(instance);
+
+    return acc;
+  }, {});
 
 
   return (
@@ -72,12 +80,15 @@ export default function App() {
       <div className='taskbar'>
         <div className="taskbar-left-section"></div>
         <div className="taskbar-middle-section">
-          {openApps.map((app) => (
+
+          {Object.entries(groupedApps).map(([appId, instances]) => (
             <TaskbarApps
-              key={app.id}
-              app={app}
+              key={appId}
+              appId={appId}
+              appInstances={instances}
             />
           ))}
+
         </div>
         <div className="taskbar-right-section"></div>
 
