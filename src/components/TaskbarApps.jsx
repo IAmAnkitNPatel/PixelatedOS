@@ -1,4 +1,5 @@
 import { Apps } from "../config/apps";
+import TaskbarHoverPreview from "./TaskbarHoverPreview";
 
 export default function TaskbarApps({appId, appInstances}) {
   // console.log("opened App", app);
@@ -19,7 +20,12 @@ export default function TaskbarApps({appId, appInstances}) {
       </div>
       <div className="taskbar-app-instances-container">
         {appInstances.map((instance)=>(
-          <div className="taskbar-app-instance"></div>
+          <div className="taskbar-app-instance">
+            <TaskbarHoverPreview
+              appId={instance.id}
+              appInstance={instance}
+            />
+          </div>
         ))}
       </div>
 
