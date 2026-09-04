@@ -2,8 +2,12 @@ import { useState, useEffect } from 'react';
 
 export default function HomeAppShell (props) {
   
-  const startX = props.initialPosition.x;
-  const startY = props.initialPosition.y;
+  // if(!props.isPreview){
+    // console.log("notPreview");
+  
+  // const startX = props.initialPosition.x;
+  // const startY = props.initialPosition.y;
+  const startPos= props.initialPosition ?? {x:0, y:0};
 
   // console.log("homeappshell corrdinates", startX, startY);
 
@@ -17,6 +21,9 @@ export default function HomeAppShell (props) {
   });
 
   const handleMouseDown = (e)=>{
+
+    if(props.isPreview) return;
+
     setIsDragging(true);
 
     console.log("setIsDragging = ", isDragging);
@@ -37,6 +44,9 @@ export default function HomeAppShell (props) {
   };
 
   useEffect(()=> {
+
+    if(props.isPreview) return;
+
     const handleMouseMove = (e)=>{
       if(!isDragging) return;
 
@@ -59,17 +69,26 @@ export default function HomeAppShell (props) {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [isDragging, dragOffset]);
+  }, [isDragging, dragOffset, props.isPreview]);
 
-
+  // }
   return (
     <div
       className="home-app-shell"
+      // if(!props.isPreview){
+
+      // style={{
+      //   position: 'absolute',
+      //   left: `${position.x}px`,
+      //   top: `${position.y}px`
+      // }}
+      // }
+
       style={{
-        position: 'absolute',
-        left: `${position.x}px`,
-        top: `${position.y}px`
-      }}
+      position: props.isPreview ? 'relative' : 'absolute',
+      left: props.isPreview ? '0px' : `${position.x}px`,
+      top: props.isPreview ? '0px' : `${position.y}px`
+    }}
     >
       <div
         className="shell-header" 

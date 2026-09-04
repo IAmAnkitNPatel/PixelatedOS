@@ -20,11 +20,13 @@ export default function TaskbarApps({appId, appInstances}) {
       </div>
       <div className="taskbar-app-instances-container">
         {appInstances.map((instance)=>(
-          <div className="taskbar-app-instance">
-            <TaskbarHoverPreview
-              appId={instance.id}
-              appInstance={instance}
-            />
+          <div 
+            key={instance.id}
+            className="taskbar-app-instance">
+              <TaskbarHoverPreview
+                appId={instance.id}
+                appInstance={instance}
+              />
           </div>
         ))}
       </div>

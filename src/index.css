@@ -148,3 +148,12 @@ body {
 
   position: relative;
 }
+
+
+.taskbar-app-container{
+  position: relative;
+}
+
+.taskbar-app-instances-container{
+  position: absolute !important;
+}
