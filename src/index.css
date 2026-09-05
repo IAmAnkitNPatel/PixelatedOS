@@ -156,4 +156,20 @@ body {
 
 .taskbar-app-instances-container{
   position: absolute !important;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  /* pointer-events: none;
+  transform: scale(0.3); */
+  /* transform-origin: top left; */
+  display: flex;
+}
+
+.taskbar-app-instance{
+  pointer-events: none;
+  transform: scale(0.3);
+  /* transform-origin: top left; */
+  top: 0;
+  left: 0;
+  /* position: relative; */
 }
