@@ -168,8 +168,14 @@ body {
 .taskbar-app-instance{
   pointer-events: none;
   transform: scale(0.3);
-  /* transform-origin: top left; */
+  transform-origin: top left;
   top: 0;
   left: 0;
   /* position: relative; */
+  /* height: 100px; */
+    /* width: 130px; */
+    /* flex-shrink: 0; */
+    /* overflow: hidden; */
+
+    
 }

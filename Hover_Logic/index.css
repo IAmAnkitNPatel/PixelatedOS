@@ -1,0 +1,42 @@
+.body{
+  /* display: flex; */
+}
+
+.workspace{
+  border: solid;
+  /* flex: 2; */
+  height: 200px;
+}
+
+.taskbar{
+  border: solid;
+  height: 20px;
+  /* flex: 1; */
+  display: flex;
+}
+
+.taskbar-left-section, .taskbar-right-section{
+  flex: 1;
+}
+
+.taskbar-middle-section{
+  border: solid;
+  flex: 3;
+}
+
+.taskbar-app{
+  position: relative;
+  width: 25px;
+}
+
+.taskbar-app-hover-previews-container{
+  position: absolute;
+  border: solid;
+  bottom: 100%;
+  border-color: red;
+  width: 50px;
+  height: 50px;
+
+  left: 50%;
+  transform: translateX(-50%);
+}
