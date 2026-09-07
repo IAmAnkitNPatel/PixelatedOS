@@ -29,14 +29,40 @@
   width: 25px;
 }
 
+.app-instance{
+  height: 100px;
+  width: 100px;
+  /* position: absolute; */
+}
+
 .taskbar-app-hover-previews-container{
   position: absolute;
   border: solid;
   bottom: 100%;
   border-color: red;
-  width: 50px;
-  height: 50px;
-
+  /* width: 50px; */
+  /* height: 50px; */
   left: 50%;
   transform: translateX(-50%);
+
+  /* Match the 20px visual dimensions */
+    /* width: 20px; */
+    /* height: 20px; */
+    /* overflow: hidden; */
+    transform-origin: left bottom;
+    transform: scale(0.2) translate(-50%);
 }
+
+/* .taskbar-app-hover-preview{
+  /* transform: scale(0.2); */
+
+  /* position: absolute; */position: relative;
+  /* width: 800px !important; */
+    /* Set original window size */
+  /* height: 500px !important; */
+    top: 0;
+    left: 0;
+    transform-origin: top left;
+    /* Scale from top-left instead of center */
+    transform: scale(0.2) !important;
+} */
