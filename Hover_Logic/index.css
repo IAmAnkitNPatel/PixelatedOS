@@ -1,4 +1,4 @@
-.body{
+body{
   /* display: flex; */
 }
 
@@ -50,7 +50,19 @@
     /* height: 20px; */
     /* overflow: hidden; */
     transform-origin: left bottom;
-    transform: scale(0.2) translate(-50%);
+    /* transform: scale(0.2) translate(-50%); */
+    transform: translate(-50%);
+    display: flex;
+    /* padding: 0; */
+}
+.taskbar-app-hover-preview{
+  height: 100px;
+  width: 100px;
+  border: solid;
+  transform: scale(0.2);
+  /* transform-origin: bottom; */
+  /* margin: 0; */
+  margin: -37px;
 }
 
 /* .taskbar-app-hover-preview{
