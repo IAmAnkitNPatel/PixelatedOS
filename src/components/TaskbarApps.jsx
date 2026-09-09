@@ -1,5 +1,6 @@
 import { Apps } from "../config/apps";
 import TaskbarHoverPreview from "./TaskbarHoverPreview";
+import { useState } from "react";
 
 export default function TaskbarApps({appId, appInstances}) {
   // console.log("opened App", app);
@@ -13,12 +14,22 @@ export default function TaskbarApps({appId, appInstances}) {
   const appData = Apps[appId];
   // console.log("found" ,found);
   // console.log(found.icon);
+
+
+
+  const [isHovered, setIsHovered] = useState(false);
+
   return(
-    <div className="taskbar-app-container">
-      <div className="taskbar-app-icon">
+    <div className="taskbar-app-container"
+      onMouseEnter={()=> {setIsHovered(true)}}
+      onMouseLeave={()=> {setIsHovered(false)}}
+    >
+      <div className="taskbar-app-icon"
+      >
         {appData.icon}
       </div>
-      <div className="taskbar-app-instances-container">
+      {isHovered &&(
+        <div className="taskbar-app-instances-container">
         {appInstances.map((instance)=>(
           <div 
             key={instance.id}
@@ -31,6 +42,8 @@ export default function TaskbarApps({appId, appInstances}) {
         ))}
       </div>
 
+      )}
+      
     </div>
   )
 }

@@ -170,6 +170,7 @@ body {
   margin-bottom: 10px;
   /* display: none; */
   display: flex;
+  /* pointer-events: auto !important; */
 }
 
 .taskbar-app-instance{
@@ -199,4 +200,13 @@ body {
   margin-right: -100px;
   margin-top: -37px;
     
+}
+
+.taskbar-app-instances-container::after{
+  content: '';
+  position: absolute;
+  top: 100%;
+  /* background-color: black; */
+  height: 13px;
+  width: 100%;
 }
