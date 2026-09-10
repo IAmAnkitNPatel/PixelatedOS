@@ -26,14 +26,14 @@ export default function HomeAppShell (props) {
 
     setIsDragging(true);
 
-    console.log("setIsDragging = ", isDragging);
+    // console.log("setIsDragging = ", isDragging);
 
     // offset is basically distance between the cursor and topleft position of HomeAppShell
     // Offset is the pixel distance between the mouse cursor and the top-left corner of the window at the moment of click
 
-    console.log("coordinates")
-    console.log(e.clientX);
-    console.log(e.clientY);
+    // console.log("coordinates")
+    // console.log(e.clientX);
+    // console.log(e.clientY);
     const offsetX = e.clientX - position.x;
     const offsetY = e.clientY - position.y;
 
@@ -72,9 +72,17 @@ export default function HomeAppShell (props) {
   }, [isDragging, dragOffset, props.isPreview]);
 
   // }
+
+  const [isMinimized, setIsMinimized] = useState(false);
+  const [isMaximized, setIsMaximized] = useState(false);
+
+  // if(isMinimized) console.log("Minimized");
   return (
     <div
-      className="home-app-shell"
+      className={`
+        home-app-shell
+        ${isMinimized ? 'minimized' : ''}
+      `}
       // if(!props.isPreview){
 
       // style={{
@@ -95,12 +103,15 @@ export default function HomeAppShell (props) {
         onMouseDown={handleMouseDown}
       >
         <div className="shell-header-title">{props.appName}</div>
-        <div className="shell-header-buttons">
-          <div className="shell-minimize-button">▼</div>
+        <div className="shell-header-buttons"
+          onMouseDown={(e)=> e.stopPropagation()}
+        >
+          <div className="shell-minimize-button"
+            onClick={ (e)=> setIsMinimized(true)}
+          >▼</div>
           <div className="shell-maximize-button">▣</div>
           <div className="shell-close-button"
             onClick={props.closeApp}
-            onMouseDown={(e)=> e.stopPropagation()}
           >✖</div>
         </div>
       </div>

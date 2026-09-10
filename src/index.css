@@ -210,3 +210,7 @@ body {
   height: 13px;
   width: 100%;
 }
+
+.home-app-shell.minimized {
+  display: none !important;
+}
