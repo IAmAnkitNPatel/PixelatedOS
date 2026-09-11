@@ -22,6 +22,7 @@ body {
   padding: 20px;
   align-items: start;
   justify-items: center;
+  position: relative;
 }
 
 .home-icon {
@@ -213,4 +214,13 @@ body {
 
 .home-app-shell.minimized {
   display: none !important;
+}
+
+.home-app-shell.maximized {
+  position: absolute;
+  left: 0 !important;
+  top: 0 !important;
+  height: 100%;
+  width: 100%;
+
 }

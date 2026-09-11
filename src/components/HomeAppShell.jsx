@@ -22,7 +22,7 @@ export default function HomeAppShell (props) {
 
   const handleMouseDown = (e)=>{
 
-    if(props.isPreview) return;
+    if(props.isPreview || isMaximized) return;
 
     setIsDragging(true);
 
@@ -82,6 +82,7 @@ export default function HomeAppShell (props) {
       className={`
         home-app-shell
         ${isMinimized ? 'minimized' : ''}
+        ${isMaximized ? 'maximized' : ''}
       `}
       // if(!props.isPreview){
 
@@ -93,10 +94,10 @@ export default function HomeAppShell (props) {
       // }
 
       style={{
-      position: props.isPreview ? 'relative' : 'absolute',
-      left: props.isPreview ? '0px' : `${position.x}px`,
-      top: props.isPreview ? '0px' : `${position.y}px`
-    }}
+        position: props.isPreview ? 'relative' : 'absolute',
+        left: props.isPreview ? '0px' : `${position.x}px`,
+        top: props.isPreview ? '0px' : `${position.y}px`
+      }}
     >
       <div
         className="shell-header" 
@@ -107,9 +108,11 @@ export default function HomeAppShell (props) {
           onMouseDown={(e)=> e.stopPropagation()}
         >
           <div className="shell-minimize-button"
-            onClick={ (e)=> setIsMinimized(true)}
+            onClick={()=> setIsMinimized(true)}
           >▼</div>
-          <div className="shell-maximize-button">▣</div>
+          <div className="shell-maximize-button"
+            onClick={()=> setIsMaximized((prev)=> !prev)}
+          >▣</div>
           <div className="shell-close-button"
             onClick={props.closeApp}
           >✖</div>
