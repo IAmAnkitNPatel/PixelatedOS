@@ -22,6 +22,7 @@ export default function App() {
     const newInstance = {
       id: crypto.randomUUID(),
       appId: Apps.homeExplorer.id,
+      isMinimized: false,
       initialPosition: {
         x: 100 + offset, 
         y: 100 + offset
