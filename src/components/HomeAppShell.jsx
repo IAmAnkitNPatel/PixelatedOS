@@ -109,7 +109,8 @@ export default function HomeAppShell (props) {
           onMouseDown={(e)=> e.stopPropagation()}
         >
           <div className="shell-minimize-button"
-            onClick={()=> setIsMinimized(true)}
+            // onClick={()=> setIsMinimized(true)}
+            onClick={()=> props.minimizeApp}
           >▼</div>
           <div className="shell-maximize-button"
             onClick={()=> setIsMaximized((prev)=> !prev)}
