@@ -81,7 +81,7 @@ export default function HomeAppShell (props) {
     <div
       className={`
         home-app-shell
-        ${isMinimized ? 'minimized' : ''}
+        ${props.app.isMinimized ? 'minimized' : ''}
         ${isMaximized ? 'maximized' : ''}
       `}
       // if(!props.isPreview){
@@ -110,7 +110,7 @@ export default function HomeAppShell (props) {
         >
           <div className="shell-minimize-button"
             // onClick={()=> setIsMinimized(true)}
-            onClick={()=> props.minimizeApp}
+            onClick={props.minimizeApp}
           >▼</div>
           <div className="shell-maximize-button"
             onClick={()=> setIsMaximized((prev)=> !prev)}

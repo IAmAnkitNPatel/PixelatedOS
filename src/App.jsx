@@ -36,6 +36,7 @@ export default function App() {
   };
 
   const handleHomeAppShellMinimize = (idToMinimize) => {
+    console.log("handleHomeAppShellMinimize")
     setOpenApps((prev) => prev.map((app) => app.id === idToMinimize ? {...app, isMinimized: !app.isMinimized } : app));
   }
 
@@ -77,7 +78,8 @@ export default function App() {
               appName={app.appName}
               closeApp={() => handleCloseHomeExplorer(app.id)}
               initialPosition={app.initialPosition}
-              minimizeApp={handleHomeAppShellMinimize(app.id)}
+              minimizeApp={() => handleHomeAppShellMinimize(app.id)}
+              app={app}
             />
           ))}
           
