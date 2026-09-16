@@ -73,7 +73,8 @@ export default function HomeAppShell (props) {
 
   // }
 
-  const [isMinimized, setIsMinimized] = useState(false);
+  // const [isMinimized, setIsMinimized] = useState(false);
+  const isMinimized = props.app?.isMinimized ?? props.isMinimized ?? false; // check how it works
   const [isMaximized, setIsMaximized] = useState(false);
 
   // if(isMinimized) console.log("Minimized");
@@ -81,7 +82,7 @@ export default function HomeAppShell (props) {
     <div
       className={`
         home-app-shell
-        ${props.app.isMinimized ? 'minimized' : ''}
+        ${isMinimized ? 'minimized' : ''}
         ${isMaximized ? 'maximized' : ''}
       `}
       // if(!props.isPreview){

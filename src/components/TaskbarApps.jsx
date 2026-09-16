@@ -2,7 +2,7 @@ import { Apps } from "../config/apps";
 import TaskbarHoverPreview from "./TaskbarHoverPreview";
 import { useState } from "react";
 
-export default function TaskbarApps({appId, appInstances}) {
+export default function TaskbarApps({appId, appInstances, handleHomeAppShellMinimize}) {
   // console.log("opened App", app);
   // console.log("", app.icon)
   // console.log(Apps);
@@ -33,11 +33,15 @@ export default function TaskbarApps({appId, appInstances}) {
         {appInstances.map((instance)=>(
           <div 
             key={instance.id}
-            className="taskbar-app-instance">
-              <TaskbarHoverPreview
-                appId={instance.id}
-                appInstance={instance}
-              />
+            className="taskbar-app-instance-box"
+            onClick={() => handleHomeAppShellMinimize(instance.id)}
+            >
+              <div className="taskbar-app-instance">
+                <TaskbarHoverPreview
+                  appId={instance.id}
+                  appInstance={instance}
+                />
+              </div>
           </div>
         ))}
       </div>

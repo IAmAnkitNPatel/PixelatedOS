@@ -94,6 +94,7 @@ export default function App() {
               key={appId}
               appId={appId}
               appInstances={instances}
+              handleHomeAppShellMinimize={handleHomeAppShellMinimize}
             />
           ))}
 
