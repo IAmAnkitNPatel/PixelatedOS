@@ -18,7 +18,7 @@ export default function App() {
     const offset = (openApps.length % 10)*25;
 
     
-    
+  
     console.log(100 + offset)
     const newInstance = {
       id: crypto.randomUUID(),
