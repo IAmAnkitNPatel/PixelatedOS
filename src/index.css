@@ -230,3 +230,34 @@ body {
   width: 100%;
 
 }
+
+/* Home Explorer */
+
+.home-explorer{
+  border: solid;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-explorer-header{
+  border: solid red;
+  flex: 1;
+}
+
+.home-explorer-body{
+  border: solid blue;
+  flex: 7;
+  display: flex;
+}
+
+.home-explorer-sidebar{
+  border: solid red;
+  flex: 1;
+}
+
+.home-explorer-workspace{
+  border: solid red;
+  flex: 7;
+}
