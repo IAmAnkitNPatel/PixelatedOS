@@ -9,14 +9,23 @@ export default function HomeExplorerWorkspace() {
 
   return(
     <div className="home-explorer-workspace">
-      {currentRoom.children.map((child) => (
+      {/* {if(child) {
+          <div>Empty</div>
+        }} */
+        currentRoom.children.length === 0 
+        ? 
+        <div>Empty</div> 
+        :
+        currentRoom.children.map((child) => (
         <div key={child.id}
           onDoubleClick={() => {
             console.log(child);
             setCurrentRoom(child);
           }}
         >{child.name}</div>
-      ))}
+        
+      ))
+      }
       
     </div>
   );
