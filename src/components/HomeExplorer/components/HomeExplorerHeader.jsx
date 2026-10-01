@@ -1,3 +1,5 @@
+import { homeExplorerData } from "../../../../Home_Explorer/home_explorer_data";
+
 export default function HomeExplorerHeader() {
   return(
     <div className="home-explorer-header">
