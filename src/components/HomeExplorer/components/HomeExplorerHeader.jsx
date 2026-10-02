@@ -1,6 +1,6 @@
 import { homeExplorerData } from "../../../../Home_Explorer/home_explorer_data";
 
-export default function HomeExplorerHeader() {
+export default function HomeExplorerHeader(props) {
   return(
     <div className="home-explorer-header">
       <button className="back-arrow-button">←</button>
@@ -13,6 +13,8 @@ export default function HomeExplorerHeader() {
       <button className="cut-button">Cut</button>
       <button className="paste-button">Paste</button>
       <button className="rename-button">Rename</button>
+
+      {/* <button onClick={}></> */}
     </div>
   );
 }
