@@ -15,7 +15,7 @@ export default function HomeExplorer() {
     
     <div className="home-explorer">
       <HomeExplorerHeader
-        
+        currentRoom = {currentRoom}
         handlecurrentRoom = {handleCurrentRoom}
       />
       <HomeExplorerBody/>
