@@ -2,6 +2,17 @@ import { homeExplorerData } from "../../../../Home_Explorer/home_explorer_data";
 
 export default function HomeExplorerHeader(props) {
 
+  const handleNewRoomButtonClick = () => {
+    const newRoom = {
+      id: "drive-c",
+      type: "room",
+      name: "new room",
+      children: []
+    };
+
+    // const setCurrentRoom =
+  };
+
   console.log(props);
   return(
     <div className="home-explorer-header">
@@ -12,12 +23,12 @@ export default function HomeExplorerHeader(props) {
       <button className="new-room-button"
         onClick={()=>{
           const newRoom = {
-            id: "drive-c",
+            id: "random",
             type: "room",
             name: "new room",
             children: []
           };
-          props.currentRoom.children.append(newRoom);
+          props.currentRoom.children.push(newRoom);
         }}
       >New Room</button>
       <button className="delete-button">Delete</button>
