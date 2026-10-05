@@ -10,7 +10,12 @@ export default function HomeExplorerHeader(props) {
       children: []
     };
 
-    // const setCurrentRoom =
+    const existingChildren = props.currentRoom.children;
+    const updatedChildren = [...existingChildren, newRoom]
+    const updatedRoom = {
+      ...(props.currentRoom),
+      children: updatedChildren
+    }
   };
 
   console.log(props);
@@ -22,13 +27,15 @@ export default function HomeExplorerHeader(props) {
       
       <button className="new-room-button"
         onClick={()=>{
-          const newRoom = {
-            id: "random",
-            type: "room",
-            name: "new room",
-            children: []
-          };
-          props.currentRoom.children.push(newRoom);
+          // const newRoom = {
+          //   id: "random",
+          //   type: "room",
+          //   name: "new room",
+          //   children: []
+          // };
+          // props.currentRoom.children.push(newRoom);
+
+          handleNewRoomButtonClick();
         }}
       >New Room</button>
       <button className="delete-button">Delete</button>
