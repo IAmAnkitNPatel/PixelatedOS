@@ -10,12 +10,21 @@ export default function HomeExplorerHeader(props) {
       children: []
     };
 
-    const existingChildren = props.currentRoom.children;
-    const updatedChildren = [...existingChildren, newRoom]
-    const updatedRoom = {
-      ...(props.currentRoom),
-      children: updatedChildren
-    }
+    // const existingChildren = props.currentRoom.children;
+    // const updatedChildren = [...existingChildren, newRoom]
+    // const updatedRoom = {
+    //   ...(props.currentRoom),
+    //   children: updatedChildren
+    // }
+
+    const newArray =  [...props.currentRoom.children, newRoom]
+    // console.log(newArray);
+    // props.currentRoom.children = newArray;
+
+    const newCurrentRoom = {...props.currentRoom};
+    newCurrentRoom.children.push(newRoom);
+    // console.log(newCurrentRoom);
+    props.setCurrentRoom(newCurrentRoom);
   };
 
   console.log(props);
