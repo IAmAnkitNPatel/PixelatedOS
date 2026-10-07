@@ -17,6 +17,7 @@ export default function HomeExplorer() {
       <HomeExplorerHeader
         currentRoom = {currentRoom}
         handlecurrentRoom = {handleCurrentRoom}
+        setCurrentRoom ={setCurrentRoom}
       />
       <HomeExplorerBody/>
     </div>

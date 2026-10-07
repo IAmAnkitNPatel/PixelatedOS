@@ -25,6 +25,7 @@ export default function HomeExplorerHeader(props) {
     newCurrentRoom.children.push(newRoom);
     // console.log(newCurrentRoom);
     props.setCurrentRoom(newCurrentRoom);
+    console.log("homeExplorerData-: ", homeExplorerData);
   };
 
   console.log(props);
