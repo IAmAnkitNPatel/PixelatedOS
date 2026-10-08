@@ -1,6 +1,9 @@
 import { homeExplorerData } from "../../../../Home_Explorer/home_explorer_data";
+import { useState } from "react";
 
 export default function HomeExplorerHeader(props) {
+
+  // const [navigationHistory, addNavigationHistory] = useState()
 
   const handleNewRoomButtonClick = () => {
     const newRoom = {
