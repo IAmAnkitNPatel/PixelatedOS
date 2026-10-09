@@ -10,7 +10,8 @@ export default function HomeExplorer() {
   const handleCurrentRoom = (room)=>{
     setCurrentRoom(room);
     console.log("currentRoom: ",currentRoom);
-    handleNavigationHistory(currentRoom);
+    // handleNavigationHistory(currentRoom);
+    // console.log("After");
   };
 
   const [navigationHistory, setNavigationHistory] = useState([]);
@@ -29,7 +30,9 @@ export default function HomeExplorer() {
         handlecurrentRoom = {handleCurrentRoom}
         setCurrentRoom ={setCurrentRoom}
       />
-      <HomeExplorerBody/>
+      <HomeExplorerBody
+        handleNavigationHistory = {handleNavigationHistory}
+      />
     </div>
     
   );
