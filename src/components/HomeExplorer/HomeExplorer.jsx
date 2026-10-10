@@ -17,9 +17,11 @@ export default function HomeExplorer() {
   const [navigationHistory, setNavigationHistory] = useState([]);
 
   const handleNavigationHistory = (currentRoom) =>{
-    setNavigationHistory(prevNavigationHistory => [...prevNavigationHistory, currentRoom])
+    // setNavigationHistory(prevNavigationHistory => [...prevNavigationHistory, currentRoom])
+    const updatedNavigationHistory = [...navigationHistory, currentRoom];
+    setNavigationHistory(updatedNavigationHistory);
 
-    console.log("navigationHistory: ", navigationHistory);
+    console.log("navigationHistory: ", updatedNavigationHistory);
   };
 
   return(
