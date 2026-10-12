@@ -6,6 +6,7 @@ export default function HomeExplorerWorkspace(props) {
   // const currentRoom = homeExplorerData;
 
   const [currentRoom, setCurrentRoom] = useState(homeExplorerData);
+  // console.log(props);
 
   return(
     <div className="home-explorer-workspace">
@@ -20,8 +21,9 @@ export default function HomeExplorerWorkspace(props) {
         <div key={child.id}
           onDoubleClick={() => {
             console.log(child);
-            setCurrentRoom(child);
+            // setCurrentRoom(child);
             props.handleNavigationHistory(currentRoom);
+            props.props.handleCurrentRoom(child);
           }}
         >{child.name}</div>
         

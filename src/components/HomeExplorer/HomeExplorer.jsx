@@ -19,12 +19,19 @@ export default function HomeExplorer() {
   const handleNavigationHistory = (currentRoom) =>{
     // setNavigationHistory(prevNavigationHistory => [...prevNavigationHistory, currentRoom])
     // console.log("navigationHistory: ", navigationHistory);
-    
+
     const updatedNavigationHistory = [...navigationHistory, currentRoom];
     setNavigationHistory(updatedNavigationHistory);
 
     console.log("navigationHistory: ", updatedNavigationHistory);
   };
+
+  const handleBackButton = () =>{
+    const currentRoomIndex = navigationHistory.indexOf(currentRoom)
+    const previousRoomIndex = currentRoomIndex - 1;
+    console.log("currentRoomIndex", currentRoomIndex);
+    console.log("previousRoomIndex", previousRoomIndex);
+  }
 
   return(
     
@@ -33,9 +40,12 @@ export default function HomeExplorer() {
         currentRoom = {currentRoom}
         handlecurrentRoom = {handleCurrentRoom}
         setCurrentRoom ={setCurrentRoom}
+        handleBackButton ={handleBackButton}
+        // navigationHistory ={navigationHistory}
       />
       <HomeExplorerBody
         handleNavigationHistory = {handleNavigationHistory}
+        handleCurrentRoom = {handleCurrentRoom}
       />
     </div>
     
