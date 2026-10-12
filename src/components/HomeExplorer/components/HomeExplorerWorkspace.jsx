@@ -6,7 +6,7 @@ export default function HomeExplorerWorkspace(props) {
   // const currentRoom = homeExplorerData;
 
   const [currentRoom, setCurrentRoom] = useState(homeExplorerData);
-  // console.log(props);
+  console.log(props);
 
   return(
     <div className="home-explorer-workspace">
