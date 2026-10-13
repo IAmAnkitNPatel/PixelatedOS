@@ -5,8 +5,9 @@ export default function HomeExplorerWorkspace(props) {
   console.log(homeExplorerData);
   // const currentRoom = homeExplorerData;
 
-  const [currentRoom, setCurrentRoom] = useState(homeExplorerData);
+  // const [currentRoom, setCurrentRoom] = useState(homeExplorerData);
   console.log(props);
+  const currentRoom = props.currentRoom;
 
   return(
     <div className="home-explorer-workspace">
@@ -23,7 +24,7 @@ export default function HomeExplorerWorkspace(props) {
             console.log(child);
             // setCurrentRoom(child);
             props.handleNavigationHistory(currentRoom);
-            props.props.handleCurrentRoom(child);
+            props.handleCurrentRoom(child);
           }}
         >{child.name}</div>
         

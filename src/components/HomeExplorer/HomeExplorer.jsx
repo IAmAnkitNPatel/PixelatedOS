@@ -31,6 +31,9 @@ export default function HomeExplorer() {
     const previousRoomIndex = currentRoomIndex - 1;
     console.log("currentRoomIndex", currentRoomIndex);
     console.log("previousRoomIndex", previousRoomIndex);
+    const previousRoom = navigationHistory[previousRoomIndex];
+    console.log("previousRoom", previousRoom);
+    // setCurrentRoom()
   }
 
   return(
@@ -46,6 +49,7 @@ export default function HomeExplorer() {
       <HomeExplorerBody
         handleNavigationHistory = {handleNavigationHistory}
         handleCurrentRoom = {handleCurrentRoom}
+        currentRoom = {currentRoom}
       />
     </div>
     

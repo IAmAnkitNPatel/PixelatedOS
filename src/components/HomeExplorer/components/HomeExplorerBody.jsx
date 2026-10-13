@@ -7,7 +7,8 @@ export default function HomeExplorerBody(props) {
       <HomeExplorerSidebar/>
       <HomeExplorerWorkspace
         handleNavigationHistory = {props.handleNavigationHistory}
-        props = {props}
+        handleCurrentRoom = {props.handleCurrentRoom}
+        currentRoom = {props.currentRoom}
       />
     </div>
   );
