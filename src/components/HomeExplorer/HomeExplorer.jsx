@@ -33,7 +33,8 @@ export default function HomeExplorer() {
     console.log("previousRoomIndex", previousRoomIndex);
     const previousRoom = navigationHistory[previousRoomIndex];
     console.log("previousRoom", previousRoom);
-    // setCurrentRoom()
+    console.log("navigationHistory", navigationHistory);
+    // setCurrentRoom();
   }
 
   return(
