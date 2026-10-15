@@ -23,8 +23,10 @@ export default function HomeExplorerWorkspace(props) {
           onDoubleClick={() => {
             console.log(child);
             // setCurrentRoom(child);
-            props.handleNavigationHistory(currentRoom);
+            
             props.handleCurrentRoom(child);
+            // props.handleNavigationHistory(currentRoom);
+            props.handleNavigationHistory();
           }}
         >{child.name}</div>
         
