@@ -14,13 +14,18 @@ export default function HomeExplorer() {
     // console.log("After");
   };
 
+  const handleRoomDoubleClick = (room) =>{
+    setCurrentRoom(room);
+    handleNavigationHistory(room);
+  }
+
   const [navigationHistory, setNavigationHistory] = useState([]);
-  console.log("navigationHistory", navigationHistory);
-  const handleNavigationHistory = () =>{
+  // console.log("navigationHistory", navigationHistory);
+  const handleNavigationHistory = (room) =>{
     // setNavigationHistory(prevNavigationHistory => [...prevNavigationHistory, currentRoom])
     // console.log("navigationHistory: ", navigationHistory);
 
-    const updatedNavigationHistory = [...navigationHistory, currentRoom];
+    const updatedNavigationHistory = [...navigationHistory, room];
     setNavigationHistory(updatedNavigationHistory);
 
     console.log("navigationHistory: ", updatedNavigationHistory);
@@ -51,6 +56,7 @@ export default function HomeExplorer() {
         handleNavigationHistory = {handleNavigationHistory}
         handleCurrentRoom = {handleCurrentRoom}
         currentRoom = {currentRoom}
+        handleRoomDoubleClick ={handleRoomDoubleClick}
       />
     </div>
     

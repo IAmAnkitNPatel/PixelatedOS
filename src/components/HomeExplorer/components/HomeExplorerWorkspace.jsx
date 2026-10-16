@@ -24,9 +24,10 @@ export default function HomeExplorerWorkspace(props) {
             console.log(child);
             // setCurrentRoom(child);
             
-            props.handleCurrentRoom(child);
+            // props.handleCurrentRoom(child);
             // props.handleNavigationHistory(currentRoom);
-            props.handleNavigationHistory();
+            // props.handleNavigationHistory();
+            props.handleRoomDoubleClick(child);
           }}
         >{child.name}</div>
         

@@ -9,6 +9,7 @@ export default function HomeExplorerBody(props) {
         handleNavigationHistory = {props.handleNavigationHistory}
         handleCurrentRoom = {props.handleCurrentRoom}
         currentRoom = {props.currentRoom}
+        handleRoomDoubleClick ={props.handleRoomDoubleClick}
       />
     </div>
   );
