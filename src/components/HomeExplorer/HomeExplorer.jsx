@@ -32,14 +32,31 @@ export default function HomeExplorer() {
   };
 
   const handleBackButton = () =>{
-    const currentRoomIndex = navigationHistory.indexOf(currentRoom)
+    const currentRoomIndex = navigationHistory.indexOf(currentRoom);
     const previousRoomIndex = currentRoomIndex - 1;
-    console.log("currentRoomIndex", currentRoomIndex);
-    console.log("previousRoomIndex", previousRoomIndex);
-    const previousRoom = navigationHistory[previousRoomIndex];
-    console.log("previousRoom", previousRoom);
-    console.log("navigationHistory", navigationHistory);
-    // setCurrentRoom();
+    if (previousRoomIndex>=0){
+      console.log("currentRoomIndex", currentRoomIndex);
+      console.log("previousRoomIndex", previousRoomIndex);
+      const previousRoom = navigationHistory[previousRoomIndex];
+      console.log("previousRoom", previousRoom);
+      console.log("navigationHistory", navigationHistory);
+      setCurrentRoom(previousRoom);  
+    }
+    
+  }
+
+  const handleForwardButton = ()=>{
+    const currentRoomIndex = navigationHistory.indexOf(currentRoom);
+    const forwardRoomIndex = currentRoomIndex + 1;
+
+    const navigationHistoryLength = navigationHistory.length;
+    console.log("navigationHistoryLength", navigationHistoryLength);
+    if(forwardRoomIndex < navigationHistoryLength){
+      const forwardRoom = navigationHistory[forwardRoomIndex];
+      console.log("forwardRoomIndex", forwardRoomIndex);
+      console.log("forwardRoom", forwardRoom);
+      setCurrentRoom(forwardRoom);
+    }
   }
 
   return(
@@ -51,6 +68,7 @@ export default function HomeExplorer() {
         setCurrentRoom ={setCurrentRoom}
         handleBackButton ={handleBackButton}
         // navigationHistory ={navigationHistory}
+        handleForwardButton = {handleForwardButton}
       />
       <HomeExplorerBody
         handleNavigationHistory = {handleNavigationHistory}
