@@ -29,6 +29,9 @@ export default function HomeExplorerWorkspace(props) {
             // props.handleNavigationHistory();
             props.handleRoomDoubleClick(child);
           }}
+          onClick={()=> {
+            props.handleSelectObject(event);
+          }}
         >{child.name}</div>
         
       ))

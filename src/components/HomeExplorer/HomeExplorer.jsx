@@ -42,7 +42,6 @@ export default function HomeExplorer() {
       console.log("navigationHistory", navigationHistory);
       setCurrentRoom(previousRoom);  
     }
-    
   }
 
   const handleForwardButton = ()=>{
@@ -58,6 +57,14 @@ export default function HomeExplorer() {
       setCurrentRoom(forwardRoom);
     }
   }
+
+  const [selectedObject, setSelectedObject] = useState();
+
+  const handleSelectObject = (event) =>{
+    const selectedObject = event.target;
+    console.log("selectedObject", selectedObject);
+    setSelectedObject(selectedObject);
+  };
 
   return(
     
@@ -75,6 +82,7 @@ export default function HomeExplorer() {
         handleCurrentRoom = {handleCurrentRoom}
         currentRoom = {currentRoom}
         handleRoomDoubleClick ={handleRoomDoubleClick}
+        handleSelectObject ={handleSelectObject}
       />
     </div>
     
