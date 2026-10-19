@@ -60,10 +60,17 @@ export default function HomeExplorer() {
 
   const [selectedObject, setSelectedObject] = useState();
 
-  const handleSelectObject = (event) =>{
-    const selectedObject = event.target;
-    console.log("selectedObject", selectedObject);
+  const handleSelectObject = (event, child) =>{
+    // const selectedObject = event.target;
+    // console.log("selectedObject", selectedObject);
+    // console.log("event.target", event.target);
+    // console.log("child", child);
+    const selctedObject = child;
     setSelectedObject(selectedObject);
+  };
+
+  const handleDeleteButton = () =>{
+    console.log()
   };
 
   return(

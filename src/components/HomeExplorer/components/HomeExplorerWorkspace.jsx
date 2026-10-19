@@ -30,7 +30,7 @@ export default function HomeExplorerWorkspace(props) {
             props.handleRoomDoubleClick(child);
           }}
           onClick={()=> {
-            props.handleSelectObject(event);
+            props.handleSelectObject(event, child);
           }}
         >{child.name}</div>
         
