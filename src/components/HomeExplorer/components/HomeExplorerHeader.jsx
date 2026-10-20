@@ -7,7 +7,7 @@ export default function HomeExplorerHeader(props) {
 
   const handleNewRoomButtonClick = () => {
     const newRoom = {
-      id: "drive-c",
+      id: crypto.randomUUID(),
       type: "room",
       name: "new room",
       children: []

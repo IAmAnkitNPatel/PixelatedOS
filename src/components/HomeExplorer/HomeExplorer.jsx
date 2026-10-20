@@ -65,12 +65,13 @@ export default function HomeExplorer() {
     // console.log("selectedObject", selectedObject);
     // console.log("event.target", event.target);
     // console.log("child", child);
-    const selctedObject = child;
+    const selectedObject = child;
     setSelectedObject(selectedObject);
+    console.log("selectedObject", selectedObject);
   };
 
   const handleDeleteButton = () =>{
-    console.log()
+    console.log("Delete: ", selectedObject);
   };
 
   return(
