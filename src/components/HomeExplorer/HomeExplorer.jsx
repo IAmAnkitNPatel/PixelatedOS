@@ -25,6 +25,10 @@ export default function HomeExplorer() {
     // setNavigationHistory(prevNavigationHistory => [...prevNavigationHistory, currentRoom])
     // console.log("navigationHistory: ", navigationHistory);
 
+    console.log("navigationHistory before splice: ", [...navigationHistory]);
+    const currentRoomIndex = navigationHistory.indexOf(currentRoom);
+    navigationHistory.splice(currentRoomIndex+1);
+    console.log("navigationHistory after splice: ", navigationHistory);
     const updatedNavigationHistory = [...navigationHistory, room];
     setNavigationHistory(updatedNavigationHistory);
 
