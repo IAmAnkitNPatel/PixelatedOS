@@ -26,7 +26,11 @@ export default function HomeExplorer() {
     // console.log("navigationHistory: ", navigationHistory);
 
     console.log("navigationHistory before splice: ", [...navigationHistory]);
-    const currentRoomIndex = navigationHistory.indexOf(currentRoom);
+    console.log("currentRoom", currentRoom);
+    console.log("room", room);
+    // const currentRoomIndex = navigationHistory.indexOf(currentRoom);
+    const currentRoomIndex = navigationHistory.findIndex((room)=> room.id === currentRoom.id);
+    console.log("currentRoomIndex", currentRoomIndex);
     navigationHistory.splice(currentRoomIndex+1);
     console.log("navigationHistory after splice: ", navigationHistory);
     const updatedNavigationHistory = [...navigationHistory, room];
