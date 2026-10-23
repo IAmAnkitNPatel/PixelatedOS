@@ -6,10 +6,30 @@ export default function HomeExplorerHeader(props) {
   // const [navigationHistory, addNavigationHistory] = useState()
 
   const handleNewRoomButtonClick = () => {
+
+    let newRoomName = prompt("Enter New Room Name: ");
+
+    newRoomName = newRoomName.trim();
+    let newRoomCount = 0;
+
+    if(!newRoomName){
+      newRoomName = "New Room";
+      console.log("props.currentRoom.children", props.currentRoom.children);
+      props.currentRoom.children.forEach((child) =>{
+        if(child.name.startsWith("New Room")){
+          newRoomCount++;
+        }
+      });
+      console.log("newRoomCount", newRoomCount)
+      if(newRoomCount>=1){
+        newRoomName = `New Room ${newRoomCount+1}`;
+      }
+    }
+
     const newRoom = {
       id: crypto.randomUUID(),
       type: "room",
-      name: "new room",
+      name: newRoomName,
       children: []
     };
 
