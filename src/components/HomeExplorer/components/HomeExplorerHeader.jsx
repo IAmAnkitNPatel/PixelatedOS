@@ -9,7 +9,9 @@ export default function HomeExplorerHeader(props) {
 
     let newRoomName = prompt("Enter New Room Name: ");
 
-    newRoomName = newRoomName.trim();
+    if(newRoomName){
+      newRoomName = newRoomName.trim();
+    }
     let newRoomCount = 0;
 
     if(!newRoomName){
