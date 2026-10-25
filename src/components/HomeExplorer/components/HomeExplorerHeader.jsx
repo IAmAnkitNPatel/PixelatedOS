@@ -84,7 +84,11 @@ export default function HomeExplorerHeader(props) {
           handleNewRoomButtonClick();
         }}
       >New Room</button>
-      <button className="delete-button">Delete</button>
+      <button className="delete-button"
+        onClick={()=>{
+          props.handleDeleteButton();
+        }}
+      >Delete</button>
       <button className="copy-button">Copy</button>
       <button className="cut-button">Cut</button>
       <button className="paste-button">Paste</button>

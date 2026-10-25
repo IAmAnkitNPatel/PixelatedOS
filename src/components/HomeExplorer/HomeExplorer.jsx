@@ -79,7 +79,28 @@ export default function HomeExplorer() {
   };
 
   const handleDeleteButton = () =>{
+    if(!selectedObject){
+      alert("No Object Selected!!!");
+      return;
+    }
     console.log("Delete: ", selectedObject);
+    let newArray = [...currentRoom.children]
+    console.log("newArray before .filter", newArray);
+    newArray = newArray.filter((room)=>
+      room.id !== selectedObject.id
+    );
+    console.log("newArray after .filter", newArray);
+
+    // setCurrentRoom((currentRoom)=>({
+    //   ...currentRoom,
+    //   children: newArray
+    // }));
+    let currentRoom = homeExplorerData;
+    let currentRoomData = (currentRoom) => {
+
+    }
+    const updateNode = ()
+    setSelectedObject(null);
   };
 
   return(
@@ -92,6 +113,8 @@ export default function HomeExplorer() {
         handleBackButton ={handleBackButton}
         // navigationHistory ={navigationHistory}
         handleForwardButton = {handleForwardButton}
+
+        handleDeleteButton = {handleDeleteButton}
       />
       <HomeExplorerBody
         handleNavigationHistory = {handleNavigationHistory}
