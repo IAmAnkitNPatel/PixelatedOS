@@ -95,11 +95,31 @@ export default function HomeExplorer() {
     //   ...currentRoom,
     //   children: newArray
     // }));
-    let currentRoom = homeExplorerData;
+    const key = selectedObject;
+    let dataCurrentRoom = homeExplorerData;
     let currentRoomData = (currentRoom) => {
 
     }
-    const updateNode = ()
+
+    let node = homeExplorerData
+    const findRoom = (node, key) =>{
+      if (node.id === key.id){
+        return node;
+      }
+      
+      if(node.children && node.children.length > 0){
+        // node = node.children;
+        for (const child of node.children) {
+          const found = findRoom(child, key);
+          if(found) {
+            return found;
+          }
+        }
+      } 
+    }
+    const delObj = findRoom(node, key);
+    console.log("delObj", delObj);
+    setCurrentRoom(currentRoom);
     setSelectedObject(null);
   };
 
