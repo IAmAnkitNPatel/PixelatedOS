@@ -95,13 +95,15 @@ export default function HomeExplorer() {
     //   ...currentRoom,
     //   children: newArray
     // }));
-    const key = selectedObject;
+    // const key = selectedObject;
     let dataCurrentRoom = homeExplorerData;
     let currentRoomData = (currentRoom) => {
 
     }
 
-    let node = homeExplorerData
+    let node = homeExplorerData;
+    const key = currentRoom;
+
     const findRoom = (node, key) =>{
       if (node.id === key.id){
         return node;
@@ -117,8 +119,19 @@ export default function HomeExplorer() {
         }
       } 
     }
-    const delObj = findRoom(node, key);
-    console.log("delObj", delObj);
+    const findCurrentRoom = findRoom(node, key);
+    // console.log("delObj", delObj);
+    console.log("found findCurrentRoom" ,findCurrentRoom);
+
+    const updatedFindCurrentRoom = findCurrentRoom.children.filter((child)=>{
+      return child.id !== selectedObject.id
+    });
+  
+    console.log("updatedFindCurrentRoom", updatedFindCurrentRoom);
+
+    findCurrentRoom.children = updatedFindCurrentRoom;
+
+    console.log("homeExplorerData", homeExplorerData);
     setCurrentRoom(currentRoom);
     setSelectedObject(null);
   };
