@@ -123,6 +123,7 @@ export default function HomeExplorer() {
     // console.log("delObj", delObj);
     console.log("found findCurrentRoom" ,findCurrentRoom);
 
+    /*
     const updatedFindCurrentRoom = findCurrentRoom.children.filter((child)=>{
       return child.id !== selectedObject.id
     });
@@ -130,6 +131,20 @@ export default function HomeExplorer() {
     console.log("updatedFindCurrentRoom", updatedFindCurrentRoom);
 
     findCurrentRoom.children = updatedFindCurrentRoom;
+*/
+    const updatedCurrentRoomTree ={
+      ...findCurrentRoom,
+      children: findCurrentRoom.children.filter((child)=> {
+        return child.id !== selectedObject.id
+      })
+    }
+    // findCurrentRoom = updatedCurrentRoomTree;
+    console.log("updatedCurrentRoomTree", updatedCurrentRoomTree)
+    setCurrentRoom(updatedCurrentRoomTree);
+
+    // findCurrentRoom ={...prev,
+    //   children: updatedFindCurrentRoom 
+    // };
 
     console.log("homeExplorerData", homeExplorerData);
     setCurrentRoom(currentRoom);
