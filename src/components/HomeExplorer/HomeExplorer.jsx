@@ -78,7 +78,7 @@ export default function HomeExplorer() {
     console.log("selectedObject", selectedObject);
   };
 
-  const handleDeleteButton = () =>{
+  const handleDeleteButton1 = () =>{
     if(!selectedObject){
       alert("No Object Selected!!!");
       return;
@@ -119,9 +119,9 @@ export default function HomeExplorer() {
         }
       } 
     }
-    const findCurrentRoom = findRoom(node, key);
+    const currentRoomInData = findRoom(node, key);
     // console.log("delObj", delObj);
-    console.log("found findCurrentRoom" ,findCurrentRoom);
+    console.log("found findCurrentRoom" ,currentRoomInData);
 
     /*
     const updatedFindCurrentRoom = findCurrentRoom.children.filter((child)=>{
@@ -133,22 +133,52 @@ export default function HomeExplorer() {
     findCurrentRoom.children = updatedFindCurrentRoom;
 */
     const updatedCurrentRoomTree ={
-      ...findCurrentRoom,
-      children: findCurrentRoom.children.filter((child)=> {
+      ...currentRoomInData,
+      children: currentRoomInData.children.filter((child)=> {
         return child.id !== selectedObject.id
       })
     }
     // findCurrentRoom = updatedCurrentRoomTree;
     console.log("updatedCurrentRoomTree", updatedCurrentRoomTree)
+    
     setCurrentRoom(updatedCurrentRoomTree);
-
+    console.log("homeExplorerData", homeExplorerData);
     // findCurrentRoom ={...prev,
     //   children: updatedFindCurrentRoom 
     // };
 
-    console.log("homeExplorerData", homeExplorerData);
-    setCurrentRoom(currentRoom);
+    // console.log("homeExplorerData", homeExplorerData);
+    // setCurrentRoom(currentRoom);
     setSelectedObject(null);
+  };
+
+  const handleDeleteButton = () =>{
+    if(!selectedObject){
+      alert("No Object Selected!!!");
+      return;
+    }
+    console.log("Delete: ", selectedObject);
+
+    const findRoomInData = (node, key) =>{
+      if (node.id === key.id){
+        return node;
+      }
+
+      if(node.children && node.children.length > 0){
+        // node = node.children;
+        for (const child of node.children) {
+          const found = findRoom(child, key);
+          if(found) {
+            return found;
+          }
+        }
+      } 
+    }
+    const currentRoomInData = findRoomInData(homeExplorerData, currentRoom);
+
+    console.log("found currentRoomInData" ,currentRoomInData);
+
+    
   };
 
   return(
