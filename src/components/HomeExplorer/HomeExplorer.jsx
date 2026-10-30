@@ -174,11 +174,23 @@ export default function HomeExplorer() {
         }
       } 
     }
-    const currentRoomInData = findRoomInData(homeExplorerData, currentRoom);
+    let currentRoomInData = findRoomInData(homeExplorerData, currentRoom);
 
     console.log("found currentRoomInData" ,currentRoomInData);
 
-    
+    // currentRoomInData = {
+    //   ...currentRoomInData,
+    //   children: currentRoomInData.children.filter((child)=> {
+    //     return child.id !== selectedObject.id
+    //   })
+    // }
+    currentRoomInData.children = currentRoomInData.children.filter((child)=> {
+        return child.id !== selectedObject.id
+      })
+
+    console.log("currentRoomInData", currentRoomInData);
+    console.log("homeExplorerData", homeExplorerData);
+
   };
 
   return(
