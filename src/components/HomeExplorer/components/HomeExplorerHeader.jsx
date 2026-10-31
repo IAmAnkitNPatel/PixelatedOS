@@ -41,7 +41,7 @@ export default function HomeExplorerHeader(props) {
     //   ...(props.currentRoom),
     //   children: updatedChildren
     // }
-
+    
     const newArray =  [...props.currentRoom.children, newRoom]
     // console.log(newArray);
     // props.currentRoom.children = newArray;
