@@ -41,7 +41,7 @@ export default function HomeExplorerHeader(props) {
     //   ...(props.currentRoom),
     //   children: updatedChildren
     // }
-    
+
     const newArray =  [...props.currentRoom.children, newRoom]
     // console.log(newArray);
     // props.currentRoom.children = newArray;
@@ -89,7 +89,11 @@ export default function HomeExplorerHeader(props) {
           props.handleDeleteButton();
         }}
       >Delete</button>
-      <button className="copy-button">Copy</button>
+      <button className="copy-button"
+        onClick={()=>{
+          props.handleCopyButton();
+        }}
+      >Copy</button>
       <button className="cut-button">Cut</button>
       <button className="paste-button">Paste</button>
       <button className="rename-button">Rename</button>

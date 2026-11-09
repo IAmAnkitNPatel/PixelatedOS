@@ -194,6 +194,17 @@ export default function HomeExplorer() {
     setSelectedObject(null);
   };
 
+  const [copiedObject, setCopiedObject] = useState(null);
+  const handleCopyButton = () =>{
+    if(!selectedObject){
+      alert("No Object Selected!!!");
+      return;
+    };
+    setCopiedObject(selectedObject);
+    console.log("copy selectedObject", selectedObject);
+    console.log("copiedObject", copiedObject);
+  };
+
   return(
     
     <div className="home-explorer">
@@ -206,6 +217,7 @@ export default function HomeExplorer() {
         handleForwardButton = {handleForwardButton}
 
         handleDeleteButton = {handleDeleteButton}
+        handleCopyButton = {handleCopyButton}
       />
       <HomeExplorerBody
         handleNavigationHistory = {handleNavigationHistory}
