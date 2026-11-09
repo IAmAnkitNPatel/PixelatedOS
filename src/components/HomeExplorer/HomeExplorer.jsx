@@ -205,6 +205,17 @@ export default function HomeExplorer() {
     console.log("copiedObject", copiedObject);
   };
 
+  const [cutObject, setCutObject] = useState(null);
+  const handleCutButton = () =>{
+    if(!selectedObject){
+      alert("No Object Selected!!!");
+      return;
+    };
+    setCutObject(selectedObject);
+    console.log("cut selectedObject", selectedObject);
+    console.log("cutObject", cutObject);
+  };
+
   return(
     
     <div className="home-explorer">
@@ -218,6 +229,7 @@ export default function HomeExplorer() {
 
         handleDeleteButton = {handleDeleteButton}
         handleCopyButton = {handleCopyButton}
+        handleCutButton = {handleCutButton}
       />
       <HomeExplorerBody
         handleNavigationHistory = {handleNavigationHistory}

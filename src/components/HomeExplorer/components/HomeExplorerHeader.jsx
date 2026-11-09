@@ -94,7 +94,11 @@ export default function HomeExplorerHeader(props) {
           props.handleCopyButton();
         }}
       >Copy</button>
-      <button className="cut-button">Cut</button>
+      <button className="cut-button"
+        onClick={()=>{
+          props.handleCutButton();
+        }}
+      >Cut</button>
       <button className="paste-button">Paste</button>
       <button className="rename-button">Rename</button>
 
