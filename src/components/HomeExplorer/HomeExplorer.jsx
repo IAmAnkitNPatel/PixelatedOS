@@ -190,7 +190,8 @@ export default function HomeExplorer() {
 
     console.log("currentRoomInData", currentRoomInData);
     console.log("homeExplorerData", homeExplorerData);
-
+    setCurrentRoom({...currentRoomInData});
+    setSelectedObject(null);
   };
 
   return(
