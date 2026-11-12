@@ -1,6 +1,6 @@
 import HomeExplorerHeader from "./components/HomeExplorerHeader";
 import HomeExplorerBody from "./components/HomeExplorerBody";
-import { useState } from "react";
+import { cloneElement, useState } from "react";
 import { homeExplorerData } from "../../../Home_Explorer/home_explorer_data";
 
 export default function HomeExplorer() {
@@ -216,6 +216,43 @@ export default function HomeExplorer() {
     console.log("cutObject", cutObject);
   };
 
+  const handlePasteButton = ()=>{
+    if(!copiedObject && !cutObject){
+      alert("Nothing to Paste");
+      return;
+    }
+    const pasteObject = structuredClone((copiedObject || cutObject));
+  
+    pasteObject.id = crypto.randomUUID();
+    console.log("pasteObject: ", pasteObject);
+
+    setCopiedObject(null);
+    setCutObject(null);
+
+    const findRoomInData = (node, key) =>{
+      if (node.id === key.id){
+        return node;
+      }
+
+      if(node.children && node.children.length > 0){
+        // node = node.children;
+        for (const child of node.children) {
+          const found = findRoom(child, key);
+          if(found) {
+            return found;
+          }
+        }
+      } 
+    }
+    let currentRoomInData = findRoomInData(homeExplorerData, currentRoom);
+
+    console.log("found currentRoomInData" ,currentRoomInData);
+
+    currentRoomInData.children.push(pasteObject);
+    console.log("currentRoomInData after pasting" ,currentRoomInData);
+    setCurrentRoom(currentRoomInData);
+  };
+
   return(
     
     <div className="home-explorer">
@@ -230,6 +267,7 @@ export default function HomeExplorer() {
         handleDeleteButton = {handleDeleteButton}
         handleCopyButton = {handleCopyButton}
         handleCutButton = {handleCutButton}
+        handlePasteButton = {handlePasteButton}
       />
       <HomeExplorerBody
         handleNavigationHistory = {handleNavigationHistory}
