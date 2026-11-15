@@ -203,6 +203,8 @@ export default function HomeExplorer() {
     setCopiedObject(selectedObject);
     console.log("copy selectedObject", selectedObject);
     console.log("copiedObject", copiedObject);
+    
+    setSelectedObject(null);
   };
 
   const [cutObject, setCutObject] = useState(null);
@@ -214,6 +216,35 @@ export default function HomeExplorer() {
     setCutObject(selectedObject);
     console.log("cut selectedObject", selectedObject);
     console.log("cutObject", cutObject);
+
+    const findRoomInData = (node, key) =>{
+      if (node.id === key.id){
+        return node;
+      }
+
+      if(node.children && node.children.length > 0){
+        // node = node.children;
+        for (const child of node.children) {
+          const found = findRoom(child, key);
+          if(found) {
+            return found;
+          }
+        }
+      } 
+    }
+    let currentRoomInData = findRoomInData(homeExplorerData, currentRoom);
+
+    console.log("found currentRoomInData" ,currentRoomInData);
+
+    currentRoomInData.children = currentRoomInData.children.filter((child)=> {
+        return child.id !== selectedObject.id
+      })
+
+    console.log("currentRoomInData", currentRoomInData);
+    console.log("homeExplorerData", homeExplorerData);
+    setCurrentRoom({...currentRoomInData});
+    
+    setSelectedObject(null);
   };
 
   const handlePasteButton = ()=>{
