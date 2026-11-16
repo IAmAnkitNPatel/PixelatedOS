@@ -37,6 +37,8 @@ export default function HomeExplorer() {
     setNavigationHistory(updatedNavigationHistory);
 
     console.log("navigationHistory: ", updatedNavigationHistory);
+
+    handleShowNavigationHistory();
   };
 
   const handleBackButton = () =>{
@@ -329,6 +331,13 @@ export default function HomeExplorer() {
     setSelectedObject(null);
   };
 
+  const [showNavigationHistory ,setShowNavigationHistory] = useState([null]);
+
+  const handleShowNavigationHistory = () => {
+    console.log("showNavigationHistory", showNavigationHistory);
+  };
+
+  // handleShowNavigationHistory();
 
 
   return(
