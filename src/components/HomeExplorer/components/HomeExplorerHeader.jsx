@@ -104,7 +104,7 @@ export default function HomeExplorerHeader(props) {
           props.handlePasteButton();
         }}
       >Paste</button>
-      <button className="rename-button">Rename</button>
+      <button>Rename</button>
 
       {/* <button onClick={}></> */}
     </div>

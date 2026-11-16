@@ -167,7 +167,7 @@ export default function HomeExplorer() {
       if(node.children && node.children.length > 0){
         // node = node.children;
         for (const child of node.children) {
-          const found = findRoom(child, key);
+          const found = findRoomInData(child, key);
           if(found) {
             return found;
           }
@@ -254,7 +254,10 @@ export default function HomeExplorer() {
     }
     const pasteObject = structuredClone((copiedObject || cutObject));
   
-    pasteObject.id = crypto.randomUUID();
+    if(copiedObject) {
+      pasteObject.id = crypto.randomUUID();
+    }
+    
     console.log("pasteObject: ", pasteObject);
 
     setCopiedObject(null);
@@ -268,7 +271,7 @@ export default function HomeExplorer() {
       if(node.children && node.children.length > 0){
         // node = node.children;
         for (const child of node.children) {
-          const found = findRoom(child, key);
+          const found = findRoomInData(child, key);
           if(found) {
             return found;
           }
@@ -283,6 +286,8 @@ export default function HomeExplorer() {
     console.log("currentRoomInData after pasting" ,currentRoomInData);
     setCurrentRoom(currentRoomInData);
   };
+
+
 
   return(
     
@@ -299,6 +304,7 @@ export default function HomeExplorer() {
         handleCopyButton = {handleCopyButton}
         handleCutButton = {handleCutButton}
         handlePasteButton = {handlePasteButton}
+        
       />
       <HomeExplorerBody
         handleNavigationHistory = {handleNavigationHistory}
