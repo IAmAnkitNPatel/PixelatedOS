@@ -287,6 +287,48 @@ export default function HomeExplorer() {
     setCurrentRoom(currentRoomInData);
   };
 
+    const handleRenameButton = () =>{
+    if(!selectedObject){
+      alert("No Object Selected!!!");
+      return;
+    };
+
+    const renameInput = prompt("Enter new Name: ");
+
+    if(!renameInput || !renameInput.trim) {
+      alert("Enter a Name");
+      return;
+    }
+
+    const findRoomInData = (node, key) =>{
+      if (node.id === key.id){
+        return node;
+      }
+
+      if(node.children && node.children.length > 0){
+        // node = node.children;
+        for (const child of node.children) {
+          const found = findRoomInData(child, key);
+          if(found) {
+            return found;
+          }
+        }
+      } 
+    }
+    let selectedRoomInData = findRoomInData(homeExplorerData, selectedObject);
+
+    console.log("found selectedRoomInData" ,selectedRoomInData);
+
+    selectedRoomInData.name = renameInput;
+
+    let currentRoomInData = findRoomInData(homeExplorerData, currentRoom);
+
+    console.log("found currentRoomInData" ,currentRoomInData);
+    setCurrentRoom({...currentRoomInData});
+
+    setSelectedObject(null);
+  };
+
 
 
   return(
@@ -304,7 +346,7 @@ export default function HomeExplorer() {
         handleCopyButton = {handleCopyButton}
         handleCutButton = {handleCutButton}
         handlePasteButton = {handlePasteButton}
-        
+        handleRenameButton = {handleRenameButton}
       />
       <HomeExplorerBody
         handleNavigationHistory = {handleNavigationHistory}
