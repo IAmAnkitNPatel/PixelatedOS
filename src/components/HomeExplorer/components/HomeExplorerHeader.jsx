@@ -69,7 +69,10 @@ export default function HomeExplorerHeader(props) {
       <button className="forward-arrow-button"
         onClick={()=> props.handleForwardButton()}
       >→</button>
-      <div className="navigation-history">Navigation History:</div>
+      <div className="navigation-history">Navigation History:{props.showNavigationHistory.map((item, index)=>(
+        <span key={`${item.name}-${index}`}>{` ${item.name} =>`}</span>
+      ))
+      }</div>
       
       <button className="new-room-button"
         onClick={()=>{

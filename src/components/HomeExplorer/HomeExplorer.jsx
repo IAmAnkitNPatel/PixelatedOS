@@ -38,7 +38,7 @@ export default function HomeExplorer() {
 
     console.log("navigationHistory: ", updatedNavigationHistory);
 
-    handleShowNavigationHistory();
+    handleShowNavigationHistory(room);
   };
 
   const handleBackButton = () =>{
@@ -50,7 +50,9 @@ export default function HomeExplorer() {
       const previousRoom = navigationHistory[previousRoomIndex];
       console.log("previousRoom", previousRoom);
       console.log("navigationHistory", navigationHistory);
-      setCurrentRoom(previousRoom);  
+      setCurrentRoom(previousRoom); 
+      // 
+      handleShowNavigationHistory(null);
     }
   }
 
@@ -65,6 +67,8 @@ export default function HomeExplorer() {
       console.log("forwardRoomIndex", forwardRoomIndex);
       console.log("forwardRoom", forwardRoom);
       setCurrentRoom(forwardRoom);
+      // 
+      handleShowNavigationHistory(forwardRoom);
     }
   }
 
@@ -331,12 +335,24 @@ export default function HomeExplorer() {
     setSelectedObject(null);
   };
 
-  const [showNavigationHistory ,setShowNavigationHistory] = useState([null]);
+  const [showNavigationHistory ,setShowNavigationHistory] = useState([homeExplorerData]);
 
-  const handleShowNavigationHistory = () => {
-    console.log("showNavigationHistory", showNavigationHistory);
+  const handleShowNavigationHistory = (room) => {
+    if(room){
+      setShowNavigationHistory(prev=>[...prev, room]);
+    }
+    // console.log("showNavigationHistory", showNavigationHistory);
+    const currentRoomIndexInShowNavigationHistory = showNavigationHistory.indexOf(currentRoom);
+    console.log("currentRoom and currentRoomIndexInShowNavigationHistory", currentRoom, currentRoomIndexInShowNavigationHistory);
+    if(room){
+      showNavigationHistory.splice(currentRoomIndexInShowNavigationHistory+1);
+    }
+    if(!room){
+      console.log("hello")
+        showNavigationHistory.splice(currentRoomIndexInShowNavigationHistory);
+    }
   };
-
+  console.log("showNavigationHistory", showNavigationHistory);
   // handleShowNavigationHistory();
 
 
@@ -356,6 +372,8 @@ export default function HomeExplorer() {
         handleCutButton = {handleCutButton}
         handlePasteButton = {handlePasteButton}
         handleRenameButton = {handleRenameButton}
+        showNavigationHistory = {showNavigationHistory}
+        handleShowNavigationHistory = {handleShowNavigationHistory}
       />
       <HomeExplorerBody
         handleNavigationHistory = {handleNavigationHistory}
