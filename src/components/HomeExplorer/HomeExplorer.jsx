@@ -17,6 +17,7 @@ export default function HomeExplorer() {
   const handleRoomDoubleClick = (room) =>{
     setCurrentRoom(room);
     handleNavigationHistory(room);
+    handleShowNavigationHistory("dbClickEnterRoom" ,room);
   }
 
   const [navigationHistory, setNavigationHistory] = useState([homeExplorerData]);
@@ -38,7 +39,7 @@ export default function HomeExplorer() {
 
     console.log("navigationHistory: ", updatedNavigationHistory);
 
-    handleShowNavigationHistory(room);
+
   };
 
   const handleBackButton = () =>{
@@ -52,7 +53,7 @@ export default function HomeExplorer() {
       console.log("navigationHistory", navigationHistory);
       setCurrentRoom(previousRoom); 
       // 
-      handleShowNavigationHistory(null);
+      handleShowNavigationHistory("backArrowButton", null);
     }
   }
 
@@ -68,7 +69,7 @@ export default function HomeExplorer() {
       console.log("forwardRoom", forwardRoom);
       setCurrentRoom(forwardRoom);
       // 
-      handleShowNavigationHistory(forwardRoom);
+      handleShowNavigationHistory("forwardArrowButton", forwardRoom);
     }
   }
 
@@ -337,7 +338,7 @@ export default function HomeExplorer() {
 
   const [showNavigationHistory ,setShowNavigationHistory] = useState([homeExplorerData]);
 
-  const handleShowNavigationHistory = (room) => {
+  const handleShowNavigationHistory1 = (room) => {
     if(room){
       setShowNavigationHistory(prev=>[...prev, room]);
     }
@@ -355,7 +356,41 @@ export default function HomeExplorer() {
   console.log("showNavigationHistory", showNavigationHistory);
   // handleShowNavigationHistory();
 
+  const handleShowNavigationHistory = (action, room)=>{
+    if(action=== "dbClickEnterRoom"){
+      console.log("action: dbClickEnterRoom");
+      console.log("entered room: ", room);
 
+      setShowNavigationHistory(setNavigationHistory=>[...setNavigationHistory, room]);
+
+      console.log("showNavigationHistory", showNavigationHistory);
+
+      
+
+    } else if(action=== "backArrowButton"){
+      console.log("action: backArrowButton");
+      console.log("null room", room);
+
+      const currentRoomIndexInShowNavigationHistory = showNavigationHistory.indexOf(currentRoom);
+      
+      console.log("currentRoom and currentRoomIndexInShowNavigationHistory", currentRoom, currentRoomIndexInShowNavigationHistory);
+
+      const updatedShowNavigationHistory = showNavigationHistory.slice(0, currentRoomIndexInShowNavigationHistory);
+
+      setShowNavigationHistory(updatedShowNavigationHistory);
+
+      console.log("showNavigationHistory", showNavigationHistory);
+
+    } else if(action=== "forwardArrowButton"){
+      console.log("action: forwardArrowButton");
+      console.log("forward room", room);
+
+      setShowNavigationHistory(showNavigationHistory=>[...showNavigationHistory, room]);
+
+      console.log("showNavigationHistory", showNavigationHistory);
+      
+    }
+  };
   return(
     
     <div className="home-explorer">
