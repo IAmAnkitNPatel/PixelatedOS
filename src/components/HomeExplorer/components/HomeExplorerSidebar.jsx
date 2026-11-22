@@ -29,16 +29,31 @@ export default function HomeExplorerSidebar() {
     
   }
 
-  return(
-    <div className="home-explorer-sidebar">
+  const renderSidebarItems = ()=>{
+    return (
       <div>
         <span onClick={()=>{
-          handleExpand( event);
-        }}>{">"}</span>
+          // remove if already have it
+          setExpandList(prev => [...prev, homeExplorerData.id]);
+          console.log("expandList", expandList);
+        }}>{"▶"}</span>
         <span>{homeExplorerData.name}</span>
+      </div>
+    )
+  };
+
+  return(
+    <div className="home-explorer-sidebar">
+      {renderSidebarItems()}
+
+      {/* <div> */}
+        {/* <span onClick={()=>{ */}
+          {/* handleExpand( event); */}
+        {/* }}>{">"}</span> */}
+        {/* <span>{homeExplorerData.name}</span> */}
         {/* {handleExpand(homeExplorerData)} */}
         {/* {handleExpand(homeExplorerData.children)} */}
-      </div>
+      {/* </div> */}
 
       {/* {homeExplorerData.children.map((child, index) => (
       <div key={index}>{child.name}</div>  
