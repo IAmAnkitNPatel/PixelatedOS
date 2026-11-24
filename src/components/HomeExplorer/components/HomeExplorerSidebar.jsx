@@ -1,5 +1,5 @@
 import { homeExplorerData } from "../../../../Home_Explorer/home_explorer_data";
-import { useState } from "react";
+import { Children, useState } from "react";
 
 export default function HomeExplorerSidebar() {
 
@@ -31,16 +31,34 @@ export default function HomeExplorerSidebar() {
 
   
 
-  const renderSidebarItems = ()=>{
+  const renderSidebarItems = (children)=>{
+    isRoomIdInExpandList = children || expandList.includes(homeExplorerData.id)
     return (
       <div>
         <span onClick={()=>{
-          isRoomIdInExpandList = expandList.includes(homeExplorerData.id)
-          handleSetExpandList(homeExplorerData.id);
+          // isRoomIdInExpandList = expandList.includes(homeExplorerData.id)
+          !children ?
+          handleSetExpandList(homeExplorerData.id)
+          :
+          (children.map((child)=>{
+            handleSetExpandList(child.id);
+          }));
+
           console.log("expandList", expandList);
+          console.log("isRoomIdInExpandList", isRoomIdInExpandList);
+          
+          
+
+          !children ?
+          renderSidebarItems(homeExplorerData.children)
+          :
+          (children.map((child)=>{
+            renderSidebarItems(child.children);
+          }));
         }}>{!isRoomIdInExpandList ? "▶" : "▼"}</span>
         <span>{homeExplorerData.name}</span>
       </div>
+      
     )
   };
 
