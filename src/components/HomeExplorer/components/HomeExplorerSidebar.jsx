@@ -31,8 +31,9 @@ export default function HomeExplorerSidebar() {
 
   
 
-  const renderSidebarItems = (children)=>{
-    isRoomIdInExpandList = children || expandList.includes(homeExplorerData.id)
+  const renderSidebarItems1 = (children)=>{
+    isRoomIdInExpandList = children || expandList.includes(homeExplorerData.id);
+    console.log("children", children);
     return (
       <div>
         <span onClick={()=>{
@@ -55,8 +56,16 @@ export default function HomeExplorerSidebar() {
           (children.map((child)=>{
             renderSidebarItems(child.children);
           }));
+
         }}>{!isRoomIdInExpandList ? "▶" : "▼"}</span>
-        <span>{homeExplorerData.name}</span>
+        <span>
+          {
+            // !children?
+            homeExplorerData.name
+            // :
+            
+          }
+        </span>
       </div>
       
     )
@@ -65,7 +74,7 @@ export default function HomeExplorerSidebar() {
   // const [isRoomIdInExpandList, setIsRoomIdInExpandList] = useState(null);
   let isRoomIdInExpandList;
 
-  const handleSetExpandList = (roomId)=>{
+  const handleSetExpandList1 = (roomId)=>{
     
     // const roomIdIndex = expandList.indexOf(roomId);
 
@@ -84,6 +93,15 @@ export default function HomeExplorerSidebar() {
 
     
   };
+
+  const renderSidebarItems = () =>{
+    return (
+      <div>
+      {<span>"▶"</span>}
+        <span></span>
+      </div>
+    )
+  }
 
   return(
     <div className="home-explorer-sidebar">
