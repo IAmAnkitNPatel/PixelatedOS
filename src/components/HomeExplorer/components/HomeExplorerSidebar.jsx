@@ -95,13 +95,34 @@ export default function HomeExplorerSidebar() {
   };
 
   const renderSidebarItems = () =>{
+    let isRoomIdInExpandList = expandList.includes(homeExplorerData.id);
+    console.log("isRoomIdInExpandList", isRoomIdInExpandList);
     return (
       <div>
-      {<span>"▶"</span>}
-        <span></span>
+        <span onClick={()=>{
+          if(!isRoomIdInExpandList){
+            setExpandList(
+              prev=> [...prev, homeExplorerData.id]
+            );
+          } else if(isRoomIdInExpandList){
+            setExpandList(
+              prev=> prev.filter((element)=>{
+                return element!==homeExplorerData.id;
+              })
+            );
+          }
+        }}>
+      
+          {
+            !isRoomIdInExpandList ? "▶" : "▼"
+          }
+        </span>
+
+        <span>{homeExplorerData.name}</span>
       </div>
     )
   }
+  console.log("expandList", expandList);
 
   return(
     <div className="home-explorer-sidebar">
