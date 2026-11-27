@@ -97,7 +97,45 @@ export default function HomeExplorerSidebar() {
   const renderSidebarItems = () =>{
     let isRoomIdInExpandList = expandList.includes(homeExplorerData.id);
     console.log("isRoomIdInExpandList", isRoomIdInExpandList);
+
+    const traverseTree = (room) =>{
+      if(expandList.includes(room.id) && room.children?.length>0){
+        return room.children.map((child)=>{
+          const isRoomIdInExpandList = expandList.includes(child.id);
+          return (
+            
+            <div>
+              
+              <span onClick={()=>{
+                if(!isRoomIdInExpandList){
+                  setExpandList(
+                    prev=> [...prev, child.id]
+                  );
+                } else if(isRoomIdInExpandList){
+                  setExpandList(
+                    prev=> prev.filter((element)=>{
+                      return element!==child.id;
+                    })
+                  );
+                }
+              }}>
+            
+                {
+                  !isRoomIdInExpandList ? "▶" : "▼"
+                }
+              </span>
+
+              {console.log(child.name)}
+              <span>{child.name}</span>
+              {traverseTree(child)}
+            </div>
+          )
+        });
+      }
+      return null;
+    }
     return (
+      <>
       <div>
         <span onClick={()=>{
           if(!isRoomIdInExpandList){
@@ -119,7 +157,11 @@ export default function HomeExplorerSidebar() {
         </span>
 
         <span>{homeExplorerData.name}</span>
+
       </div>
+
+      {traverseTree(homeExplorerData)}
+      </>
     )
   }
   console.log("expandList", expandList);
