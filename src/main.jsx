@@ -6,7 +6,7 @@ import HomeExplorer from './components/HomeExplorer/HomeExplorer.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {/* <App /> */}
-    { <HomeExplorer /> }
+    <App />
+    {/* { <HomeExplorer /> } */}
   </StrictMode>,
 )

@@ -81,6 +81,7 @@ export default function App() {
               initialPosition={app.initialPosition}
               minimizeApp={() => handleHomeAppShellMinimize(app.id)}
               app={app}
+              appId={app.appId}
             />
           ))}
           

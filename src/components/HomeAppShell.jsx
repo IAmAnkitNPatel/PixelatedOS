@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import HomeExplorer from './HomeExplorer/HomeExplorer';
+import { Apps } from '../config/apps';
 
 export default function HomeAppShell (props) {
   
@@ -78,6 +80,14 @@ export default function HomeAppShell (props) {
   const [isMaximized, setIsMaximized] = useState(false);
 
   // if(isMinimized) console.log("Minimized");
+
+  const handleAppOpening =(appId)=>{
+    // console.log("appILd", appId);
+    if(Apps.homeExplorer.id === appId){
+      return <HomeExplorer />;
+    }
+  };
+
   return (
     <div
       className={`
@@ -121,7 +131,9 @@ export default function HomeAppShell (props) {
           >✖</div>
         </div>
       </div>
-      <div className="shell-body"></div>
+      <div className="shell-body">
+        {handleAppOpening(props.appId)}
+      </div>
     </div>
   );
 }

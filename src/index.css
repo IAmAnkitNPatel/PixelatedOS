@@ -91,6 +91,7 @@ body {
 .shell-header {
   /* flex: 1; */
   display: flex;
+  background-color: rgb(194, 194, 194);
 }
 
 .shell-header-title {
@@ -100,6 +101,13 @@ body {
 .shell-header-buttons {
   display: flex;
   /* flex: 1; */
+}
+
+.shell-body {
+  display: flex;
+  flex: 1;
+  /* border: solid; */
+  /* border-color: yellow; */
 }
 
 
@@ -235,10 +243,12 @@ body {
 
 .home-explorer{
   border: solid;
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw; */
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
+  flex: 1;
+  background-color: grey;
 }
 
 .home-explorer-header{
